@@ -1,2 +1,2 @@
 # learning
-I'm just getting started, Projects to learn
+I'm just getting started, some test code in this repository.
