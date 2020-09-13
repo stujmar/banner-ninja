@@ -38,4 +38,7 @@ let input = 11610034353958398;
 let result = persistence(input);
 console.log('The results are', result);
 
+
+
+
 // document.getElementById('display').innerHTML = result;
