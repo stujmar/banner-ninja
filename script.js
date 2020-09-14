@@ -45,6 +45,11 @@ document.getElementById("submit").addEventListener('click', (e) => {
     let times = document.getElementById("times").value;
     let interest = document.getElementById("interest").value;
     document.getElementById('output').innerHTML = compound(initial, times, interest);
+    
+    if (document.getElementById('output').innerHTML) {
+        console.log('this ran');
+        document.getElementById('clear').style.display = "inline-block";
+    }
 });
 
 
@@ -53,6 +58,8 @@ const calc = (e) => {
     console.log("calculated");
     document.getElementById('output').innerHTML = "ta-da!";
 }
+
+
 
 
 // document.getElementById('display').innerHTML = result;
