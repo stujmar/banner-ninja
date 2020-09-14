@@ -40,10 +40,10 @@ console.log('The results are', result);
 
 document.getElementById("submit").addEventListener('click', (e) => {
     e.preventDefault();
-    console.log("submit intercepted");
     let initial = document.getElementById("initial").value;
     let times = document.getElementById("times").value;
     let interest = document.getElementById("interest").value;
+    if (typeof parseInt(initial) === 'number' && typeof parseInt(times) === 'number' && typeof parseInt(interest) === 'number')
     document.getElementById('output').innerHTML = compound(initial, times, interest);
     
     if (document.getElementById('output').innerHTML) {
@@ -52,12 +52,18 @@ document.getElementById("submit").addEventListener('click', (e) => {
     }
 });
 
+document.getElementById("clear").addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('initial').value = 'Initial Amount';
+    document.getElementById('times').value = 'Times to Compound';
+    document.getElementById('interest').value = 'Interest %';
+    document.getElementById('output').innerHTML = '';
+    document.getElementById('clear').style.display = "none";
 
-const calc = (e) => {
-    e.preventdefault();
-    console.log("calculated");
-    document.getElementById('output').innerHTML = "ta-da!";
-}
+});
+
+
+
 
 
 
