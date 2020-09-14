@@ -41,9 +41,10 @@ console.log('The results are', result);
 document.getElementById("submit").addEventListener('click', (e) => {
     e.preventDefault();
     console.log("submit intercepted");
-    let initial = document.getElementById("submit")
-    let times = document.getElementById("submit")
-    let interest = document.getElementById("submit")
+    let initial = document.getElementById("initial").value;
+    let times = document.getElementById("times").value;
+    let interest = document.getElementById("interest").value;
+    document.getElementById('output').innerHTML = compound(initial, times, interest);
 });
 
 
