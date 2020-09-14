@@ -38,7 +38,20 @@ let input = 11610034353958398;
 let result = persistence(input);
 console.log('The results are', result);
 
+document.getElementById("submit").addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log("submit intercepted");
+    let initial = document.getElementById("submit")
+    let times = document.getElementById("submit")
+    let interest = document.getElementById("submit")
+});
 
+
+const calc = (e) => {
+    e.preventdefault();
+    console.log("calculated");
+    document.getElementById('output').innerHTML = "ta-da!";
+}
 
 
 // document.getElementById('display').innerHTML = result;
