@@ -21,6 +21,7 @@ render() {
             <input 
                 type="text" 
                 value={this.state.userName}
+                //Event listener setting the state to the input and updating the value accordningly
                 onChange={event => this.setState({userName: event.target.value})}
                 placeholder="GitHub Username" 
                 required/>
