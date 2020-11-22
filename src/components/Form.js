@@ -12,6 +12,7 @@ handleSubmit = async (e) => {
     axios.get(`https://api.github.com/users/${this.state.userName}`);
     // fetch(`https://api.github.com/users/${this.state.userName}`);
     console.log(resp);
+    console.log(resp.data);
     console.log(this.state.userName);
 };
 //userNameInput = React.createRef();
