@@ -9,7 +9,8 @@ state = {
 handleSubmit = async (e) => {
     e.preventDefault();
     const resp = await
-    fetch(`https://api.github.com/users/${this.state.userName}`);
+    axios.get(`https://api.github.com/users/${this.state.userName}`);
+    // fetch(`https://api.github.com/users/${this.state.userName}`);
     console.log(resp);
     console.log(this.state.userName);
 };
