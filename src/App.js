@@ -26,8 +26,10 @@ state = {
 };
 
 addNewProfile = (profileData) => {
-  console.log(profileData);
-}
+  this.setState(prevState => ({
+    profiles: [...prevState.profiles, profileData]
+  }));
+};
 
   render() {
   return (
