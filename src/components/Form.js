@@ -13,6 +13,7 @@ handleSubmit = async (e) => {
     // fetch(`https://api.github.com/users/${this.state.userName}`);
     console.log(resp);
     console.log(resp.data);
+    this.props.onSubmit(resp.data);
     console.log(this.state.userName);
 };
 //userNameInput = React.createRef();
