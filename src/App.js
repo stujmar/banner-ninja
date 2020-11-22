@@ -25,6 +25,10 @@ state = {
   profiles: testData,
 };
 
+addNewProfile = (profileData) => {
+  console.log(profileData);
+}
+
   render() {
   return (
     <div className="App">
