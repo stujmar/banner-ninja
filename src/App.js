@@ -35,7 +35,7 @@ addNewProfile = (profileData) => {
       <header className="App-header">
         <div>
            {this.props.title}
-           <Form />
+           <Form onSubmit={this.addNewProfile}/>
            <CardList list={this.state.profiles}/>
         </div>
       
