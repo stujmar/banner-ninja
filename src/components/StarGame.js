@@ -1,6 +1,16 @@
 import React from 'react'
 
 const StarGame = () => {
+
+    // Color Theme
+    const colors = {
+        available: 'lightgray',
+        used: 'lightgreen',
+        wrong: 'lightcoral',
+        candidate: 'deepskyblue',
+    };
+
+
     return (
         <div className="game">Stars!
             <div className="help">
@@ -35,12 +45,6 @@ const StarGame = () => {
     )
 }
 
-// Color Theme
-const colors = {
-    available: 'lightgray',
-    used: 'lightgreen',
-    wrong: 'lightcoral',
-    candidate: 'deepskyblue',
-  };
+
 
 export default StarGame
