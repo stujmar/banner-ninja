@@ -15,6 +15,8 @@ const Switcher = () => {
             <button onClick={() => setResource('posts')}>Posts</button>
             <button onClick={() => setResource('users')}>Users</button>
             <button onClick={() => setResource('comments')}>Comments</button>
+            <br/>
+            {resource}
         </div>
     )
 }
