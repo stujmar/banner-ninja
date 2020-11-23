@@ -4,6 +4,7 @@ import './App.css';
 //import Card from './components/Card.js';
 import CardList from './components/CardList';
 import Form from './components/Form';
+import Switcher from './components/Switcher';
 
 
 	const testData = [
@@ -35,11 +36,12 @@ addNewProfile = (profileData) => {
   return (
     <div className="App">
       <header className="App-header">
-        <div>
+        <Switcher/>
+        {/* <div>
            {this.props.title}
            <Form onSubmit={this.addNewProfile}/>
            <CardList list={this.state.profiles}/>
-        </div>
+        </div> */}
       
       </header>
     </div>
