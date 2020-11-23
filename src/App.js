@@ -5,7 +5,7 @@ import './App.css';
 import CardList from './components/CardList';
 import Form from './components/Form';
 import Switcher from './components/Switcher';
-
+import StarGame from './components/StarGame';
 
 	const testData = [
 			{name: "Dan Abramov", avatar_url: "https://avatars0.githubusercontent.com/u/810438?v=4", company: "@facebook"},
@@ -36,7 +36,7 @@ addNewProfile = (profileData) => {
   return (
     <div className="App">
       <header className="App-header">
-        <Switcher/>
+        <StarGame />
         {/* <div>
            {this.props.title}
            <Form onSubmit={this.addNewProfile}/>
