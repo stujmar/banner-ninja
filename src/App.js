@@ -2,9 +2,9 @@ import React from 'react';
 
 import './App.css';
 //import Card from './components/Card.js';
-import CardList from './components/CardList';
-import Form from './components/Form';
-import Switcher from './components/Switcher';
+// import CardList from './components/CardList';
+// import Form from './components/Form';
+// import Switcher from './components/Switcher';
 import StarGame from './components/StarGame';
 
 	const testData = [

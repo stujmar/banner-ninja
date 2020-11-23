@@ -1,4 +1,5 @@
 import React from 'react'
+import Utils from '../utils/Utils';
 
 const StarGame = () => {
 
@@ -15,6 +16,7 @@ const StarGame = () => {
         <div className="game">Stars!
             <div className="help">
                 Pick one or more numbers that sum to the number of stars.
+                {Utils.range(1,5)}
             </div>
             <div className="body">
                 <div className="left">
