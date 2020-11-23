@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Switcher = () => {
 
     const [ resource, setResource ] = useState('posts');
+    const [ data, setData ] = useState([]);
+
+    useEffect(() => {
+        console.log("We're inside the useEffect");
+    });
+
 
     return (
         <div>
