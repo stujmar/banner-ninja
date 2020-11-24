@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Utils from '../utils/Utils';
+import Colors from '../utils/Colors';
 
 const StarGame = () => {
 
@@ -11,6 +12,10 @@ const StarGame = () => {
         candidate: 'deepskyblue',
     };
 
+    useEffect(() => {
+        console.log('Hello from the Star Game');
+        console.log(Colors.available);
+    },[])
 
     return (
         <div className="game">Stars!
