@@ -1,16 +1,11 @@
 import React, { useEffect } from 'react'
 import Utils from '../utils/Utils';
 import Colors from '../utils/Colors';
+import Styles, {star} from './StarGame.module.css';
 
 const StarGame = () => {
 
-    // Color Theme
-    const colors = {
-        available: 'lightgray',
-        used: 'lightgreen',
-        wrong: 'lightcoral',
-        candidate: 'deepskyblue',
-    };
+    const stars = 5;
 
     useEffect(() => {
         console.log('Hello from the Star Game');
@@ -25,6 +20,10 @@ const StarGame = () => {
             </div>
             <div className="body">
                 <div className="left">
+                    {Utils.range(1,stars).map(starId => 
+                        <div className={star} />    
+                    )}
+                    {/* <div className="star" />
                     <div className="star" />
                     <div className="star" />
                     <div className="star" />
@@ -32,8 +31,7 @@ const StarGame = () => {
                     <div className="star" />
                     <div className="star" />
                     <div className="star" />
-                    <div className="star" />
-                    <div className="star" />
+                    <div className="star" /> */}
                 </div>
                 <div className="right">
                     <button className="number">1</button>
