@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Utils from '../utils/Utils';
 import Colors from '../utils/Colors';
-import Styles, {star, number } from './StarGame.module.css';
+import {star, number } from './StarGame.module.css';
 
 const StarGame = () => {
 
@@ -21,7 +21,7 @@ const StarGame = () => {
             <div className="body">
                 <div className="left">
                     {Utils.range(1,stars).map(starId => 
-                        <div className={star} />    
+                        <div id={starId} key={starId} className={star} />    
                     )}
                     {/* <div className="star" />
                     <div className="star" />
@@ -34,8 +34,8 @@ const StarGame = () => {
                     <div className="star" /> */}
                 </div>
                 <div className="right">
-                {Utils.range(1,9).map(num => 
-                        <button id={num} className={number}>{num}</button>
+                    {Utils.range(1,9).map(num => 
+                            <button key={num} id={num} className={number}>{num}</button>
                     )}
                     {/* <button className="number">1</button>
                     <button className="number">2</button>
@@ -52,7 +52,5 @@ const StarGame = () => {
         </div>
     )
 }
-
-
 
 export default StarGame
