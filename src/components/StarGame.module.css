@@ -13,19 +13,13 @@
     text-align: center;
   }
   
-  .left {
-    text-align: center;
-    width: 50%;
-    border: thin solid #ddd;
+  .left, .right {
+      width: 50%;
+      padding: 10px;
+      text-align: center;
+      border: thin solid #ddd;
   }
-  
-  .right {
-    text-align: center;
-    padding: 10px;
-    width: 50%;
-    border: thin solid #ddd;
-  }
-  
+
   .star {
       display: inline-block;
         width: 30px;
