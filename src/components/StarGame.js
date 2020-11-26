@@ -35,7 +35,7 @@ const StarGame = () => {
                 </div>
                 <div className={right}>
                     {Utils.range(1,9).map(num =>
-                        <ButtonNumber key={num} id={num} className={number} />
+                        <ButtonNumber key={num} id={num} num={num} className={number} />
                     )}
                     {/* <button className="number">1</button>
                     <button className="number">2</button>

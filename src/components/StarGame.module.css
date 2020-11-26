@@ -18,14 +18,15 @@
       padding: 10px;
       text-align: center;
       border: thin solid #ddd;
+      color:black;
   }
 
   .star {
-      display: inline-block;
-        width: 30px;
-        height: 30px;
-        background: lime;
-      margin: 0 15px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: lime;
+    margin: 0 15px;
   }
   
   .star:after {
