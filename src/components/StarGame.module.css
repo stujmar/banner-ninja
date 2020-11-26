@@ -48,6 +48,10 @@
     margin: 10px;
     font-size: 25px;
   }
+
+  .number:hover {
+    background-color: rgb(231, 199, 199);
+  }
   
   .number:focus, .number:active {
     outline: none;
