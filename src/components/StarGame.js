@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Utils from '../utils/Utils';
 import Colors from '../utils/Colors';
 import {star, number } from './StarGame.module.css';
 
 const StarGame = () => {
-
-    const stars = 5;
-
+    const [stars, setStars] = useState(Utils.random(1,9));
+    
     useEffect(() => {
         console.log('Hello from the Star Game');
         console.log(Colors.available);
@@ -21,7 +20,7 @@ const StarGame = () => {
             <div className="body">
                 <div className="left">
                     {Utils.range(1,stars).map(starId => 
-                        <div id={starId} key={starId} className={star} />    
+                        <div id={starId} key={starId} className={star} />
                     )}
                     {/* <div className="star" />
                     <div className="star" />
@@ -34,8 +33,8 @@ const StarGame = () => {
                     <div className="star" /> */}
                 </div>
                 <div className="right">
-                    {Utils.range(1,9).map(num => 
-                            <button key={num} id={num} className={number}>{num}</button>
+                    {Utils.range(1,9).map(num =>
+                        <button key={num} id={num} className={number}>{num}</button>
                     )}
                     {/* <button className="number">1</button>
                     <button className="number">2</button>
