@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ButtonNumber = () => {
+const ButtonNumber = ({num}) => {
 
     return (
-        <button></button>
+        <button key={num} id={num} className={number}>{num}</button>
     )
 }
 
