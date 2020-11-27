@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Utils from '../utils/Utils';
 import Colors from '../utils/Colors';
-import {star, number, left, body, right, game, help } from './StarGame.module.css';
+import {number, left, body, right, game, help } from './StarGame.module.css';
 import ButtonNumber from './ButtonNumber.js'
+import StarGrid from './StarGrid';
 
 const StarGame = () => {
     const [stars, setStars] = useState(Utils.random(1,9));
@@ -24,9 +25,7 @@ const StarGame = () => {
             </div>
             <div className={body}>
                 <div className={left}>
-                    {Utils.range(1,stars).map(starId => 
-                        <div id={starId} key={starId} className={star} />
-                    )}
+                    <StarGrid starCount={stars}/>
                 </div>
                 <div className={right}>
                     {Utils.range(1,9).map(num =>
