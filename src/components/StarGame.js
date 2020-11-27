@@ -7,6 +7,7 @@ import StarGrid from './StarGrid';
 
 const StarGame = () => {
     const [stars, setStars] = useState(Utils.random(1,9));
+    const [picked, setPicked] = useState([]);
     
     useEffect(() => {
         console.log('Hello from the Star Game');
