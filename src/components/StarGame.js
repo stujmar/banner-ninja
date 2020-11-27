@@ -12,6 +12,10 @@ const StarGame = () => {
         console.log(Colors.available);
     },[])
 
+    const handleClick = (num) => {
+        console.log(num)
+    }
+
     return (
         <div className={game}>Stars!
             <div className={help}>
@@ -26,7 +30,7 @@ const StarGame = () => {
                 </div>
                 <div className={right}>
                     {Utils.range(1,9).map(num =>
-                        <ButtonNumber key={num} id={num} num={num} className={number} />
+                        <ButtonNumber key={num} id={num} num={num} className={number} onClick={handleClick}/>
                     )}
                 </div>
             </div>
