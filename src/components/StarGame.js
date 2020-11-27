@@ -9,7 +9,11 @@ const StarGame = () => {
     const [stars, setStars] = useState(Utils.random(1,9));
     const [available, setAvailable] = useState([1,2,3,4,5,6,7]);
     const [candidates, setCandidate] = useState(2,3);
-    
+
+    const numStatus = (number) => {
+        return true;
+    }
+
     useEffect(() => {
         console.log('Hello from the Star Game');
         console.log(Colors.available);
