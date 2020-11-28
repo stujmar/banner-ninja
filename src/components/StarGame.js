@@ -11,7 +11,9 @@ const StarGame = () => {
     const [candidates, setCandidate] = useState(2,3);
 
     const numStatus = (number) => {
-        return true;
+        if (!available.includes(number)) {
+            return 'used';
+        }
     }
 
     useEffect(() => {
