@@ -17,7 +17,7 @@ const StarGame = () => {
     }
 
     useEffect(() => {
-        console.log('Hello from the Star Game');
+        console.log('Hello from the Great Star Game');
         console.log(Colors.available);
     },[])
 
