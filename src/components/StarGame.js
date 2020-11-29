@@ -29,7 +29,20 @@ const StarGame = () => {
     },[])
 
     const handleClick = (num, status) => {
-        console.log(num, status)
+        console.log(num, status);
+        if (status = 'used') {
+            return;
+        }   
+        const newCandidates = candidates.concat(num); 
+        if (Utils.sum(newCandidates) !== stars) {
+            setCandidate(newCandidates);
+        } else {
+            const newAvaiable = available.filter( n => !newCandidates.includes(n));
+            setStars(Utils.random(1,9));
+            setCandidate([]);
+            setAvailable(newAvaiable);
+
+        }
     };
 
     return (
