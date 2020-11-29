@@ -37,7 +37,13 @@ const StarGame = () => {
                 </div>
                 <div className={right}>
                     {Utils.range(1,9).map(num =>
-                        <ButtonNumber key={num} id={num} num={num} className={number} onClick={handleClick}/>
+                        <ButtonNumber 
+                            key={num} 
+                            id={num} 
+                            num={num} 
+                            status={getStatus(clicked)}
+                            className={number} 
+                            onClick={handleClick}/>
                     )}
                 </div>
             </div>
