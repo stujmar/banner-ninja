@@ -18,7 +18,7 @@ const StarGame = () => {
 
     useEffect(() => {
         console.log('Hello from the Great Star Game');
-        console.log(Colors.available);
+        console.log(Colors);
     },[])
 
     const handleClick = (num) => {
