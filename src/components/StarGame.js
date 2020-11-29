@@ -10,11 +10,18 @@ const StarGame = () => {
     const [available, setAvailable] = useState([1,2,3,4,5,6,7]);
     const [candidates, setCandidate] = useState([2,3]);
 
+    const candidatesAreWrong = Utils.sum(candidates) > stars;
+  
+
     const numStatus = (number) => {
         if (!available.includes(number)) {
             return 'used';
         }
-    }
+        if(candidates.includes(number)) {
+            return candidatesAreWrong ? 'wrong' : 'candidate';
+        }
+        return 'available';
+    };
 
     useEffect(() => {
         console.log('Hello from the Great Star Game');
@@ -23,7 +30,7 @@ const StarGame = () => {
 
     const handleClick = (num) => {
         console.log(num)
-    }
+    };
 
     return (
         <div className={game}>Stars!
@@ -41,7 +48,7 @@ const StarGame = () => {
                             key={num} 
                             id={num} 
                             num={num} 
-                            status={getStatus(clicked)}
+                            status={numStatus(clicked)}
                             className={number} 
                             onClick={handleClick}/>
                     )}
