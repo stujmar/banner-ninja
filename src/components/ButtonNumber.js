@@ -9,7 +9,7 @@ const ButtonNumber = ({num, onClick, status}) => {
             id={num} 
             className={number}
             style={{backgroundColor: Colors[status]}}
-            onClick={() => onClick(num) }>
+            onClick={() => onClick(num, status) }>
                 {num}
         </button>
     )

@@ -28,8 +28,8 @@ const StarGame = () => {
         console.log(Colors);
     },[])
 
-    const handleClick = (num) => {
-        console.log(num)
+    const handleClick = (num, status) => {
+        console.log(num, status)
     };
 
     return (
