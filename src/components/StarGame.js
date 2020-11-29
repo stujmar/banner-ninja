@@ -48,7 +48,7 @@ const StarGame = () => {
                             key={num} 
                             id={num} 
                             num={num} 
-                            status={numStatus(clicked)}
+                            status={numStatus(num)}
                             className={number} 
                             onClick={handleClick}/>
                     )}
