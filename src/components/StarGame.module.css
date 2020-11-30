@@ -23,10 +23,10 @@
 
   .star {
     display: inline-block;
-    width: 30px;
-    height: 30px;
-    background: lime;
-    margin: 0 15px;
+    width: 45px;
+    height: 45px;
+    background: url(../assets/star.svg);
+    margin: 5px 15px;
   }
   
   .star:after {
