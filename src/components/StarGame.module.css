@@ -27,9 +27,10 @@
     height: 45px;
     background: url(../assets/star.svg);
     margin: 5px 15px;
-  }
-  
-  .star:after {
+    fill: white;
+}
+
+.star:after {
     /* content: "\2605"; */
 
     font-size: 45px;

@@ -30,10 +30,11 @@ const StarGame = () => {
 
     const handleClick = (num, status) => {
         console.log(num, status);
-        if (status == 'used') {
+        if (status === 'used') {
             return;
         }   
-        const newCandidates = candidates.concat(num); 
+        
+        const newCandidates = status === 'available' ? candidates.concat(num) : candidates.filter(cn => cn !== num); 
         if (Utils.sum(newCandidates) !== stars) {
             setCandidate(newCandidates);
         } else {
