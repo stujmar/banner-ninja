@@ -38,7 +38,7 @@ const StarGame = () => {
             setCandidate(newCandidates);
         } else {
             const newAvaiable = available.filter( n => !newCandidates.includes(n));
-            setStars(Utils.random(1,9));
+            setStars((Utils.randomSumIn(newAvaiable, 9)));
             setCandidate([]);
             setAvailable(newAvaiable);
 
