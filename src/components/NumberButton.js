@@ -2,7 +2,7 @@ import React from 'react'
 import { number } from './StarGame.module.css'
 import Colors from '../utils/Colors';
 
-const ButtonNumber = ({num, onClick, status}) => {
+const NumberButton = ({num, onClick, status}) => {
 
     return (
         <button 
@@ -15,4 +15,4 @@ const ButtonNumber = ({num, onClick, status}) => {
     )
 }
 
-export default ButtonNumber
+export default NumberButton

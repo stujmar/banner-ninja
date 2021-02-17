@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Utils from '../utils/Utils';
 import Colors from '../utils/Colors';
 import {number, left, body, right, game, help } from './StarGame.module.css';
-import ButtonNumber from './ButtonNumber.js'
+import NumberButton from './NumberButton.js'
 import StarGrid from './StarGrid';
 
 const StarGame = () => {
@@ -59,7 +59,7 @@ const StarGame = () => {
                 </div>
                 <div className={right}>
                     {Utils.range(1,9).map(num =>
-                        <ButtonNumber 
+                        <NumberButton 
                             key={num} 
                             id={num} 
                             num={num} 
