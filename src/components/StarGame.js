@@ -11,6 +11,8 @@ const StarGame = () => {
     const [available, setAvailable] = useState(Utils.range(1,9));
     // Numbers in play which we are checking.
     const [candidates, setCandidate] = useState([]);
+    // Time Left
+    const [timeLeft, setTimeLeft] = useState(10);
 
     const candidatesAreWrong = Utils.sum(candidates) > stars;
     const gameIsDone = available.length === 0;
@@ -59,7 +61,6 @@ const StarGame = () => {
         <div className={game}>Stars!
             <div className={help}>
                 Pick one or more numbers that sum to the number of Stars.
-                {Utils.range(1,5)}
             </div>
             <div className={body}>
                 <div className={left}>
@@ -77,7 +78,7 @@ const StarGame = () => {
                     )}
                 </div>
             </div>
-        
+                <p>Time Remaining: {timeLeft}</p>
                 <button onClick={handleReset}>{gameIsDone ? "PLAY AGAIN" : "RESET"}</button>
         </div>
     )
