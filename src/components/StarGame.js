@@ -17,7 +17,9 @@ const StarGame = () => {
 
 
     const candidatesAreWrong = Utils.sum(candidates) > stars;
-    const gameIsDone = available.length === 0;
+    const gameIdWon = available.length === 0;
+    const gameIsLost = timeLeft === 0;
+
 
     const numStatus = (number) => {
         if (!available.includes(number)) {
@@ -31,10 +33,12 @@ const StarGame = () => {
 
     useEffect(() => {
         if (timeLeft > 0) {
-            setTimeout(() => {
+            const timerID = setTimeout(() => {
                 setTimeLeft(timeLeft - 1);
             }, 1000)
+            return () => clearTimeout(timerID);
         }
+
     })
 
     const handleClick = (num, status) => {
@@ -67,6 +71,7 @@ const StarGame = () => {
             <div className={help}>
                 Pick one or more numbers that sum to the number of Stars.
             </div>
+            {gameIsLost ? "Time's Up": "Time is Ticking"}
             <div className={body}>
                 <div className={left}>
                     <StarGrid starCount={stars}/>
@@ -84,7 +89,7 @@ const StarGame = () => {
                 </div>
             </div>
                 <p>Time Remaining: {timeLeft}</p>
-                <button onClick={handleReset}>{gameIsDone ? "PLAY AGAIN" : "RESET"}</button>
+                <button onClick={handleReset}>{gameIdWon ? "PLAY AGAIN" : "RESET"}</button>
         </div>
     )
 }
