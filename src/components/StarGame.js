@@ -48,6 +48,13 @@ const StarGame = () => {
         }
     };
 
+    const handleReset = () => {
+        setStars(Utils.random(1,9));
+        setAvailable(Utils.range(1,9));
+        setCandidate([]);
+    }
+
+
     return (
         <div className={game}>Stars!
             <div className={help}>
@@ -71,6 +78,7 @@ const StarGame = () => {
                 </div>
             </div>
         
+                <button onClick={handleReset}>RESET</button>
         </div>
     )
 }
