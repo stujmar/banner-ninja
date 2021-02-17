@@ -6,6 +6,7 @@ import ButtonNumber from './ButtonNumber.js'
 import StarGrid from './StarGrid';
 
 const StarGame = () => {
+    // Starting star count to guess.
     const [stars, setStars] = useState(Utils.random(1,9));
     const [available, setAvailable] = useState([1,2,3,4,5,6,7,8,9]);
     const [candidates, setCandidate] = useState([]);
@@ -23,10 +24,10 @@ const StarGame = () => {
         return 'available';
     };
 
-    useEffect(() => {
-        console.log('Hello from the Great Star Game');
-        console.log(Colors);
-    },[])
+    // useEffect(() => {
+    //     console.log('Hello from the Great Star Game');
+    //     console.log(Colors);
+    // },[])
 
     const handleClick = (num, status) => {
         console.log(num, status);
