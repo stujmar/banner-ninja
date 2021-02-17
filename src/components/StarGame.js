@@ -8,7 +8,9 @@ import StarGrid from './StarGrid';
 const StarGame = () => {
     // Starting star count to guess.
     const [stars, setStars] = useState(Utils.random(1,9));
+    // Numbers that have yet to be guessed.
     const [available, setAvailable] = useState([1,2,3,4,5,6,7,8,9]);
+    // Numbers in play which we are checking.
     const [candidates, setCandidate] = useState([]);
 
     const candidatesAreWrong = Utils.sum(candidates) > stars;
