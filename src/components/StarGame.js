@@ -13,7 +13,7 @@ const StarGame = () => {
     const [candidates, setCandidate] = useState([]);
 
     const candidatesAreWrong = Utils.sum(candidates) > stars;
-  
+    const gameIsDone = available.length === 0;
 
     const numStatus = (number) => {
         if (!available.includes(number)) {
@@ -78,7 +78,7 @@ const StarGame = () => {
                 </div>
             </div>
         
-                <button onClick={handleReset}>RESET</button>
+                <button onClick={handleReset}>{gameIsDone ? "PLAY AGAIN" : "RESET"}</button>
         </div>
     )
 }
