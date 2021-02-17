@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Utils from '../utils/Utils';
-import Colors from '../utils/Colors';
 import {number, left, body, right, game, help } from './StarGame.module.css';
 import NumberButton from './NumberButton.js'
 import StarGrid from './StarGrid';
