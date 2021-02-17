@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Utils from '../utils/Utils';
 import {number, left, body, right, game, help } from './StarGame.module.css';
 import NumberButton from './NumberButton.js'
@@ -13,6 +13,8 @@ const StarGame = () => {
     const [candidates, setCandidate] = useState([]);
     // Time Left
     const [timeLeft, setTimeLeft] = useState(10);
+    // setInterval, setTimeout
+
 
     const candidatesAreWrong = Utils.sum(candidates) > stars;
     const gameIsDone = available.length === 0;
@@ -27,10 +29,13 @@ const StarGame = () => {
         return 'available';
     };
 
-    // useEffect(() => {
-    //     console.log('Hello from the Great Star Game');
-    //     console.log(Colors);
-    // },[])
+    useEffect(() => {
+        if (timeLeft > 0) {
+            setTimeout(() => {
+                setTimeLeft(timeLeft - 1);
+            }, 1000)
+        }
+    })
 
     const handleClick = (num, status) => {
         console.log(num, status);
@@ -46,7 +51,6 @@ const StarGame = () => {
             setStars((Utils.randomSumIn(newAvaiable, 9)));
             setCandidate([]);
             setAvailable(newAvaiable);
-
         }
     };
 
@@ -54,6 +58,7 @@ const StarGame = () => {
         setStars(Utils.random(1,9));
         setAvailable(Utils.range(1,9));
         setCandidate([]);
+        setTimeLeft(10);
     }
 
 
