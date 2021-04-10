@@ -1,5 +1,5 @@
-import React from 'react'
-import { number } from './StarGame.module.css'
+import React from 'react';
+import { number } from './StarGame.module.css';
 import Colors from '../utils/Colors';
 
 const NumberButton = ({num, onClick, status}) => {

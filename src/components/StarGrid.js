@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import Utils from '../utils/utils';
-import {star} from './StarGame.module.css'
+import {star} from './StarGame.module.css';
 
 const StarGrid = ({starCount}) => {
     
