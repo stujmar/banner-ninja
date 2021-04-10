@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import './App.css';
 //import Card from './components/Card.js';
@@ -15,12 +16,6 @@ import StarGame from './components/StarGame';
 
 
 class App extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     profiles: testData,
-  //   };
-  // }
 
 state = {
   profiles: testData,
