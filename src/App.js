@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import Home from "./components/home/Home";
+import About from "./components/about/About";
 import './App.css';
 //import Card from './components/Card.js';
 // import CardList from './components/CardList';
