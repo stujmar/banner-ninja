@@ -33,13 +33,7 @@ addNewProfile = (profileData) => {
   return (
     <div className="App">
       <header className="App-header">
-        <StarGame />
-        {/* <div>
-           {this.props.title}
-           <Form onSubmit={this.addNewProfile}/>
-           <CardList list={this.state.profiles}/>
-        </div> */}
-      
+        <p>This is the header</p>
       </header>
       <Router>
       <div>
@@ -51,10 +45,9 @@ addNewProfile = (profileData) => {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/stargame">Star Game</Link>
           </li>
         </ul>
-
         <hr />
 
         {/*
@@ -71,8 +64,8 @@ addNewProfile = (profileData) => {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/dashboard">
-            <Dashboard />
+          <Route path="/stargame">
+            <StarGame />
           </Route>
         </Switch>
       </div>
