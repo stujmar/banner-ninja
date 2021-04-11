@@ -37,14 +37,14 @@ addNewProfile = (profileData) => {
       </header>
       <Router>
       <div>
-        <ul>
-          <li>
+        <ul className="flex justify-around">
+          <li className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500">
             <Link to="/about">About</Link>
           </li>
-          <li>
+          <li className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500">
             <Link to="/stargame">Star Game</Link>
           </li>
         </ul>
