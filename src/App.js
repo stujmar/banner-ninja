@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 
 import Home from "./components/home/Home";
 import About from "./components/about/About";
@@ -36,18 +36,12 @@ addNewProfile = (profileData) => {
         <p>Welcome to my Create React App</p>
       </header>
       <Router>
-      <div>
-        <ul className="flex justify-around">
-          <li className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500">
-            <Link to="/about">About</Link>
-          </li>
-          <li className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500">
-            <Link to="/stargame">Star Game</Link>
-          </li>
-        </ul>
+      <div className="box-border">
+        <div className="flex justify-around">
+            <NavLink exact className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500" to="/" activeClassName="border-b-4">Home</NavLink>
+            <NavLink exact className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500" to="/about" activeClassName="border-b-4">About</NavLink>
+            <NavLink exact className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500" to="/stargame" activeClassName="border-b-4">Star Game</NavLink>
+        </div>
         <hr />
 
         {/*
