@@ -79,3 +79,5 @@ function validateCourse(course) {
     if (!course.category) return "Category is required.";
     return "";
 }
+
+// Checkout json-server docks and do some express tutorials
