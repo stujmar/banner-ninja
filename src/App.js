@@ -32,8 +32,8 @@ addNewProfile = (profileData) => {
   render() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>This is the header</p>
+      <header className="bg-blue-600 h-36 flex items-center justify-center text-lg font-sans text-white">
+        <p>Welcome to my Create React App</p>
       </header>
       <Router>
       <div>
