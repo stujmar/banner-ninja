@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "run-p start:dev start:api", 
-    "start:dev": "craco start",
+    "start:dev": "cross-env REACT_APP_API_URL=http://localhost:3030 craco start",
     "prestart:api": "node tools/createMockDb.js",
     "start:api": "node tools/apiServer.js",
     "build": "craco build",

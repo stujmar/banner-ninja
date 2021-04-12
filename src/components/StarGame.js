@@ -67,7 +67,7 @@ const StarGame = () => {
 
 
     return (
-        <div className={game}>Stars!
+        <div className={game}><span className="text-lg font-bold">Stars!</span>
             <div className={help}>
                 Pick one or more numbers that sum to the number of Stars.
             </div>
