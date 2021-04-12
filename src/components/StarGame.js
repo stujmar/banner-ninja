@@ -71,8 +71,8 @@ const StarGame = () => {
             <div className={help}>
                 Pick one or more numbers that sum to the number of Stars.
             </div>
-            {gameIsLost ? "Time's Up": "Time is Ticking"}
-            <div className={body}>
+            {gameIsLost ? "Time is Up!": "Time is Ticking!"}
+            <div className="flex">
                 <div className={left}>
                     <StarGrid starCount={stars}/>
                 </div>
