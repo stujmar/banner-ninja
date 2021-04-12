@@ -16,6 +16,8 @@
   },
   "scripts": {
     "start": "craco start",
+    "prestart:api": "node tools/createMockDb.js",
+    "start:api": "node tools/apiServer.js",
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject"
