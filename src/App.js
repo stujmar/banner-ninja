@@ -7,6 +7,7 @@ import Home from "./components/home/Home";
 import About from "./components/about/About";
 import StarGame from './components/StarGame';
 import Nav from './components/nav/Nav';
+import SeedPlanter from './components/seed/SeedPlanter';
 
 const App = () => {
 
@@ -28,6 +29,9 @@ const App = () => {
           </Route>
           <Route path="/stargame">
             <StarGame />
+          </Route>
+          <Route path="/seed-planter">
+            <SeedPlanter />
           </Route>
         </Switch>
       </div>
