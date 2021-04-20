@@ -4,6 +4,7 @@ const SeedPlanter = () => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0});
     const [ trees, setTrees ] = useState([]);
     const [ drawTrees, setDrawTrees ] = useState([]);
+    const [ diameter, setDiameter ] = useState(10);
 
     useEffect(() => {
         // console.log(mouseX, mouseY);
@@ -11,7 +12,13 @@ const SeedPlanter = () => {
 
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
-            return <div className="absolute shadow w-2 h-2 bg-gray-300" style={{top: tree.y - 2, left: tree.x - 2, borderRadius: "50%"}}></div>
+            return <div className="absolute shadow bg-gray-400" style={{
+                top: tree.y - 2, 
+                left: tree.x - 2, 
+                borderRadius: "50%",
+                height: `${tree.diameter}px`,
+                width: `${tree.diameter}px`
+                }}></div>
         }));
     },[trees])
 
@@ -22,19 +29,25 @@ const SeedPlanter = () => {
         })
       }
 
+    const handleDiameter = (e) => {
+        setDiameter(e.target.value);
+    }
+
     const plant = (e) => {
         console.log(`tree planted at ${mouse.x}, ${mouse.y}`)
         setTrees(trees => [...trees, {
             x: mouse.x,
             y: mouse.y,
-            diameter: 0,
-            age: 0,
+            diameter: diameter ? diameter : 2,
+            age: diameter ? diameter : 2,
             color: "0, 255, 0"
         }])
     }
 
     return (
-    <div className="w-full pt-24">
+    <div value={diameter} className="w-full pt-24" onChange={(e) => handleDiameter(e)}>
+    {`Diameter: `}
+        <input className="border mb-2" type="number" />
         <div className="mx-auto bg-green-200 w-72 h-72 relative overflow-hidden" 
             onMouseMove={(e) => _onMouseMove(e)}
             onClick={(e) => plant(e)}
