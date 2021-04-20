@@ -6,6 +6,7 @@ import './App.css';
 import Home from "./components/home/Home";
 import About from "./components/about/About";
 import StarGame from './components/StarGame';
+import Nav from './components/nav/Nav';
 
 const App = () => {
 
@@ -16,11 +17,7 @@ const App = () => {
       </header>
       <Router>
       <div className="box-border">
-        <div className="flex justify-around">
-            <NavLink exact className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500" to="/" activeClassName="border-b-4">Home</NavLink>
-            <NavLink exact className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500" to="/about" activeClassName="border-b-4">About</NavLink>
-            <NavLink exact className="flex-grow bg-blue-400 py-2 px-4 text-blue-50 hover:bg-gray-50 hover:text-gray-500" to="/stargame" activeClassName="border-b-4">Star Game</NavLink>
-        </div>
+      <Nav />
         <hr />
         <Switch>
           <Route exact path="/">
