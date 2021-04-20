@@ -41,7 +41,7 @@ const SeedPlanter = () => {
             y: mouse.y,
             diameter: diameter ? diameter : 2,
             age: diameter ? diameter : 2,
-            color: "rgb(0, 255, 0)"
+            color: "rgb(50, 200, 50)"
         }])
     }
 
