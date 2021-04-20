@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const SeedPlanter = () => {
     const [ mouse, setMouse] = useState({ x: 0, y: 0});
+    const [ trees, setTrees ] = useState([]);
 
     useEffect(() => {
         // console.log(mouseX, mouseY);
@@ -16,6 +17,13 @@ const SeedPlanter = () => {
 
     const plant = (e) => {
         console.log(`tree planted at ${mouse.x}, ${mouse.y}`)
+        setTrees(trees => [...trees, {
+            x: 0,
+            y: 0,
+            diameter: 0,
+            age: 0,
+            color: "0, 255, 0"
+        }])
     }
 
     return (
