@@ -9,12 +9,15 @@ const SeedPlanter = () => {
     },[mouseX,mouseY])
 
     const _onMouseMove = (e) => {
-        setMouseX(e.pageX);
-        setMouseY(e.pageY - 190);
+        // console.log(e);
+        setMouseX(e.nativeEvent.offsetX);
+        setMouseY(e.nativeEvent.offsetY);
       }
 
     return (
-        <div className="bg-green-200 w-full h-64" onMouseMove={(e) => _onMouseMove(e)}></div>
+    <div className="w-full pt-24">
+        <div className="mx-auto bg-green-200 w-72 h-72" onMouseMove={(e) => _onMouseMove(e)}></div>
+    </div>
     )
 }
 
