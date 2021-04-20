@@ -12,12 +12,13 @@ const SeedPlanter = () => {
 
     useEffect(() => {
         setDrawTrees(trees.map(tree => {
-            return <div className="absolute shadow bg-gray-400" style={{
+            return <div className="absolute shadow" style={{
                 top: tree.y - 2, 
                 left: tree.x - 2, 
                 borderRadius: "50%",
                 height: `${tree.diameter}px`,
-                width: `${tree.diameter}px`
+                width: `${tree.diameter}px`,
+                background: tree.color
                 }}></div>
         }));
     },[trees])
@@ -40,7 +41,7 @@ const SeedPlanter = () => {
             y: mouse.y,
             diameter: diameter ? diameter : 2,
             age: diameter ? diameter : 2,
-            color: "0, 255, 0"
+            color: "rgb(0, 255, 0)"
         }])
     }
 
