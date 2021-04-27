@@ -34,3 +34,6 @@ CourseList.propTypes = {
     courses: PropTypes.array.isRequired
 };
 
+CourseList.defaultProps = {
+    courses: []
+}
