@@ -12,6 +12,7 @@ import SeedPlanter from './components/seed/SeedPlanter';
 import AboutPage from './components/temp/AboutPage';
 import HomePage from './components/temp/HomePage';
 import Header from './components/Header';
+import CoursesPage from './components/temp/CoursesPage';
 
 const App = () => {
 
@@ -27,7 +28,7 @@ const App = () => {
         <p>Welcome to my Create React App</p>
       </header>
       <Header />
-      {getPage()}
+      <CoursesPage />
       <Router>
       <div className="box-border">
       <Nav />
