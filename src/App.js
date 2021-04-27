@@ -13,6 +13,7 @@ import Header from './components/Header';
 import CoursesPage from './components/temp/CoursesPage';
 import Example from './components/temp/Example';
 import NotFoundPage from './components/temp/NotFoundPage';
+import YouLose from './components/YouLose';
 
 const App = () => {
 
@@ -32,6 +33,7 @@ const App = () => {
             <Home />
           </Route> */}
           <Route path="/" component={Home} exact />
+          <Route path="/you-lose" component={YouLose} exact />
           <Route path="/course/:id" component={Course} id="10" exact />
           <Route path="/about">
             <About />

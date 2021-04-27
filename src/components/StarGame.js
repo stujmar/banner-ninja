@@ -3,6 +3,7 @@ import Utils from '../utils/utils';
 import {number, left, right, game, help } from './StarGame.module.css';
 import NumberButton from './NumberButton.js';
 import StarGrid from './StarGrid';
+import { Redirect } from 'react-router-dom';
 
 const StarGame = () => {
     // Starting star count to guess.
@@ -90,6 +91,7 @@ const StarGame = () => {
             </div>
                 <p>Time Remaining: {timeLeft}</p>
                 <button onClick={handleReset}>{gameIdWon ? "PLAY AGAIN" : "RESET"}</button>
+                { timeLeft === 0 && <Redirect from='/stargame' to="/you-lose" />}
         </div>
     )
 }
