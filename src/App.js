@@ -1,6 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
+import { Route, Switch } from "react-router-dom";
 import './App.css';
 
 import Home from "./components/home/Home";
@@ -32,7 +31,6 @@ const App = () => {
       <Header />
       <Example />
       <CoursesPage />
-      <Router>
       <div className="box-border">
       <Nav />
         <hr />
@@ -51,7 +49,6 @@ const App = () => {
           </Route>
         </Switch>
       </div>
-    </Router>
     </div>
   )
 }
