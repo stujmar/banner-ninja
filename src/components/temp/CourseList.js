@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
 
 const CourseList = (props) => {
@@ -20,6 +21,7 @@ const CourseList = (props) => {
                         <td>{course.title}</td>
                         <td>{course.authorId}</td>
                         <td>{course.category}</td>
+                        <Link to={`/course/${course.id}`}>go to course</Link>
                     </tr>
                 })}
             </tbody>

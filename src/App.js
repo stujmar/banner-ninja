@@ -7,21 +7,14 @@ import About from "./components/about/About";
 import StarGame from './components/StarGame';
 import Nav from './components/nav/Nav';
 import SeedPlanter from './components/seed/SeedPlanter';
+import Course from './components/temp/Course';
 
-// import AboutPage from './components/temp/AboutPage';
-// import HomePage from './components/temp/HomePage';
 import Header from './components/Header';
 import CoursesPage from './components/temp/CoursesPage';
 import Example from './components/temp/Example';
+import NotFoundPage from './components/temp/NotFoundPage';
 
 const App = () => {
-
-  // function getPage() {
-  //   const route = window.location.pathname;
-  //   console.log(route);
-  //   if (route === "/about") return <AboutPage />;
-  //   return <HomePage />;
-  // }
 
   return (
     <div className="App">
@@ -35,9 +28,11 @@ const App = () => {
       <Nav />
         <hr />
         <Switch>
-          <Route exact path="/">
+          {/* <Route exact path="/">
             <Home />
-          </Route>
+          </Route> */}
+          <Route path="/" component={Home} exact />
+          <Route path="/course/:id" component={Course} id="10" exact />
           <Route path="/about">
             <About />
           </Route>
@@ -47,6 +42,7 @@ const App = () => {
           <Route path="/seed-planter">
             <SeedPlanter />
           </Route>
+          <Route component={NotFoundPage} />
         </Switch>
       </div>
     </div>
