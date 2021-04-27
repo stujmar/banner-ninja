@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import './App.css';
 
 import Home from "./components/home/Home";
@@ -14,6 +14,7 @@ import CoursesPage from './components/temp/CoursesPage';
 import Example from './components/temp/Example';
 import NotFoundPage from './components/temp/NotFoundPage';
 import YouLose from './components/YouLose';
+import ManageCourses from './components/temp/ManageCourses';
 
 const App = () => {
 
@@ -32,9 +33,11 @@ const App = () => {
           {/* <Route exact path="/">
             <Home />
           </Route> */}
+          <Redirect from="/wrong-path" to="/right-path" />
           <Route path="/" component={Home} exact />
           <Route path="/you-lose" component={YouLose} exact />
-          <Route path="/course/:id" component={Course} id="10" exact />
+          {/* <Route path="/course/:id" component={Course} id="10" exact /> */}
+          <Route path="/course/:slug" component={ManageCourses} />
           <Route path="/about">
             <About />
           </Route>
