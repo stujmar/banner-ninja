@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 const CourseList = (props) => {
 
@@ -28,3 +29,8 @@ const CourseList = (props) => {
 }
 
 export default CourseList;
+
+CourseList.propTypes = {
+    courses: PropTypes.array.isRequired
+};
+
