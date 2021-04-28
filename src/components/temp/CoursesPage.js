@@ -11,9 +11,9 @@ const CoursesPage = () => {
     }, []);
   
         return (
-        <div className="border border-red-200 m-2 p-2 rounded-lg shadow-sm">
+        <div className="border border-gray-300 m-2 p-2 rounded-lg shadow-sm">
             <h2>Courses</h2>
-            <Link className="border shadow-sm px-1 rounded hover:bg-gray-50" to="/course">Add Course</Link>
+            <Link className="border shadow-sm px-2 rounded hover:bg-gray-50" to="/course">Add Course</Link>
             <CourseList courses={courses}/>
         </div>
         )

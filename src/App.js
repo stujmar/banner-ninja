@@ -36,8 +36,10 @@ const App = () => {
           <Redirect from="/wrong-path" to="/right-path" />
           <Route path="/" component={Home} exact />
           <Route path="/you-lose" component={YouLose} exact />
+          {/* <Route path="/couid" component={Course} id="10" exact /> */}
           {/* <Route path="/course/:id" component={Course} id="10" exact /> */}
           <Route path="/course/:slug" component={ManageCourses} />
+          <Route path="/course/" component={ManageCourses} />
           <Route path="/about">
             <About />
           </Route>
