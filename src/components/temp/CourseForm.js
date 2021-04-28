@@ -11,7 +11,7 @@ const CourseForm = (props) => {
                         type="text"
                         name="title"
                         className="form-control"
-                        value=''
+                        value={props.course.title}
                     />
                 </div>
             </div>
@@ -23,7 +23,7 @@ const CourseForm = (props) => {
                         id="author"
                         name="authorId"
                         onChange={props.onChange}
-                        value=""
+                        value={props.course.authorId || ""}
                         className="form-control"
                     >
                         <option value="" />
@@ -41,7 +41,7 @@ const CourseForm = (props) => {
                         id="category"
                         name="category"
                         className="form=control"
-                        value=""
+                        value={props.course.category}
                     />
                 </div>
             </div>

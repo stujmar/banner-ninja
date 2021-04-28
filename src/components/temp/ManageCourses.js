@@ -16,7 +16,7 @@ const ManageCourses = (props) => {
         <h2>Manage Courses</h2>
         {/* <Prompt when={true} message="Are you sure you want to leave?" /> */}
         {props.match.params.slug}
-        <CourseForm />
+        <CourseForm course={course} />
         </>
     )
 }
