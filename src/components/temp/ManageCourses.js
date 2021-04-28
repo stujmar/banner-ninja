@@ -3,6 +3,14 @@ import { Prompt } from 'react-router-dom'
 import CourseForm from './CourseForm'
 
 const ManageCourses = (props) => {
+    const [ course, setCourse ] = useState({
+        id: null,
+        slug: "",
+        title: "",
+        authorId: null,
+        category: ""
+    })
+
     return (
         <>
         <h2>Manage Courses</h2>

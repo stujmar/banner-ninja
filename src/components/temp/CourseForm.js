@@ -2,7 +2,7 @@ import React from 'react';
 
 const CourseForm = (props) => {
     return (
-        <form>
+        <form className="border m-4 rounded-lg shadow-sm border-gray-300 p-4">
             <div className="form-group">
                 <label htmlFor="title">Title</label>
                 <div className="field">
