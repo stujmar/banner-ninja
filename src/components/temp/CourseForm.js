@@ -50,3 +50,5 @@ const CourseForm = (props) => {
         </form>
     )
 }
+
+export default CourseForm;
