@@ -12,7 +12,6 @@ const ManageCourses = (props) => {
     })
 
     function handleChange({ target }) {
-        console.log("here", target)
         // const updatedCourse = {...course};
         // updatedCourse.title = event.target.value;
         setCourse({...course, [target.name]: target.value}); // computed property not an array

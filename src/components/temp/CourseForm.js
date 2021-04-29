@@ -32,20 +32,14 @@ const CourseForm = (props) => {
                 </div>
             </div>
         
-            <div className="form=group">
-                <label htmlFor="category">Category</label>
-                <div className="field">
-                    <input
-                        type="text"
-                        onChange={props.onChange}
-                        id="category"
-                        name="category"
-                        className="form=control"
-                        value={props.course.category}
-                    />
-                </div>
-            </div>
-
+            <TextInput
+                label="Category"
+                onChange={props.onChange}
+                id="category"
+                name="category"
+                value={props.course.category}
+            />
+       
             <input type="submit" value="Save" className="btn bt-primary" />
         </form>
     )
