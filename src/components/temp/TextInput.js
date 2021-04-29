@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TextInput = (props) => {
-    let wrapperClass = "form-group";
+    let wrapperClass = "text-left";
     if (props.error.length > 0) {
         wrapperClass += " has-error";
     }
@@ -10,12 +10,12 @@ const TextInput = (props) => {
     return (
         <div className={wrapperClass}>
             <label htmlFor={props.id}>{props.label}</label>
-            <div className="field">
+            <div className="border border-gray-300 shadow-sm rounded w-min">
                 <input 
                     id={props.id}
                     type="text"
                     name={props.name}
-                    className="form-control"
+                    className="bg-gray-50 form-control"
                     value={props.value}
                     onChange={props.onChange}
                 />

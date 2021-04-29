@@ -10,18 +10,19 @@ const CourseList = (props) => {
         <table className="table">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Author ID</th>
-                    <th>Category</th>
+                    <th className="border px-1">Title</th>
+                    <th className="border px-1">Author ID</th>
+                    <th className="border px-1">Category</th>
+                    <th className="border px-1">Link</th>
                 </tr>
             </thead>
             <tbody>
                 { props.courses.map( course => {
                     return <tr key={course.id}>
-                        <td>{course.title}</td>
-                        <td>{course.authorId}</td>
-                        <td>{course.category}</td>
-                        <td><Link to={`/course/${course.slug}`}>go to course</Link></td>
+                        <td className="border px-1">{course.title}</td>
+                        <td className="border px-1">{course.authorId}</td>
+                        <td className="border px-1">{course.category}</td>
+                        <td className="border px-1"><Link to={`/course/${course.slug}`}>go to course</Link></td>
                     </tr>
                 })}
             </tbody>
