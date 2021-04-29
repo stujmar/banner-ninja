@@ -21,7 +21,7 @@ const CourseList = (props) => {
                         <td>{course.title}</td>
                         <td>{course.authorId}</td>
                         <td>{course.category}</td>
-                        <Link to={`/course/${course.slug}`}>go to course</Link>
+                        <td><Link to={`/course/${course.slug}`}>go to course</Link></td>
                     </tr>
                 })}
             </tbody>
