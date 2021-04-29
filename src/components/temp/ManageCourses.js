@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { Prompt } from 'react-router-dom'
 import CourseForm from './CourseForm'
+import * as courseApi from "../../api/courseApi"
 
 const ManageCourses = (props) => {
     const [ course, setCourse ] = useState({
@@ -17,12 +18,17 @@ const ManageCourses = (props) => {
         setCourse({...course, [target.name]: target.value}); // computed property not an array
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        courseApi.saveCourse(course);
+    }
+
     return (
         <>
         <h2>Manage Courses</h2>
         {/* <Prompt when={true} message="Are you sure you want to leave?" /> */}
         {props.match.params.slug}
-        <CourseForm course={course} onChange={handleChange}/>
+        <CourseForm course={course} onChange={handleChange} onSubmit={handleSubmit}/>
         </>
     )
 }

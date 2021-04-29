@@ -1,1 +1,88 @@
-{"courses":[{"id":1,"title":"Securing React Apps","slug":"react-secure","authorId":1,"category":"JavaScript"},{"id":2,"title":"React the Big Picture","slug":"react-big-picture","authorId":1,"category":"JavaScript"},{"id":3,"title":"Reuse Components","slug":"react-comps","authorId":1,"category":"JavaScript"},{"id":4,"title":"Dev ENV","slug":"react-dev-env","authorId":1,"category":"JavaScript"},{"id":5,"title":"Hanging Salami","slug":"hanging-salami","authorId":2,"category":"JavaScript"},{"id":6,"title":"Beefing Bananas","slug":"banana-beefs","authorId":2,"category":"JavaScript"}],"authors":[{"id":1,"name":"Real Author"},{"id":2,"name":"Joke Auther"}]}
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Securing React Apps",
+      "slug": "react-secure",
+      "authorId": 1,
+      "category": "JavaScript"
+    },
+    {
+      "id": 2,
+      "title": "React the Big Picture",
+      "slug": "react-big-picture",
+      "authorId": 1,
+      "category": "JavaScript"
+    },
+    {
+      "id": 3,
+      "title": "Reuse Components",
+      "slug": "react-comps",
+      "authorId": 1,
+      "category": "JavaScript"
+    },
+    {
+      "id": 4,
+      "title": "Dev ENV",
+      "slug": "react-dev-env",
+      "authorId": 1,
+      "category": "JavaScript"
+    },
+    {
+      "id": 5,
+      "title": "Hanging Salami",
+      "slug": "hanging-salami",
+      "authorId": 2,
+      "category": "JavaScript"
+    },
+    {
+      "id": 6,
+      "title": "Beefing Bananas",
+      "slug": "banana-beefs",
+      "authorId": 2,
+      "category": "JavaScript"
+    },
+    {
+      "id": 7,
+      "slug": "df",
+      "title": "df",
+      "authorId": 1,
+      "category": "sdsdad",
+      "createdAt": 1619663062484
+    },
+    {
+      "id": 8,
+      "slug": "associate-developer",
+      "title": "Associate Developer",
+      "authorId": 1,
+      "category": "sdsdad",
+      "createdAt": 1619663087265
+    },
+    {
+      "id": 9,
+      "slug": "associate-developer",
+      "title": "Associate Developer",
+      "authorId": 1,
+      "category": "sdsdad",
+      "createdAt": 1619663088026
+    },
+    {
+      "id": 10,
+      "slug": "associate-developer",
+      "title": "Associate Developer",
+      "authorId": 1,
+      "category": "sdsdad",
+      "createdAt": 1619663089063
+    }
+  ],
+  "authors": [
+    {
+      "id": 1,
+      "name": "Real Author"
+    },
+    {
+      "id": 2,
+      "name": "Joke Auther"
+    }
+  ]
+}

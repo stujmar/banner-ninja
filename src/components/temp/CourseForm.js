@@ -3,7 +3,7 @@ import TextInput from './TextInput';
 
 const CourseForm = (props) => {
     return (
-        <form className="border m-4 rounded-lg shadow-sm border-gray-300 p-4">
+        <form className="border m-4 rounded-lg shadow-sm border-gray-300 p-4" onSubmit={props.onSubmit}>
 
             <TextInput  // Title Field
                 label="Title"
