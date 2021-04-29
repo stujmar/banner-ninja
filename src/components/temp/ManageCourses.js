@@ -11,12 +11,12 @@ const ManageCourses = (props) => {
         category: ""
     })
 
-    function handleTitleChange(event) {
+    function handleChange({target}) {
         // const updatedCourse = {...course};
         // updatedCourse.title = event.target.value;
-
-        const updatedCourse = {...course, title: event.target.value};
-        setCourse(updatedCourse);
+        
+        setCourse({...course, [target.name]: target.value}); // computed property not an array
+      
         
     }
 
@@ -25,7 +25,7 @@ const ManageCourses = (props) => {
         <h2>Manage Courses</h2>
         {/* <Prompt when={true} message="Are you sure you want to leave?" /> */}
         {props.match.params.slug}
-        <CourseForm course={course} onTitleChange={handleTitleChange}/>
+        <CourseForm course={course} onTitleChange={handleChange}/>
         </>
     )
 }
