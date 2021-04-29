@@ -7,8 +7,6 @@ import About from "./components/about/About";
 import StarGame from './components/StarGame';
 import Nav from './components/nav/Nav';
 import SeedPlanter from './components/seed/SeedPlanter';
-import Course from './components/temp/Course';
-
 import Header from './components/Header';
 import CoursesPage from './components/temp/CoursesPage';
 import Example from './components/temp/Example';
@@ -30,14 +28,9 @@ const App = () => {
       <Nav />
         <hr />
         <Switch>
-          {/* <Route exact path="/">
-            <Home />
-          </Route> */}
           <Redirect from="/wrong-path" to="/right-path" />
           <Route path="/" component={Home} exact />
           <Route path="/you-lose" component={YouLose} exact />
-          {/* <Route path="/couid" component={Course} id="10" exact /> */}
-          {/* <Route path="/course/:id" component={Course} id="10" exact /> */}
           <Route path="/course/:slug" component={ManageCourses} />
           <Route path="/course/" component={ManageCourses} />
           <Route path="/about">

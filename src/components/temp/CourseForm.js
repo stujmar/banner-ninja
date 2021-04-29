@@ -37,6 +37,7 @@ const CourseForm = (props) => {
                 <div className="field">
                     <input
                         type="text"
+                        onChange={props.onChange}
                         id="category"
                         name="category"
                         className="form=control"
