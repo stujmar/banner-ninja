@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TextInput = (props) => {
+const InputText = (props) => {
     let wrapperClass = "text-left";
     if (props.error.length > 0) {
         wrapperClass += " has-error";
@@ -25,7 +25,7 @@ const TextInput = (props) => {
     )
 }
 
-TextInput.propTypes = {
+InputText.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
@@ -34,8 +34,8 @@ TextInput.propTypes = {
     error: PropTypes.string
 };
 
-TextInput.defaultProps = {
+InputText.defaultProps = {
     error: ""
 }
 
-export default TextInput;
+export default InputText;

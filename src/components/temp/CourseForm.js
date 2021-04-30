@@ -1,11 +1,11 @@
 import React from 'react';
-import TextInput from './TextInput';
+import InputText from './InputText';
 
 const CourseForm = (props) => {
     return (
         <form className="border m-4 rounded-lg shadow-sm border-gray-300 p-4" onSubmit={props.onSubmit}>
 
-            <TextInput  // Title Field
+            <InputText  // Title Field
                 label="Title"
                 id="title"
                 type="text"
@@ -32,7 +32,7 @@ const CourseForm = (props) => {
                 </div>
             </div>
         
-            <TextInput
+            <InputText
                 label="Category"
                 onChange={props.onChange}
                 id="category"
