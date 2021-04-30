@@ -22,10 +22,19 @@ const ManageCourses = (props) => {
 
     const FormIsValid = () => {
         const _errors = {};
+
+        if (!course.title) _errors.title = "Title is required";
+        if (!course.authorId) _errors.authorId = "Author ID is required";
+        if (!course.category) _errors.category = "Category is required";
+
+        setErrors(_errors);
+        // Form is Valid if the errors object has no properties
+        return Object.keys(_errors).length === 0;
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (!FormIsValid()) return;
         courseApi.saveCourse(course).then(() => {
             props.history.push("/courses");
             toast.success("We did it!");
@@ -34,10 +43,15 @@ const ManageCourses = (props) => {
 
     return (
         <>
-        <h2>Manage Courses</h2>
-        {/* <Prompt when={true} message="Are you sure you want to leave?" /> */}
-        {props.match.params.slug}
-        <CourseForm course={course} onChange={handleChange} onSubmit={handleSubmit}/>
+            <h2>Manage Courses</h2>
+            {/* <Prompt when={true} message="Are you sure you want to leave?" /> */}
+            {props.match.params.slug}
+            <CourseForm 
+                course={course} 
+                onChange={handleChange} 
+                onSubmit={handleSubmit} 
+                errors={errors}
+            />
         </>
     )
 }
