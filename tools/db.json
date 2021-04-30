@@ -105,6 +105,22 @@
       "authorId": 1,
       "category": "two",
       "createdAt": 1619751710224
+    },
+    {
+      "id": 15,
+      "slug": "will-this-work-for-me",
+      "title": "Will this work for me?",
+      "authorId": 2,
+      "category": "Yes it will",
+      "createdAt": 1619751917254
+    },
+    {
+      "id": 16,
+      "slug": "associate-developer",
+      "title": "Associate Developer",
+      "authorId": 1,
+      "category": "PoolHaul",
+      "createdAt": 1619751953151
     }
   ],
   "authors": [

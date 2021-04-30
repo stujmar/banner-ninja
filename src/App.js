@@ -27,7 +27,6 @@ const App = () => {
       </header>
       <Header />
       <Example />
-      <CoursesPage />
       <div className="box-border">
       <Nav />
         <hr />
@@ -35,6 +34,7 @@ const App = () => {
           <Redirect from="/wrong-path" to="/right-path" />
           <Route path="/" component={Home} exact />
           <Route path="/you-lose" component={YouLose} exact />
+          <Route path="/courses" component={CoursesPage} exact />
           <Route path="/course/:slug" component={ManageCourses} />
           <Route path="/course/" component={ManageCourses} />
           <Route path="/about">
