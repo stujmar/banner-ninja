@@ -20,6 +20,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <ToastContainer autoClose={3000} hideProgressBar />
       <header className="bg-blue-600 h-36 flex items-center justify-center text-lg font-sans text-white">
         <p>Welcome to my Create React App</p>
       </header>

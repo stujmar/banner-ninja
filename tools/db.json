@@ -81,6 +81,22 @@
       "authorId": 1,
       "category": "PoolHaul",
       "createdAt": 1619750816468
+    },
+    {
+      "id": 12,
+      "slug": "toast-course",
+      "title": "Toast Course",
+      "authorId": 2,
+      "category": "We're going to add a toast course",
+      "createdAt": 1619751471265
+    },
+    {
+      "id": 13,
+      "slug": "one",
+      "title": "One",
+      "authorId": 1,
+      "category": "Two",
+      "createdAt": 1619751500504
     }
   ],
   "authors": [

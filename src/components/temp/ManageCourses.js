@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // import { Prompt } from 'react-router-dom'
 import CourseForm from './CourseForm'
 import * as courseApi from "../../api/courseApi"
+import { toast } from 'react-toastify';
 
 const ManageCourses = (props) => {
     const [ course, setCourse ] = useState({
@@ -22,6 +23,7 @@ const ManageCourses = (props) => {
         event.preventDefault();
         courseApi.saveCourse(course).then(() => {
             props.history.push("/courses");
+            toast.success("We did it!");
         })
     }
 
