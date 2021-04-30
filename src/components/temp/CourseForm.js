@@ -13,6 +13,7 @@ const CourseForm = (props) => {
                 className="form-control"
                 onChange={props.onChange}
                 value={props.course.title}
+                error={props.errors.title}
             />
 
             <div className="form-group">
@@ -38,6 +39,7 @@ const CourseForm = (props) => {
                 id="category"
                 name="category"
                 value={props.course.category}
+                error={props.errors.category}
             />
        
             <input type="submit" value="Save" className="btn bt-primary" />
