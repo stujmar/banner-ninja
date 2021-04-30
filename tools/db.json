@@ -97,6 +97,14 @@
       "authorId": 1,
       "category": "Two",
       "createdAt": 1619751500504
+    },
+    {
+      "id": 14,
+      "slug": "two",
+      "title": "Two",
+      "authorId": 1,
+      "category": "two",
+      "createdAt": 1619751710224
     }
   ],
   "authors": [
