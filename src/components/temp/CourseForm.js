@@ -1,4 +1,5 @@
 import React from 'react';
+import InputDrop from './InputDrop';
 import InputText from './InputText';
 
 const CourseForm = (props) => {
@@ -16,7 +17,14 @@ const CourseForm = (props) => {
                 error={props.errors.title}
             />
 
-            <div className="form-group">
+            <InputDrop 
+                label="Author"
+                id={props.course.authorId}
+                name="authorId"
+                onChange={props.onChange}
+                value={props.course.authorId || ""}
+            />
+            {/* <div className="form-group">
                 <label htmlFor="author">Author</label>
                 <div className="field">
                     <select
@@ -31,7 +39,7 @@ const CourseForm = (props) => {
                         <option value="2">Scott Allen</option>
                     </select>
                 </div>
-            </div>
+            </div> */}
         
             <InputText
                 label="Category"
