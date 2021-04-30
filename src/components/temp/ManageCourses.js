@@ -5,6 +5,7 @@ import * as courseApi from "../../api/courseApi"
 import { toast } from 'react-toastify';
 
 const ManageCourses = (props) => {
+    const [ errors, setErrors ] = useState({});
     const [ course, setCourse ] = useState({
         id: null,
         slug: "",
@@ -17,6 +18,10 @@ const ManageCourses = (props) => {
         // const updatedCourse = {...course};
         // updatedCourse.title = event.target.value;
         setCourse({...course, [target.name]: target.value}); // computed property not an array
+    }
+
+    const FormIsValid = () => {
+        const _errors = {};
     }
 
     const handleSubmit = (event) => {
