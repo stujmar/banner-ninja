@@ -17,6 +17,7 @@ const InputDrop = (props) => {
                     <option value="2">Scott Allen</option>
                 </select>
             </div>
+            {props.error && (<div className="font-bold text-red-600">{props.error}</div>)}
         </div>
     )
 }

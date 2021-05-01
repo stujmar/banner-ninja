@@ -23,8 +23,9 @@ const CourseForm = (props) => {
                 name="authorId"
                 onChange={props.onChange}
                 value={props.course.authorId || ""}
+                error={props.errors.authorId}
             />
-            {props.errors.authorId && (<div className="font-bold text-red-600">{props.errors.authorId}</div>)}
+            
             {/* <div className="form-group">
                 <label htmlFor="author">Author</label>
                 <div className="field">
