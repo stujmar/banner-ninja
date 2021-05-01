@@ -4,13 +4,13 @@ const InputDrop = (props) => {
     return (
         <div className="text-left">
             <label htmlFor="author">{props.label}</label>
-            <div className="field">
+            <div className="border w-min rounded border border-gray-300 bg-gray-50 shadow-sm">
                 <select
                     id="author"
                     name={props.name}
                     onChange={props.onChange}
                     value={props.authorId}
-                    className="form-control"
+                    className="bg-gray-100"
                 >
                     <option value="" />
                     <option value="1">Cory House</option>
