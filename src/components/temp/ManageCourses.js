@@ -16,8 +16,10 @@ const ManageCourses = (props) => {
 
     useEffect(() => {
         const slug = props.match.params.slug;
-        let ourCourse = courseApi.getCourseBySlug(slug).then((res) => console.log(res));
-    },[])
+        if (slug) {
+            courseApi.getCourseBySlug(slug).then((_course) => setCourse(_course));
+        }
+    }, [props.match.params.slug])
 
     function handleChange({ target }) {
         // const updatedCourse = {...course};
