@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const CourseForm = (props) => {
     return (
         <form className="border m-4 rounded-lg shadow-sm border-gray-300 p-4" onSubmit={props.onSubmit}>
-
+            <div className="md:w-5/12 mx-auto">
             <InputText  // Title Field
                 label="Title"
                 id="title"
@@ -52,8 +52,8 @@ const CourseForm = (props) => {
                 value={props.course.category}
                 error={props.errors.category}
             />
-            
-            <button type="submit" value="Save" className="px-4 py-1 font-medium bg-blue-300 text-white shadow-sm rounded-lg hover:bg-blue-400">SAVE</button>
+            </div>
+            <button type="submit" value="Save" className="px-4 mt-12 py-1 font-medium bg-blue-300 text-white shadow-sm rounded-lg hover:bg-blue-400">SAVE</button>
         </form>
     )
 }
