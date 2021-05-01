@@ -20,7 +20,7 @@ const InputText = (props) => {
                     onChange={props.onChange}
                 />
             </div>
-            { props.error && <div className="alert alert-danger">{props.error}</div>}
+            { props.error && <div className="alert alert-danger text-red-600 font-bold">{props.error}</div>}
         </div>
     )
 }
