@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { Prompt } from 'react-router-dom'
 import CourseForm from './CourseForm'
 import * as courseApi from "../../api/courseApi"
@@ -13,6 +13,11 @@ const ManageCourses = (props) => {
         authorId: null,
         category: ""
     })
+
+    useEffect(() => {
+        const slug = props.match.params.slug;
+        let ourCourse = courseApi.getCourseBySlug(slug).then((res) => console.log(res));
+    },[])
 
     function handleChange({ target }) {
         // const updatedCourse = {...course};
