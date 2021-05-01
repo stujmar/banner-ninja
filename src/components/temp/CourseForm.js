@@ -53,12 +53,10 @@ const CourseForm = (props) => {
                 error={props.errors.category}
             />
             
-            <input type="submit" value="Save" className="btn bt-primary" />
+            <button type="submit" value="Save" className="px-4 py-1 font-medium bg-blue-300 text-white shadow-sm rounded-lg hover:bg-blue-400">SAVE</button>
         </form>
     )
 }
-
-export default CourseForm;
 
 CourseForm.propTypes = {
     course: PropTypes.object.isRequired,
@@ -66,3 +64,5 @@ CourseForm.propTypes = {
     onChange: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
 };
+
+export default CourseForm;
