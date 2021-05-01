@@ -24,6 +24,7 @@ const CourseForm = (props) => {
                 onChange={props.onChange}
                 value={props.course.authorId || ""}
             />
+            {props.errors.authorId && (<div className="text-red-600">{props.errors.authorId}</div>)}
             {/* <div className="form-group">
                 <label htmlFor="author">Author</label>
                 <div className="field">
@@ -49,7 +50,7 @@ const CourseForm = (props) => {
                 value={props.course.category}
                 error={props.errors.category}
             />
-            {props.error.authorId && (<div className="text-red-800">{props.errors.authorId}</div>)}
+            
             <input type="submit" value="Save" className="btn bt-primary" />
         </form>
     )

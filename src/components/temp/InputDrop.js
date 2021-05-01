@@ -2,7 +2,7 @@ import React from 'react';
 
 const InputDrop = (props) => {
     return (
-        <>
+        <div className="text-left">
             <label htmlFor="author">{props.label}</label>
             <div className="field">
                 <select
@@ -17,7 +17,7 @@ const InputDrop = (props) => {
                     <option value="2">Scott Allen</option>
                 </select>
             </div>
-        </>
+        </div>
     )
 }
 
