@@ -9,7 +9,7 @@ const InputDrop = (props) => {
                     id="author"
                     name={props.name}
                     onChange={props.onChange}
-                    value={props.authorId || ""}
+                    value={props.authorId}
                     className="form-control"
                 >
                     <option value="" />
