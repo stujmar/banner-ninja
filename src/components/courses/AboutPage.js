@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutPage = () => {
     return (
-        <div>Temp About Page</div>
+        <div>About Page</div>
     )
 }
 

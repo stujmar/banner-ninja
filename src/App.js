@@ -10,11 +10,11 @@ import StarGame from './components/StarGame';
 import Nav from './components/nav/Nav';
 import SeedPlanter from './components/seed/SeedPlanter';
 import Header from './components/Header';
-import CoursesPage from './components/temp/CoursesPage';
-import Example from './components/temp/Example';
-import NotFoundPage from './components/temp/NotFoundPage';
+import CoursesPage from './components/courses/CoursesPage';
+import Example from './components/courses/Example';
+import NotFoundPage from './components/courses/NotFoundPage';
 import YouLose from './components/YouLose';
-import ManageCourses from './components/temp/ManageCourses';
+import ManageCourses from './components/courses/ManageCourses';
 
 const App = () => {
 
