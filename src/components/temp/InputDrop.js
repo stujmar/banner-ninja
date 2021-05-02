@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
-
+import { getAuthors } from '../../api/authorApi';
 const InputDrop = (props) => {
     const [value, setValue] = useState("");
+    const [authorList, setAuthorList] = useState([])
 
+    useEffect(() => {
+        getAuthors().then((authors) => setAuthorList(authors));
+    },[])
+
+    console.log(authorList);
+    
     useEffect(() => {
        setValue(props.value)
     }, [props.value])

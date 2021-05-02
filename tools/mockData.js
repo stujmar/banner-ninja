@@ -45,7 +45,8 @@ const courses = [
 
 const authors = [
     {id: 1, name: "Real Author"},
-    {id: 2, name: "Joke Auther"}
+    {id: 2, name: "Joke Auther"},
+    {id: 3, name: "Stuart Marsh"}
 ];
 
 const newCourse = {
