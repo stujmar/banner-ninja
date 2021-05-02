@@ -8,16 +8,9 @@ const InputDrop = (props) => {
         getAuthors().then((authors) => setAuthorList(authors));
     },[])
 
-    console.log(authorList);
-    
     useEffect(() => {
        setValue(props.value)
     }, [props.value])
-    
-    // const handleChange = (e) => {
-    //     props.onChange(e);
-    //     setValue(props.value);
-    // }
 
     return (
         <div className="text-left">
@@ -31,9 +24,9 @@ const InputDrop = (props) => {
                     className="bg-gray-100"
                 >
                     <option value="" />
-                    <option value="1">Cory House</option>
-                    <option value="2">Scott Allen</option>
-                    <option value="3">Stuart Marsh</option>
+                    {authorList.map((author) => {
+                        return <option key={author.id} value={author.id}>{`${author.name}`}</option>
+                    })}
                 </select>
             </div>
             {props.error && (<div className="font-bold text-red-600">{props.error}</div>)}
