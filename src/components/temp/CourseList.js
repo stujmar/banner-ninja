@@ -13,31 +13,31 @@ const CourseList = (props) => {
     const getAuthorName = (id) => {
       return authors.filter((author) => { return id === author.id })[0].name
     };
-    
+
     return (
-        <>
-        <div>Courses</div>
-        <table className="table">
-            <thead>
-                <tr>
-                    <th className="border px-1">Title</th>
-                    <th className="border px-1">Author ID</th>
-                    <th className="border px-1">Category</th>
-                    <th className="border px-1">Link</th>
-                </tr>
-            </thead>
-            <tbody>
-                { props.courses.map( course => {
-                    return <tr key={course.id}>
-                        <td className="border px-1">{course.title}</td>
-                        <td className="border px-1">{`${getAuthorName(course.authorId)}`}</td>
-                        <td className="border px-1">{course.category}</td>
-                        <td className="border px-1"><Link to={`/course/${course.slug}`}>go to course</Link></td>
+        <div className="w-max mx-auto">
+            <div>Courses</div>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th className="border px-1">Title</th>
+                        <th className="border px-1">Author ID</th>
+                        <th className="border px-1">Category</th>
+                        <th className="border px-1">Link</th>
                     </tr>
-                })}
-            </tbody>
-        </table>
-    </>
+                </thead>
+                <tbody>
+                    { props.courses.map( course => {
+                        return <tr key={course.id}>
+                            <td className="border px-1">{course.title}</td>
+                            <td className="border px-1">{`${getAuthorName(course.authorId)}`}</td>
+                            <td className="border px-1">{course.category}</td>
+                            <td className="border px-1"><Link to={`/course/${course.slug}`}>go to course</Link></td>
+                        </tr>
+                    })}
+                </tbody>
+            </table>
+        </div>
     )
 }
 
