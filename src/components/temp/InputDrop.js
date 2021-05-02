@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const InputDrop = (props) => {
+    const [value, setValue] = useState("");
+
+    useEffect(() => {
+       setValue(props.value)
+    }, [props.value])
+    
+    // const handleChange = (e) => {
+    //     props.onChange(e);
+    //     setValue(props.value);
+    // }
+
     return (
         <div className="text-left">
             <label htmlFor="author">{props.label}</label>
@@ -8,13 +19,14 @@ const InputDrop = (props) => {
                 <select
                     id="author"
                     name={props.name}
-                    onChange={props.onChange}
-                    value={props.authorId}
+                    onChange={(e) => props.onChange(e)}
+                    value={value}
                     className="bg-gray-100"
                 >
                     <option value="" />
                     <option value="1">Cory House</option>
                     <option value="2">Scott Allen</option>
+                    <option value="3">Stuart Marsh</option>
                 </select>
             </div>
             {props.error && (<div className="font-bold text-red-600">{props.error}</div>)}

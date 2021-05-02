@@ -49,6 +49,14 @@
       "authorId": 2,
       "category": "Course Cat",
       "createdAt": 1619837450065
+    },
+    {
+      "id": 8,
+      "slug": "stu-course",
+      "title": "Stu Course",
+      "authorId": 2,
+      "category": "I did it!",
+      "createdAt": 1619918050063
     }
   ],
   "authors": [

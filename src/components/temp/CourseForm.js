@@ -23,7 +23,7 @@ const CourseForm = (props) => {
                 id={props.course.authorId}
                 name="authorId"
                 onChange={props.onChange}
-                value={props.course.authorId || ""}
+                value={props.course.authorId}
                 error={props.errors.authorId}
             />
             
