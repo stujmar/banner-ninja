@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
+import { getAuthors } from '../../api/authorApi';
 
 const CourseList = (props) => {
+
+    const getAuthorName = () => {
+        return getAuthors();
+    }
+
+    console.log(getAuthorName().then((data) => console.log(data)));
 
     return (
         <>
