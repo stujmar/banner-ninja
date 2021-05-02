@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import { getAuthors } from '../../api/authorApi';
 
 const CourseList = (props) => {
+    const [authors, setAuthors] = useState([]);
+    
+    useEffect(() => {
+        getAuthors().then((data) => setAuthors(data))
+    },[])
 
-    const getAuthorName = () => {
-        return getAuthors();
-    }
-
-    console.log(getAuthorName().then((data) => console.log(data)));
-
+    const getAuthorName = (id) => {
+      return authors.filter((author) => { return id === author.id })[0].name
+    };
+    
     return (
         <>
         <div>Courses</div>
@@ -27,7 +30,7 @@ const CourseList = (props) => {
                 { props.courses.map( course => {
                     return <tr key={course.id}>
                         <td className="border px-1">{course.title}</td>
-                        <td className="border px-1">{course.authorId}</td>
+                        <td className="border px-1">{`${getAuthorName(course.authorId)}`}</td>
                         <td className="border px-1">{course.category}</td>
                         <td className="border px-1"><Link to={`/course/${course.slug}`}>go to course</Link></td>
                     </tr>
