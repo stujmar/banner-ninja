@@ -17,6 +17,14 @@ class CourseStore extends EventEmitter {
     emitChange() {
         this.emit(CHANGE_EVENT);
     }
+
+    getCourses() {
+        return _courses;
+    }
+
+    getCoursesBySlug(slug) {
+        return _courses.find(course => course.slug === slug); // Google predicate function.
+    }
 }
 
 const store = new CourseStore();
@@ -24,11 +32,11 @@ const store = new CourseStore();
 Dispatcher.register((action) => {
     switch(action.actionType) {// Notified of every action.
         case actionTypes.CREATE_COURSE:
-        _courses.push(action.course);
+            _courses.push(action.course);
+            store.emitChange();
         break;
         default:
-            console.log("default case");
-    }
+           // Nothing to do here.
 })
 
 export default store;
