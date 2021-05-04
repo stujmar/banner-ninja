@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 import Dispatcher from "../appDispatcher";
 
 const CHANGE_EVENT = "change"
+let _courses = [];
 
 class CourseStore extends EventEmitter {
     addChangeListener(callback) {
