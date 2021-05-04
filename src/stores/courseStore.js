@@ -1,5 +1,6 @@
 import { EventEmitter } from 'events';
 import Dispatcher from "../appDispatcher";
+import actionTypes from '../actions/actionTypes';
 
 const CHANGE_EVENT = "change"
 let _courses = [];
@@ -22,7 +23,11 @@ const store = new CourseStore();
 
 Dispatcher.register((action) => {
     switch(action.actionType) {// Notified of every action.
-    
+        case actionTypes.CREATE_COURSE:
+        _courses.push(action.course);
+        break;
+        default:
+            console.log("default case");
     }
 })
 
