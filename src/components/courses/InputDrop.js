@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAuthors } from '../../api/authorApi';
-const InputDrop = (props) => {
+
+const InputDrop = ({ valueProp, onChange, name, label, error }) => {
     const [value, setValue] = useState("");
     const [authorList, setAuthorList] = useState([])
 
@@ -9,17 +10,17 @@ const InputDrop = (props) => {
     },[])
 
     useEffect(() => {
-       setValue(props.value)
-    }, [props.value])
+       setValue(valueProp)
+    }, [valueProp])
 
     return (
         <div className="text-left">
-            <label htmlFor="author">{props.label}</label>
+            <label htmlFor="author">{label}</label>
             <div className="border w-min rounded border border-gray-300 bg-gray-50 shadow-sm">
                 <select
                     id="author"
-                    name={props.name}
-                    onChange={(e) => props.onChange(e)}
+                    name={name}
+                    onChange={(e) => onChange(e)}
                     value={value}
                     className="bg-gray-100"
                 >
@@ -29,7 +30,7 @@ const InputDrop = (props) => {
                     })}
                 </select>
             </div>
-            {props.error && (<div className="font-bold text-red-600">{props.error}</div>)}
+            {error && (<div className="font-bold text-red-600">{error}</div>)}
         </div>
     )
 }
