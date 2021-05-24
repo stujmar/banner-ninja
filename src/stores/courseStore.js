@@ -44,7 +44,7 @@ Dispatcher.register((action) => {
         case actionTypes.CREATE_COURSE:
             _courses.push(action.course);
             store.emitChange();
-        break;
+            break;
         default:
             // Nothing to do here.
     }

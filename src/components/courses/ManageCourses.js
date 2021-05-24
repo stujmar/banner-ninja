@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 // import { Prompt } from 'react-router-dom'
 import CourseForm from './CourseForm'
-import * as courseApi from "../../api/courseApi"
+
+// import * as courseApi from "../../api/courseApi"
+import * as courseActions from  "../../actions/courseActions"
+import courseStore from "../../stores/courseStore" // Instead of getting data from the api now we are going to request it from the flux store.
+
 import { toast } from 'react-toastify';
 
 const ManageCourses = (props) => {
@@ -17,7 +21,8 @@ const ManageCourses = (props) => {
     useEffect(() => {
         const slug = props.match.params.slug;
         if (slug) {
-            courseApi.getCourseBySlug(slug).then((_course) => setCourse(_course));
+            // courseApi.getCourseBySlug(slug).then((_course) => setCourse(_course));
+            setCourse(courseStore.getCourseBySlug(slug)); // replace api call with call to flux store.
         }
     }, [props.match.params.slug])
 
@@ -42,10 +47,10 @@ const ManageCourses = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!FormIsValid()) return;
-        courseApi.saveCourse(course).then(() => {
+        courseActions.saveCourse(course).then(() => {
             props.history.push("/courses");
             toast.success("We did it!");
-        })
+        });
     }
 
     return (
