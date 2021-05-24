@@ -5,7 +5,7 @@ import actionTypes from '../actions/actionTypes';
 const CHANGE_EVENT = "change"
 let _courses = [];
 
-class CourseStore extends EventEmitter {
+class CourseStore extends EventEmitter { // This EventEmitter might be a node class?
     addChangeListener(callback) {
         this.on(CHANGE_EVENT, callback);
     }
@@ -29,14 +29,26 @@ class CourseStore extends EventEmitter {
 
 const store = new CourseStore();
 
+// Dispatcher.register((action) => {
+//     switch(action.actionType) {// Notified of every action.
+//         case actionTypes.CREATE_COURSE:
+//             _courses.push(action.course);
+//             store.emitChange();
+//         break;
+//         default:
+//            // Nothing to do here.
+// })
+
 Dispatcher.register((action) => {
-    switch(action.actionType) {// Notified of every action.
+    switch(action.actionType) {
         case actionTypes.CREATE_COURSE:
             _courses.push(action.course);
             store.emitChange();
         break;
         default:
-           // Nothing to do here.
+            // Nothing to do here.
+    }
 })
+
 
 export default store;
