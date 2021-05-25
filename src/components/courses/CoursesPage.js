@@ -13,6 +13,7 @@ const CoursesPage = () => {
         if (courseStore.getCourses().length === 0) loadCourses();
         // getCourses().then( _courses => setCourses(_courses));
         // setCourses(courseStore.getCourses());
+        return () => courseStore.removeChangeListener(onChange); // Cleanup on unmount
     }, []);
   
     function onChange(){
