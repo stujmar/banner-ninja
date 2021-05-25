@@ -45,6 +45,7 @@ Dispatcher.register((action) => {
             _courses.push(action.course);
             store.emitChange();
             break;
+        
         default:
             // Nothing to do here.
     }
