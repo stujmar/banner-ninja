@@ -11,7 +11,9 @@ const CourseList = (props) => {
     },[])
 
     const getAuthorName = (id) => {
-      return authors.filter((author) => { return id === author.id })[0].name
+        if (authors.length) {
+            return authors.filter((author) => { return id === author.id })[0].name
+        }
     };
 
     return (
