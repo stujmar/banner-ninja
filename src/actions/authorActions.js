@@ -1,5 +1,5 @@
 import dispatcher from '../appDispatcher';
-import * as courseApi from '../api/courseApi';
+import * as courseApi from '../api/authorApi';
 import actionTypes from './actionTypes';
 
 // export function saveCourse(course) {
