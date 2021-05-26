@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
-import { getAuthors } from '../../api/authorApi';
+import authorStore from '../../stores/authorStore'
+// import { getAuthors } from '../../api/authorApi';
+import { loadAuthors } from '../../actions/authorActions';
 
 const CourseList = (props) => {
     const [authors, setAuthors] = useState([]);
     
     useEffect(() => {
-        getAuthors().then((data) => setAuthors(data))
+        authorStore.addChangeListener(onChange);
+        if (authorStore.getAuthors().length === 0) loadAuthors()
+        // getAuthors().then((data) => setAuthors(data))
     },[])
+
+    function onChange(){
+        setAuthors(authorStore.getAuthors());
+    }
 
     const getAuthorName = (id) => {
         if (authors.length) {
