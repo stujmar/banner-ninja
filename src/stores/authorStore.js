@@ -3,9 +3,9 @@ import Dispatcher from "../appDispatcher";
 import actionTypes from '../actions/actionTypes';
 
 const CHANGE_EVENT = "change"
-let _courses = [];
+let _authors = [];
 
-class CourseStore extends EventEmitter { // This EventEmitter might be a node class?
+class AuthorStore extends EventEmitter { // This EventEmitter might be a node class?
     addChangeListener(callback) {
         this.on(CHANGE_EVENT, callback);
     }
@@ -18,21 +18,21 @@ class CourseStore extends EventEmitter { // This EventEmitter might be a node cl
         this.emit(CHANGE_EVENT);
     }
 
-    getCourses() {
-        return _courses;
+    getAuthors() {
+        return _authors;
     }
 
-    getCoursesBySlug(slug) {
-        return _courses.find(course => course.slug === slug); // Google predicate function.
+    getAuthorBySlug(slug) {
+        return _authors.find(author => author.slug === slug); // Google predicate function.
     }
 }
 
-const store = new CourseStore();
+const store = new AuthorStore();
 
 // Dispatcher.register((action) => {
 //     switch(action.actionType) {// Notified of every action.
 //         case actionTypes.CREATE_COURSE:
-//             _courses.push(action.course);
+//             _authors.push(action.course);
 //             store.emitChange();
 //         break;
 //         default:
@@ -41,17 +41,9 @@ const store = new CourseStore();
 
 Dispatcher.register((action) => {
     switch(action.actionType) {
-        case actionTypes.CREATE_COURSE:
-            _courses.push(action.course);
+        case actionTypes.LOAD_AUTHORS:
+            _authors = action.authors;
             store.emitChange();
-            break;
-        case actionTypes.LOAD_COURSES:
-            _courses = action.courses;
-            store.emitChange();
-            break;
-        case actionTypes.UPDATE_COURSE:
-            _courses = _courses.map(course => course.id === action.course.id ? action.course : course);
-            store.emiteChange();
             break;
         default:
             // Nothing to do here.
