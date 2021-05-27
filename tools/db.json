@@ -41,14 +41,6 @@
       "slug": "banana-beefs",
       "authorId": 2,
       "category": "JavaScript"
-    },
-    {
-      "id": 7,
-      "slug": "delete-this",
-      "title": "Delete this",
-      "authorId": 2,
-      "category": "Course",
-      "createdAt": 1622075259041
     }
   ],
   "authors": [

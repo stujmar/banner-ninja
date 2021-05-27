@@ -22,7 +22,7 @@ export function loadCourses(){
 }
 
 export function deleteCourse(id){
-    return courseApi.getCourses(id).then(courses => {
+    return courseApi.deleteCourse(id).then(courses => {
         dispatcher.dispatch({
             actionType: actionTypes.DELETE_COURSES,
             id: id
