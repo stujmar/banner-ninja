@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import courseStore from '../../stores/courseStore';
 import CourseList from './CourseList';
 import { Link } from 'react-router-dom';
-import { loadCourses } from '../../actions/courseActions';
+import { loadCourses, deleteCourse } from '../../actions/courseActions';
 
 const CoursesPage = () => {
     const [ courses, setCourses ] = useState(courseStore.getCourses());
@@ -22,7 +22,7 @@ const CoursesPage = () => {
 
         return (
         <div className="border border-gray-300 m-2 p-4 rounded-lg shadow-sm">
-            <CourseList courses={courses}/>
+            <CourseList courses={courses} deleteCourse={deleteCourse} />
             <div className="mt-4">
                 <Link className="border shadow-sm px-2 rounded hover:bg-gray-50" to="/course">Add Course</Link>
             </div>

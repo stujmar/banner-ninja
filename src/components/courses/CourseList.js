@@ -34,6 +34,7 @@ const CourseList = (props) => {
                         <th className="border px-1">Author ID</th>
                         <th className="border px-1">Category</th>
                         <th className="border px-1">Link</th>
+                        <th className="border px-1">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,7 @@ const CourseList = (props) => {
                             <td className="border px-1">{`${getAuthorName(course.authorId)}`}</td>
                             <td className="border px-1">{course.category}</td>
                             <td className="border px-1"><Link to={`/course/${course.slug}`}>go to course</Link></td>
+                            <td className="border px-1"><button onClick={() => props.deleteCourse(course.id)}>X</button></td>
                         </tr>
                     })}
                 </tbody>
@@ -59,7 +61,8 @@ CourseList.propTypes = {
         title : PropTypes.string.isRequired,
         authorId: PropTypes.number.isRequired,
         category: PropTypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+    deleteCourse: PropTypes.func.isRequired
 };
 
 CourseList.defaultProps = {

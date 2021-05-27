@@ -44,19 +44,11 @@
     },
     {
       "id": 7,
-      "slug": "test",
-      "title": "Test",
-      "authorId": 3,
-      "category": "PoolHaul",
-      "createdAt": 1621995847678
-    },
-    {
-      "id": 8,
-      "slug": "associate-developer",
-      "title": "Associate Developer",
-      "authorId": 1,
-      "category": "Pinpop",
-      "createdAt": 1621995896991
+      "slug": "delete-this",
+      "title": "Delete this",
+      "authorId": 2,
+      "category": "Course",
+      "createdAt": 1622075259041
     }
   ],
   "authors": [
