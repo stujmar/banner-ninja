@@ -19,5 +19,5 @@ export function loadCourses(){
             courses: courses
         });
     });
-    
+
 }
