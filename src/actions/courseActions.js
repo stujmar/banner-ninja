@@ -19,5 +19,13 @@ export function loadCourses(){
             courses: courses
         });
     });
+}
 
+export function deleteCourse(id){
+    return courseApi.getCourses(id).then(courses => {
+        dispatcher.dispatch({
+            actionType: actionTypes.DELETE_COURSES,
+            id: id
+        });
+    });
 }
