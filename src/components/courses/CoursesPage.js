@@ -20,9 +20,14 @@ const CoursesPage = () => {
         setCourses(courseStore.getCourses());
     }
 
+    const handleDelete = (id) => {
+            console.log(id);
+            deleteCourse(id);
+    }
+
         return (
         <div className="border border-gray-300 m-2 p-4 rounded-lg shadow-sm">
-            <CourseList courses={courses} deleteCourse={deleteCourse} />
+            <CourseList courses={courses} deleteCourse={handleDelete} />
             <div className="mt-4">
                 <Link className="border shadow-sm px-2 rounded hover:bg-gray-50" to="/course">Add Course</Link>
             </div>
