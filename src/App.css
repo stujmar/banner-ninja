@@ -37,10 +37,6 @@
   }
 }
 
-.github-profile {
-  margin-top: 15px;
-}
-
-img {
-  width: 50%;
+button {
+  font-size: calc(10px + 2vmin);
 }
