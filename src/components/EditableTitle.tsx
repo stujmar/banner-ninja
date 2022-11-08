@@ -17,7 +17,7 @@ const EditableTitle = ({ text, type, placeholder, children, childRef}: EditableT
     }
   }, [isEditing, childRef]);
 
-  const handleKeyDown = (event, type) => {
+  const handleKeyDown = (event: any, type: any) => {
     const { key } = event;
     const keys = ["Escape", "Tab"];
     const enterKey = "Enter";
