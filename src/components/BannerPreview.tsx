@@ -23,7 +23,7 @@ const BannerPreview = ({}: BannerPreviewProps) => {
               ref={inputRef}
               type="text"
               name="task"
-              className="text-4xl font-bold text-red-800 bg-transparent focus:outline-none"
+              className="text-4xl font-bold text-gray-800 bg-transparent focus:outline-none"
               placeholder="Banner Ninja"
               value={task}
               onChange={e => setTask(e.target.value)}

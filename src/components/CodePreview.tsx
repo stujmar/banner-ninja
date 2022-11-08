@@ -8,7 +8,6 @@ type CodePreviewProps = {
 
 const CodePreview = ({color}: CodePreviewProps) => {
 
-  console.log(color)
   const codeString = `
   <canvas id="previewCanvas" width="100%" height="256"></canvas>
   <script>

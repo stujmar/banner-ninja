@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-type EditableTitleProps = {}
+type EditableTitleProps = {
+  text: string,
+  type: string,
+  placeholder: string,
+  children: any,
+  childRef: any,
+}
 
-const EditableTitle = ({
-  text,
-  type,
-  placeholder,
-  children,
-  childRef,
-  ...props
-}) => {
+const EditableTitle = ({ text, type, placeholder, children, childRef}: EditableTitleProps) => {
   const [isEditing, setEditing] = useState(false);
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const EditableTitle = ({
   };
 
   return (
-    <section className="" {...props}>
+    <section>
       {isEditing ? (
         <div
           onBlur={() => setEditing(false)}
@@ -45,7 +44,7 @@ const EditableTitle = ({
           className={`editable-${type}`}
           onClick={() => setEditing(true)}
         >
-          <span className="text-4xl font-bold text-red-800 w-12">
+          <span className="text-4xl font-bold text-gray-800 w-12">
             {text || placeholder || "Editable content"}
           </span>
         </div>

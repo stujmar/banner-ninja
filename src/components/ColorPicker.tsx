@@ -18,7 +18,7 @@ const ColorPicker = ({onChange}: ColorPickerProps) => {
   return (
     <BlockPicker 
       color={ activeColor}
-      onChangeComplete={color => handleColorChange(color.hex)}
+      onChangeComplete={(color: { hex: string; }) => handleColorChange(color.hex)}
     />
   );
 }
