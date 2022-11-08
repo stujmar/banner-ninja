@@ -1,12 +1,25 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import { useEffect, useState, useMemo } from 'react';
 import BannerPreview from './components/BannerPreview';
 import ColorPicker from './components/ColorPicker';
 import CodePreview from './components/CodePreview';
 
 function App() {
   const [color, setColor] = useState("#dce775");
+  const [titleSettings, setTitleSettings] = useState({
+    text: "Banner Title",
+    isActive: true,
+  });
 
+  const idHash = useMemo(() => {
+    return Math.random().toString(36).substring(2, 6) + Math.random().toString(36).substring(2, 6)
+  }, []);
+
+  const toggleTitle = () => {
+    setTitleSettings({
+      ...titleSettings,
+      isActive: !titleSettings.isActive
+    });
+  }
   useEffect(() => {
     const canvas = document.getElementById("previewCanvas") as HTMLCanvasElement;
     const ctx = canvas.getContext("2d");
@@ -26,17 +39,16 @@ function App() {
 
   return (
     <div>
-        <BannerPreview />
-      <header className="App-header">
-        <div className="flex items-start gap-12">
+        <BannerPreview titleSettings={titleSettings} />
+        <div className="flex flex-col md:flex-row p-4 sm:p-12 bg-gray-600  h-screen items-center md:items-start gap-12">
           <div className="mt-8">
             <ColorPicker onChange={handleColorChange} />
+            <button type="button" onClick={toggleTitle} className="mt-4 font-medium text-sm bg-gray-50 text-gray-800 px-4 py-2 rounded-md uppercase">Toggle Title</button>
           </div>
-          <CodePreview color={color} />
+          <CodePreview idHash={idHash} color={color} />
         </div>
-      </header>
     </div>
   )
 }
 
-export default App
+export default App;
