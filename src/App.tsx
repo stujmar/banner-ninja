@@ -1,42 +1,41 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from './components/Button'
 import './App.css'
-import BannerPreview from './components/BannerPreview'
+import BannerPreview from './components/BannerPreview';
+import ColorPicker from './components/ColorPicker';
+import CodePreview from './components/CodePreview';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [color, setColor] = useState("#dce775");
+
+  useEffect(() => {
+    const canvas = document.getElementById("previewCanvas") as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }, []);
+
+  const handleColorChange = (color: string) => {
+    const canvas = document.getElementById("previewCanvas") as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    console.log("app level", color);
+    setColor(color);
+  }
+
 
   return (
-    <div className="bg-purple-200">
+    <div>
         <BannerPreview />
       <header className="App-header">
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p className="flex gap-3">
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button text="Learn React" />
-          </a>
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          ><Button text="Vite Docs" />
-
-          </a>
-        </p>
+        <div className="flex items-start gap-12">
+          <div className="mt-8">
+            <ColorPicker onChange={handleColorChange} />
+          </div>
+          <CodePreview color={color} />
+        </div>
       </header>
     </div>
   )

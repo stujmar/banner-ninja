@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 type EditableTitleProps = {}
 
-
 const EditableTitle = ({
   text,
   type,
