@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm-run-all -p dev css",
     "dev": "vite",
-    "css": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "css": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
