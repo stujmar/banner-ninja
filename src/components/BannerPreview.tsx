@@ -5,10 +5,12 @@ type BannerPreviewProps = {
 }
 
 const BannerPreview = ({}: BannerPreviewProps) => {
-  const inputRef = useRef();
+  // const inputRef = useRef();
+  const inputRef = React.createRef<HTMLInputElement>();
   const textareaRef = useRef();
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
+  
 
   return (
     <div className="w-full h-64 bg-transparent relative">
