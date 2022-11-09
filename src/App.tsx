@@ -36,15 +36,15 @@ function App() {
     setColor(color);
   }
 
-
   return (
     <div>
         <BannerPreview titleSettings={titleSettings} />
-        <div className="flex flex-col md:flex-row p-4 sm:p-12 bg-gray-600  h-screen items-center md:items-start gap-12">
-          <div className="mt-8">
+        <div className="flex flex-col p-4 bg-gray-600 container mx-auto h-screen justify-start items-center md:items-start">
+          <div className="mt-4">
             <ColorPicker onChange={handleColorChange} />
             <button type="button" onClick={toggleTitle} className="mt-4 font-medium text-sm bg-gray-50 text-gray-800 px-4 py-2 rounded-md uppercase">Toggle Title</button>
           </div>
+          <div className="p-2"></div>
           <CodePreview idHash={idHash} color={color} />
         </div>
     </div>
