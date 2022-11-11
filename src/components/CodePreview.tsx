@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import axios from 'axios';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 type CodePreviewProps = {
@@ -9,6 +10,7 @@ type CodePreviewProps = {
 
 const CodePreview = ({color, idHash}: CodePreviewProps) => {
   const [isCopying, setIsCopying] = useState(false);
+  const [isMinified, setIsMinified] = useState(false);
   const prefix = ` <canvas id="bannerCanvas_${idHash}" style="width: 100%; height:256px;"></canvas>
   <script>`
   const javaScriptBody = `
@@ -33,12 +35,41 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
     }, 1000);
   }
 
+  useEffect(() => {
+    const cleanJS = javaScriptBody.replace(/const/g, 'var').replace(/let/g, 'var');
+    
+    console.log(JSON.stringify(cleanJS));
+    if (isMinified) {
+      axios.post('https://9p9o8dnyc8.execute-api.us-east-1.amazonaws.com/minify', { code: cleanJS }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : '*',
+      }})
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  }, [isMinified]);
 
 
   return (
     <div className="w-full rounded-lg p-3 overflow-hidden border bg-gray-200">
         <div className="flex justify-between items-baseline w-full">
           <div className="text-gray-800 font-medium text-lg">Code Preview</div>
+          <div>
+            <label className="flex">
+              <input
+                className="mr-2"
+                type="checkbox"
+                checked={isMinified}
+                onChange={()=>{setIsMinified(!isMinified)}}
+                />
+              <p>Minify <span className="text-sm text-gray-500">(warning beta)</span></p>
+            </label>
+          </div>
           <div className="flex justify-end items-center">
           <div className={`bg-green-200 p-1 rounded-lg shadow  text-sm font-bold text-green-600 mr-2 transition-all ${isCopying ? "opacity-100" : "opacity-0"}`}>COPIED</div>
           <button onClick={()=>copyToClipboard()} className="text-gray-600 border-2 border-gray-600 rounded p-px hover:bg-gray-300">
