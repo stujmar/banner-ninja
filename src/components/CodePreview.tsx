@@ -57,9 +57,9 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
 
   return (
     <div className="w-full rounded-lg p-3 overflow-hidden border bg-gray-200">
-        <div className="flex justify-between items-baseline w-full">
+        <div className="flex justify-between items-end w-full">
+          <div className="flex items-end gap-4">
           <div className="text-gray-800 font-medium text-lg">Code Preview</div>
-          <div>
             <label className="flex">
               <input
                 className="mr-2"
