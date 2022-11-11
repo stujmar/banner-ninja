@@ -44,6 +44,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       }})
       .then(function (response) {
         console.log(response);
