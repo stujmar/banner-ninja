@@ -48,7 +48,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
       }})
       .then(function (response) {
         console.log(response);
-        setDisplayCode( `${prefix}${response.data.body.code}${suffix}`);
+        setDisplayCode( `${prefix}${response.data}${suffix}`);
       })
       .catch(function (error) {
         console.log(error);
