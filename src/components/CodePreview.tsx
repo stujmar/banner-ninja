@@ -41,8 +41,6 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
       axios.post('https://9p9o8dnyc8.execute-api.us-east-1.amazonaws.com/minify', { code: cleanJS }, {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       }})
       .then(function (response) {
         console.log(response);
