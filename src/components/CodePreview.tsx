@@ -36,7 +36,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
     }, 1000);
   }
 
-  useEffect(() => {
+  function minifyCode() {
     const cleanJS = javaScriptBody.replace(/const/g, 'var').replace(/let/g, 'var');
     if (isMinified) {
       axios.post('https://9p9o8dnyc8.execute-api.us-east-1.amazonaws.com/minify', { cleanJS }, {
@@ -52,10 +52,18 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
     } else {
       setDisplayCode(`${prefix}${javaScriptBody}${suffix}`);
     }
+  }
+
+  useEffect(() => { // minify code on checkbox change
+    minifyCode();
   }, [isMinified]);
 
-  useEffect(() => {
-    setDisplayCode(`${prefix}${javaScriptBody}${suffix}`);
+  useEffect(() => { // update code on color change
+    if (!isMinified) {
+      setDisplayCode(`${prefix}${javaScriptBody}${suffix}`);
+    } else {
+      minifyCode();
+    }
   }, [color])
 
   return (
