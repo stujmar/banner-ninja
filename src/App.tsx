@@ -6,6 +6,7 @@ import CodePreview from './components/CodePreview';
 
 function App() {
   const [color, setColor] = useState("#dce775");
+  const [animationsMode, setAnimationMode] = useState("waves");
   const [titleSettings, setTitleSettings] = useState({
     text: "Banner Title",
     isActive: true,
@@ -33,7 +34,6 @@ function App() {
     const ctx = canvas.getContext("2d");
     ctx!.fillStyle = color;
     ctx!.fillRect(0, 0, canvas.width, canvas.height);
-    console.log("app level", color);
     setColor(color);
   }
 
