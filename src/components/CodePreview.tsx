@@ -9,8 +9,6 @@ type CodePreviewProps = {
 }
 
 const CodePreview = ({color, idHash}: CodePreviewProps) => {
-  const [isCopying, setIsCopying] = useState(false);
-  const [isMinified, setIsMinified] = useState(false);
   const prefix = ` <canvas id="bannerCanvas_${idHash}" style="width: 100%; height:256px;"></canvas>
   <script>`
   const javaScriptBody = `
@@ -20,12 +18,16 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 `
   const suffix = `  </script>`
-  const codeString = `${prefix}${javaScriptBody}${suffix}`;
+  
+  const [isCopying, setIsCopying] = useState(false);
+  const [isMinified, setIsMinified] = useState(false);
+  const [displayCode, setDisplayCode] = useState(`${prefix}${javaScriptBody}${suffix}`);
+  // const codeString = `${prefix}${javaScriptBody}${suffix}`;
 
   const copyToClipboard = () => {
     setIsCopying(true);
     const el = document.createElement('textarea');
-    el.value = codeString;
+    el.value = displayCode;
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
@@ -34,6 +36,8 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
       setIsCopying(false);
     }, 1000);
   }
+
+
 
   useEffect(() => {
     const cleanJS = javaScriptBody.replace(/const/g, 'var').replace(/let/g, 'var');
@@ -44,6 +48,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
       }})
       .then(function (response) {
         console.log(response);
+        setDisplayCode( `${prefix}${response.data.body}${suffix}`);
       })
       .catch(function (error) {
         console.log(error);
@@ -78,7 +83,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
         </div>
       <div className="mt-2 text-base">
         <SyntaxHighlighter language="javascript" style={docco}>
-        {codeString}
+        {displayCode}
         </SyntaxHighlighter>
       </div>
     </div>
