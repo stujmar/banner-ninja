@@ -22,7 +22,6 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
   const [isCopying, setIsCopying] = useState(false);
   const [isMinified, setIsMinified] = useState(false);
   const [displayCode, setDisplayCode] = useState(`${prefix}${javaScriptBody}${suffix}`);
-  // const codeString = `${prefix}${javaScriptBody}${suffix}`;
 
   const copyToClipboard = () => {
     setIsCopying(true);
@@ -37,8 +36,6 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
     }, 1000);
   }
 
-
-
   useEffect(() => {
     const cleanJS = javaScriptBody.replace(/const/g, 'var').replace(/let/g, 'var');
     if (isMinified) {
@@ -47,7 +44,6 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
         'Content-Type': 'application/json',
       }})
       .then(function (response) {
-        console.log(response);
         setDisplayCode( `${prefix}${response.data}${suffix}`);
       })
       .catch(function (error) {
@@ -58,6 +54,9 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
     }
   }, [isMinified]);
 
+  useEffect(() => {
+    setDisplayCode(`${prefix}${javaScriptBody}${suffix}`);
+  }, [color])
 
   return (
     <div className="w-full rounded-lg p-3 overflow-hidden border bg-gray-200">
