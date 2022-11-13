@@ -48,11 +48,13 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
       }})
       .then(function (response) {
         console.log(response);
-        setDisplayCode( `${prefix}${response.data.body}${suffix}`);
+        setDisplayCode( `${prefix}${response.data.body.code}${suffix}`);
       })
       .catch(function (error) {
         console.log(error);
       });
+    } else {
+      setDisplayCode(`${prefix}${javaScriptBody}${suffix}`);
     }
   }, [isMinified]);
 
@@ -69,7 +71,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
                 checked={isMinified}
                 onChange={()=>{setIsMinified(!isMinified)}}
                 />
-              <p>Minify <span className="text-sm text-gray-500">(warning beta)</span></p>
+              <p>Minify <span className="text-sm text-gray-500">(warning experimental)</span></p>
             </label>
           </div>
           <div className="flex justify-end items-center">
