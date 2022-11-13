@@ -42,7 +42,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
   useEffect(() => {
     const cleanJS = javaScriptBody.replace(/const/g, 'var').replace(/let/g, 'var');
     if (isMinified) {
-      axios.post('https://9p9o8dnyc8.execute-api.us-east-1.amazonaws.com/minify', { code: cleanJS }, {
+      axios.post('https://9p9o8dnyc8.execute-api.us-east-1.amazonaws.com/minify', { "code": cleanJS }, {
       headers: {
         'Content-Type': 'application/json',
       }})
