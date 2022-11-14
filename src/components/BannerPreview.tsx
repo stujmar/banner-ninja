@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import EditableTitle from './EditableTitle';
 
 type BannerPreviewProps = {
@@ -14,10 +14,17 @@ const BannerPreview = ({titleSettings}: BannerPreviewProps) => {
   const textareaRef = useRef();
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
-  
+
+  useEffect(() => {
+    updateWidth();
+  },[]);
+
+  const updateWidth = () => {
+    return window.innerWidth;
+  }
 
   return (
-    <div className="w-full h-64 bg-transparent relative">
+    <div id="bannerParent" className="w-full h-64 bg-transparent relative">
         <div className="flex justify-center items-center w-full h-full">
           { titleSettings.isActive && 
           <EditableTitle
@@ -38,7 +45,7 @@ const BannerPreview = ({titleSettings}: BannerPreviewProps) => {
             </EditableTitle>
             }
         </div>
-        <canvas id="previewCanvas" className="-z-10 h-full w-full absolute inset-0"></canvas>
+        <canvas id="previewCanvas" width={updateWidth()} height="256"  className="-z-10 absolute inset-0"></canvas>
     </div>
   );
 };
