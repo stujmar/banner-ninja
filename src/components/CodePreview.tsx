@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import axios from 'axios';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import loadingGif from '../assets/loading.gif';
 
 type CodePreviewProps = {
   color: string;
@@ -20,6 +21,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
   const suffix = `  </script>`
   
   const [isCopying, setIsCopying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [isMinified, setIsMinified] = useState(false);
   const [displayCode, setDisplayCode] = useState(`${prefix}${javaScriptBody}${suffix}`);
 
@@ -39,15 +41,18 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
   function minifyCode() {
     const cleanJS = javaScriptBody.replace(/const/g, 'var').replace(/let/g, 'var');
     if (isMinified) {
+      setIsLoading(true);
       axios.post('https://9p9o8dnyc8.execute-api.us-east-1.amazonaws.com/minify', { cleanJS }, {
       headers: {
         'Content-Type': 'application/json',
       }})
       .then(function (response) {
         setDisplayCode( `${prefix}${response.data}${suffix}`);
+        setIsLoading(false);
       })
       .catch(function (error) {
         console.log(error);
+        setIsLoading(false);
       });
     } else {
       setDisplayCode(`${prefix}${javaScriptBody}${suffix}`);
@@ -90,7 +95,10 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
           </button>
           </div>
         </div>
-      <div className="mt-2 text-base">
+      <div className="mt-2 text-base relative">
+        {isLoading && <div className="absolute h-full w-full z-20 inset-0 bg-black/10 flex justify-center items-center">
+          <img className="opacity-50 w-16" src={loadingGif} />
+        </div>}
         <SyntaxHighlighter language="javascript" style={docco}>
         {displayCode}
         </SyntaxHighlighter>
