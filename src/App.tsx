@@ -1,11 +1,14 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import BannerPreview from './components/BannerPreview';
 import ColorPicker from './components/ColorPicker';
 import CodePreview from './components/CodePreview';
 import ModePicker from './components/ModePIcker';
 
 function App() {
+  let canvas: any, ctx: any;
+  const canvasRef = useRef(null);
   const [color, setColor] = useState("#dce775");
+  const [initalized, setInitalized] = useState(false);
   const [settings, setSettings] = useState({
     backgroundColor: "#dce775",
     foregroundColor: "#000000",
@@ -29,9 +32,9 @@ function App() {
     });
   }
 
-  useEffect(() => {
-    runAnimation(animationMode, settings);
-  }, [settings, animationMode]);
+  // useEffect(() => {
+  //   runAnimation(animationMode, settings);
+  // }, [settings, animationMode]);
 
   const handleColorChange = (color: string) => {
     setSettings({
@@ -40,43 +43,50 @@ function App() {
     });
   }
 
-  function runAnimation(mode: string, settings: any) {
-    // setup canvas
-    const canvas = document.getElementById("previewCanvas") as HTMLCanvasElement;
-    const ctx = canvas.getContext("2d");
-    if (mode == "default") {
-      ctx!.fillStyle = settings.backgroundColor;
-      ctx!.fillRect(0, 0, canvas.width, canvas.height);
-    } else if (mode == "waves") {
-      ctx!.fillStyle = settings.backgroundColor;
-      ctx!.fillRect(0, 0, canvas.width, canvas.height);
-    }
-  
-    requestAnimationFrame(() => {
-      if (mode == "waves") {
-        // redraw background
-        ctx!.fillStyle = settings.backgroundColor;
-        ctx!.fillRect(0, 0, canvas.width, canvas.height);
-        // draw circle
-        // console.log("animating", settings.x);
-        ctx!.fillStyle = settings.foregroundColor;
-        ctx!.beginPath();
-        ctx!.arc(settings.x, 50, 25, 0, 2 * Math.PI);
-        ctx!.fill();
-        setSettings({
-          ...settings,
-          x: settings.x > canvas.width ? 0 : settings.x + 1,
-        });
-        console.log(canvas.width)
-        // runAnimation(mode, settings);
-      }
-    }
-    );
-  }
+  // function runAnimation(mode: string, settings: any) {
+  //   // setup canvas
+  //   if (!initalized) {
+  //     console.log("initalizing canvas");
+  //   canvas = document.getElementById("previewCanvas") as HTMLCanvasElement;
+  //   ctx = canvas.getContext("2d");
+  //   setInitalized(true);
+  //   } else {
+  //     console.log("canvas already initalized");
+  //     if (mode == "default") {
+  //       ctx!.fillStyle = settings.backgroundColor;
+  //       ctx!.fillRect(0, 0, canvas.width, canvas.height);
+  //     } else if (mode == "waves") {
+  //       ctx!.fillStyle = settings.backgroundColor;
+  //       ctx!.fillRect(0, 0, canvas.width, canvas.height);
+  //     }
+  //     requestAnimationFrame(() => {
+  //       console.log("canvas:", document.getElementById("previewCanvas")?.offsetWidth);
+  //       console.log("ctx:", canvas.width);
+  //       if (mode == "waves") {
+  //         // redraw background
+  //         ctx!.fillStyle = settings.backgroundColor;
+  //         ctx!.fillRect(0, 0, canvas.width, canvas.height);
+  //         // draw circle
+  //         // console.log("animating", settings.x);
+  //         ctx!.fillStyle = settings.foregroundColor;
+  //         ctx!.beginPath();
+  //         ctx!.arc(settings.x, 50, 25, 0, 2 * Math.PI);
+  //         ctx!.fill();
+  //         setSettings({
+  //           ...settings,
+  //           x: settings.x > canvas.width ? 0 : settings.x + 1,
+  //         });
+  //         runAnimation(mode, settings);
+  //       }
+  //     }
+  //     );
+  //   }
+    
+  // }
 
   return (
     <div>
-        <BannerPreview titleSettings={titleSettings} />
+        <BannerPreview settings={settings} titleSettings={titleSettings} />
         <div className="container max-w-6xl flex flex-col p-4 bg-gray-600 mx-auto h-screen justify-start items-center md:items-start">
           <div className="mt-4">
             {/* Top Row */}

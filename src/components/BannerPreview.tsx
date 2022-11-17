@@ -2,14 +2,15 @@ import React, {useEffect, useRef, useState} from 'react';
 import EditableTitle from './EditableTitle';
 
 type BannerPreviewProps = {
+  settings: {},
   titleSettings: {
     text: string;
     isActive: boolean;
   }
 }
 
-const BannerPreview = ({titleSettings}: BannerPreviewProps) => {
-  // const inputRef = useRef();
+const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
+  const canvasRef = useRef(null);
   const inputRef = React.createRef<HTMLInputElement>();
   const textareaRef = useRef();
   const [task, setTask] = useState("");
@@ -17,11 +18,25 @@ const BannerPreview = ({titleSettings}: BannerPreviewProps) => {
 
   useEffect(() => {
     updateWidth();
+    requestAnimationFrame(tick);
   },[]);
+
+  // console.log(settings);
 
   const updateWidth = () => {
     return window.innerWidth;
   }
+
+  const renderFrame = () => {};
+
+  const tick = () => {
+    console.log("tick");
+    if (!canvasRef.current) return;
+    renderFrame();
+    setTimeout(() => {
+      requestAnimationFrame(tick);
+    }, 1000);
+  };
 
   return (
     <div id="bannerParent" className="w-full h-64 bg-transparent relative">
@@ -45,7 +60,7 @@ const BannerPreview = ({titleSettings}: BannerPreviewProps) => {
             </EditableTitle>
             }
         </div>
-        <canvas id="previewCanvas" width={updateWidth()} height="256"  className="-z-10 absolute inset-0"></canvas>
+        <canvas id="previewCanvas" ref={canvasRef} width={updateWidth()} height="256"  className="-z-10 absolute inset-0"></canvas>
     </div>
   );
 };
