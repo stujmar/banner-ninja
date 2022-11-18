@@ -11,6 +11,18 @@ type BannerPreviewProps = {
 
 const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
   const canvasRef = useRef(null);
+  const waveRef = useRef({
+    x: 0,
+    y: 0,
+    amplitude: 144,
+    frequency: 0.012,
+    trails: 0.016,
+    lineWidth: 7.2,
+    echo: 10,
+    echoOffset: 120,
+    backgroundColor: "#dce775",
+    foregroundColor: "#000000",
+  });
   const inputRef = React.createRef<HTMLInputElement>();
   const textareaRef = useRef();
   const [task, setTask] = useState("");
@@ -20,8 +32,6 @@ const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
     updateWidth();
     requestAnimationFrame(tick);
   },[]);
-
-  // console.log(settings);
 
   const updateWidth = () => {
     return window.innerWidth;
