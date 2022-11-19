@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import EditableTitle from './EditableTitle';
 
 type BannerPreviewProps = {
@@ -10,6 +10,7 @@ type BannerPreviewProps = {
 }
 
 const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
+  const size = { width: 400, height: 250 };
   const canvasRef = useRef(null);
   const waveRef = useRef({
     x: 0,
@@ -37,15 +38,15 @@ const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
     return window.innerWidth;
   }
 
-  const renderFrame = () => {};
+  const renderFrame = () => {
+    // ...
+  };
 
   const tick = () => {
     console.log("tick");
     if (!canvasRef.current) return;
     renderFrame();
-    setTimeout(() => {
-      requestAnimationFrame(tick);
-    }, 1000);
+    requestAnimationFrame(tick);
   };
 
   return (
