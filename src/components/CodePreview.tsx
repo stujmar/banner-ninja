@@ -3,6 +3,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import axios from 'axios';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import loadingGif from '../assets/loading.gif';
+import Tippy from '@tippyjs/react';
 
 type CodePreviewProps = {
   color: string;
@@ -71,19 +72,32 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
     }
   }, [color])
 
+  const minifyInfo = () => {}
+
   return (
-    <div className="w-full rounded-lg p-3 overflow-hidden border bg-gray-200">
+    <div className="w-full rounded-lg p-3 relative overflow-hidden border bg-gray-200">
         <div className="flex justify-between items-end w-full">
           <div className="flex items-end gap-4">
           <div className="text-gray-800 font-medium text-lg">Code Preview</div>
-            <label className="flex">
+          <label className="flex">
               <input
                 className="mr-2"
                 type="checkbox"
                 checked={isMinified}
                 onChange={()=>{setIsMinified(!isMinified)}}
                 />
-              <p>Minify <span className="text-sm text-gray-500">(warning experimental)</span></p>
+              <div className="flex gap-1 items">
+                <span className="-ml-1 text-gray-900">Minify</span>
+                <Tippy placement="right" theme="material" content={
+                  <div className="bg-gray-200 text-sm leading-3 w-max font-medium text-red-800">
+                    <span>For best performance </span><br />
+                    <span className=" inline-block mt-1">have minify off while editing.</span></div>}
+                    >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-500 cursor-pointer">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                </svg>
+                </Tippy>
+              </div>
             </label>
           </div>
           <div className="flex justify-end items-center">
@@ -99,9 +113,11 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
         {isLoading && <div className="absolute h-full w-full z-20 inset-0 bg-black/10 flex justify-center items-center">
           <img className="opacity-50 w-16" src={loadingGif} />
         </div>}
+        <div className="relative pt-8" style={{background: "rgb(248, 248, 255)"}}>
         <SyntaxHighlighter language="javascript" style={docco}>
         {displayCode}
         </SyntaxHighlighter>
+        </div>
       </div>
     </div>
   );

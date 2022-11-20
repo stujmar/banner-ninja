@@ -2,22 +2,23 @@ import React, { useState } from 'react';
 import { CirclePicker } from 'react-color';
 
 type ColorPickerProps = {
-  onChange: (color: string) => void;
+  label: string;
+  onChange: (color: {label: string, value: string}) => void;
 }
 
-const ColorPicker = ({onChange}: ColorPickerProps) => {
+const ColorPicker = ({label, onChange}: ColorPickerProps) => {
 
   const [activeColor, setActiveColor] = useState("#DCE775");
 
   const handleColorChange = (color: string) => {
     setActiveColor(color);
-    onChange(color);
+    onChange({label: label, value: color});
   }
 
 
   return (
     <div className="bg-gray-50 p-3 rounded-xl shadow-lg">
-      <div className="text-gray-800 font-medium text-lg font-medium">Background</div>
+      <div className="text-gray-800 font-medium text-lg font-medium">{label}</div>
       <div className="w-full p-2"></div>
       <CirclePicker 
         color={ activeColor}

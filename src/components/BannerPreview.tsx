@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import EditableTitle from './EditableTitle';
+import renderWave from './animations/renderWave';
 
 type BannerPreviewProps = {
-  settings: {},
+  settings: { 
+    background: string,
+    foreground: string,
+  },
   titleSettings: {
     text: string;
     isActive: boolean;
@@ -10,19 +14,21 @@ type BannerPreviewProps = {
 }
 
 const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
-  const size = { width: 400, height: 250 };
+  const size = { width: window.innerWidth, height: 250 };
+  const requestIdRef = useRef(null);
   const canvasRef = useRef(null);
   const waveRef = useRef({
     x: 0,
-    y: 0,
+    y: 100,
+    radius: 15,
     amplitude: 144,
     frequency: 0.012,
     trails: 0.016,
     lineWidth: 7.2,
     echo: 10,
     echoOffset: 120,
-    backgroundColor: "#dce775",
-    foregroundColor: "#000000",
+    background: "#dce775",
+    foreground: "#000000",
   });
   const inputRef = React.createRef<HTMLInputElement>();
   const textareaRef = useRef();
@@ -30,20 +36,41 @@ const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    updateWidth();
-    requestAnimationFrame(tick);
+    waveRef.current.background = settings.background;
+    waveRef.current.foreground = settings.foreground;
+  }, [settings]);
+
+  useEffect(() => {
+    // updateWidth();
+    // setup();
+    requestIdRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(requestIdRef.current);
   },[]);
+
+  // const setup = () => {
+  //   console.log("setting up canvas");
+
+  // };
+
+  const updateWave = () => {
+    const wave = waveRef.current;
+    wave.x > window.innerWidth ? (wave.x = 0) : (wave.x += 1);
+  };
 
   const updateWidth = () => {
     return window.innerWidth;
   }
 
   const renderFrame = () => {
+    // console.log("rendering frame");
+    const ctx = canvasRef.current.getContext("2d");
+    updateWave();
+    renderWave.call(ctx, size, waveRef.current);
     // ...
   };
 
   const tick = () => {
-    console.log("tick");
+    // console.log("tick");
     if (!canvasRef.current) return;
     renderFrame();
     requestAnimationFrame(tick);
