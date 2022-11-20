@@ -61,7 +61,7 @@ function App() {
           </div>
           <div className="p-2"></div>
           {/* Code Preview */}
-          <CodePreview idHash={idHash} color={settings.backgroundColor} />
+          <CodePreview idHash={idHash} color={settings.background} />
         </div>
     </div>
   )

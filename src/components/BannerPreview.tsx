@@ -15,7 +15,7 @@ type BannerPreviewProps = {
 
 const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
   const size = { width: window.innerWidth, height: 250 };
-  const requestIdRef = useRef(null);
+  const requestIdRef: any = useRef(null);
   const canvasRef = useRef(null);
   const waveRef = useRef({
     x: 0,
@@ -63,7 +63,7 @@ const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
 
   const renderFrame = () => {
     // console.log("rendering frame");
-    const ctx = canvasRef.current.getContext("2d");
+    const ctx = canvasRef.current!.getContext("2d");
     updateWave();
     renderWave.call(ctx, size, waveRef.current);
     // ...
