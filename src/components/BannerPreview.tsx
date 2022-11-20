@@ -16,7 +16,7 @@ type BannerPreviewProps = {
 const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
   const size = { width: window.innerWidth, height: 250 };
   const requestIdRef: any = useRef(null);
-  const canvasRef = useRef(null);
+  const canvasRef: any = useRef(null);
   const waveRef = useRef({
     x: 0,
     y: 100,
