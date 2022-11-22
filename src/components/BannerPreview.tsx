@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import EditableTitle from './EditableTitle';
 import renderWave from './animations/renderWave';
+import getInitialState from './animations/getInitialState';
 
 type BannerPreviewProps = {
+  mode: string,
   settings: { 
     background: string,
     foreground: string,
@@ -13,31 +15,20 @@ type BannerPreviewProps = {
   }
 }
 
-const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
+const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => {
   const size = { width: window.innerWidth, height: 250 };
   const requestIdRef: any = useRef(null);
   const canvasRef: any = useRef(null);
-  const waveRef = useRef({
-    x: 0,
-    y: 100,
-    radius: 15,
-    amplitude: 144,
-    frequency: 0.012,
-    trails: 0.016,
-    lineWidth: 7.2,
-    echo: 10,
-    echoOffset: 120,
-    background: "#dce775",
-    foreground: "#000000",
-  });
+  const waveRef = useRef(getInitialState(mode));
   const inputRef = React.createRef<HTMLInputElement>();
   const textareaRef = useRef();
   const [task, setTask] = useState("");
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    waveRef.current.background = settings.background;
-    waveRef.current.foreground = settings.foreground;
+    console.log(waveRef);
+    // waveRef.current.background = settings.background;
+    // waveRef.current.foreground = settings.foreground;
   }, [settings]);
 
   useEffect(() => {
@@ -54,6 +45,7 @@ const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
 
   const updateWave = () => {
     const wave = waveRef.current;
+    console.log(wave);
     wave.x > window.innerWidth ? (wave.x = 0) : (wave.x += 1);
   };
 
@@ -62,7 +54,8 @@ const BannerPreview = ({settings, titleSettings}: BannerPreviewProps) => {
   }
 
   const renderFrame = () => {
-    // console.log("rendering frame");
+    console.log("rendering frame");
+    console.log(mode);
     const ctx = canvasRef.current!.getContext("2d");
     updateWave();
     renderWave.call(ctx, size, waveRef.current);

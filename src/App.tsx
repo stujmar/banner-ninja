@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div>
-        <BannerPreview settings={settings} titleSettings={titleSettings} />
+        <BannerPreview mode={animationMode} settings={settings} titleSettings={titleSettings} />
         <div className="container overflow-hidden max-w-6xl flex flex-col p-4 bg-gray-600 mx-auto h-screen justify-start items-center md:items-start">
           <div className="mt-4">
             {/* Top Row */}
