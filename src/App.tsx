@@ -3,6 +3,7 @@ import BannerPreview from './components/BannerPreview';
 import ColorPicker from './components/ColorPicker';
 import CodePreview from './components/CodePreview';
 import ModePicker from './components/ModePIcker';
+import getInitialState from './components/animations/getInitialState';
 
 function App() {
   let canvas: any, ctx: any;
@@ -10,10 +11,7 @@ function App() {
   const [color, setColor] = useState("#dce775");
   const [initalized, setInitalized] = useState(false);
   const [settings, setSettings] = useState({
-    background: "#dce775",
-    foreground: "#000000",
-    x: 0,
-    y: 0,
+    background: "#dce775"
   });
   const [animationMode, setAnimationMode] = useState("default");
   const [titleSettings, setTitleSettings] = useState({
@@ -52,8 +50,8 @@ function App() {
             {/* Top Row */}
             <div className="flex items-start gap-4">
               <div className="flex flex-col gap-4">
-                <ColorPicker label={"Foreground"} onChange={(e) => handleColorChange(e)} />
-                <ColorPicker label={"Background"} onChange={handleColorChange} />
+                {!!getInitialState(animationMode)?.foreground && <ColorPicker label={"foreground"} onChange={(e) => handleColorChange(e)} />}
+                <ColorPicker label={"background"} onChange={handleColorChange} />
               </div>
             <ModePicker mode={animationMode} onClick={(e) => {setAnimationMode(e)}} />
             <button type="button" onClick={toggleTitle} className="font-medium text-base bg-gray-50 text-gray-800 px-4 py-2 rounded-md shadow-md">Toggle Title <span className="text-xs text-gray-500">(for display only.)</span></button>

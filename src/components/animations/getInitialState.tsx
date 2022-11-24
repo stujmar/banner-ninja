@@ -1,19 +1,6 @@
-type waveSettings = {
-  x: number;
-  y: number;
-  radius: number;
-  amplitude: number;
-  trails: number;
-  lineWidth: number;
-  echo: number;
-  echoOffset: number;
-  bachground: string;
-  foreground: string;
-};
-
-function getInitialState(mode: string) {
+export const getInitialState = (mode: string) => {
   switch (mode) {
-    case "wave":
+    case "waves":
       return {
         x: 0,
         y: 100,
@@ -26,20 +13,10 @@ function getInitialState(mode: string) {
         echoOffset: 120,
         background: "#dce775",
         foreground: "#000000",
-      };
-    case "plasma":
-      return {
-        color: "#DCE775",
-        x: 0,
-        y: 0,
-      };
-    case "default":
-      return {
-        color: "#DCE775",
-        x: 0,
-        y: 0,
-      };
-  }
+      }
+    case "default": 
+    return {
+      background: "#00FF00",
+    }
+  };
 }
-
-export default getInitialState;

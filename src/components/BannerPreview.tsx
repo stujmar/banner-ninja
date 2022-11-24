@@ -5,10 +5,7 @@ import getInitialState from './animations/getInitialState';
 
 type BannerPreviewProps = {
   mode: string,
-  settings: { 
-    background: string,
-    foreground: string,
-  },
+  settings: any,
   titleSettings: {
     text: string;
     isActive: boolean;
@@ -21,15 +18,15 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   const canvasRef: any = useRef(null);
   const waveRef = useRef(getInitialState(mode));
   const inputRef = React.createRef<HTMLInputElement>();
-  const textareaRef = useRef();
   const [task, setTask] = useState("");
-  const [description, setDescription] = useState("");
 
   useEffect(() => {
-    console.log(waveRef);
-    // waveRef.current.background = settings.background;
-    // waveRef.current.foreground = settings.foreground;
+    Object.keys(getInitialState(mode)).forEach((key: string) => {
+      waveRef.current[key] = settings[key];
+    });
   }, [settings]);
+
+  useEffect(() => {waveRef.current = getInitialState(mode)}, [mode]);
 
   useEffect(() => {
     // updateWidth();
@@ -38,15 +35,14 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     return () => cancelAnimationFrame(requestIdRef.current);
   },[]);
 
-  // const setup = () => {
-  //   console.log("setting up canvas");
-
-  // };
-
   const updateWave = () => {
-    const wave = waveRef.current;
-    console.log(wave);
-    wave.x > window.innerWidth ? (wave.x = 0) : (wave.x += 1);
+    console.log(mode);
+    if (mode === "waves") {
+      console.log("updateWave");
+      const wave = waveRef.current;
+      waveRef.current.x > window.innerWidth ? (waveRef.current.x = 0) : (waveRef.current.x += 1);
+    }
+    console.log(waveRef.current.x);
   };
 
   const updateWidth = () => {
@@ -54,8 +50,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   }
 
   const renderFrame = () => {
-    console.log("rendering frame");
-    console.log(mode);
+    // console.log("rendering frame");
     const ctx = canvasRef.current!.getContext("2d");
     updateWave();
     renderWave.call(ctx, size, waveRef.current);
