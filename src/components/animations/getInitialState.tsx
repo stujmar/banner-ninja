@@ -1,4 +1,4 @@
-export const getInitialState = (mode: string) => {
+const getInitialState = (mode: string) => {
   switch (mode) {
     case "waves":
       return {
@@ -20,3 +20,5 @@ export const getInitialState = (mode: string) => {
     }
   };
 }
+
+export default getInitialState;
