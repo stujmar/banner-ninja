@@ -7,13 +7,13 @@ import getInitialState from './components/animations/getInitialState';
 
 function App() {
   let canvas: any, ctx: any;
-  const canvasRef = useRef(null);
+  const settingsRef = useRef(null);
   const [color, setColor] = useState("#dce775");
   const [initalized, setInitalized] = useState(false);
   const [settings, setSettings] = useState({
     background: "#dce775"
   });
-  const [animationMode, setAnimationMode] = useState("default");
+  const [mode, setMode] = useState("default");
   const [titleSettings, setTitleSettings] = useState({
     text: "Banner Ninja",
     isActive: true,
@@ -30,9 +30,11 @@ function App() {
     });
   }
 
-  // useEffect(() => {
-  //   runAnimation(animationMode, settings);
-  // }, [settings, animationMode]);
+  useEffect(() => {}, [mode]);
+  const handleModeChange = (mode: string) => {
+    setMode(mode);
+    setSettings(getInitialState(mode));
+  }
 
   const handleColorChange = (newColor: {label: string, value: string}) => {
     let labelString: string = newColor.label.toLowerCase();
@@ -44,16 +46,16 @@ function App() {
 
   return (
     <div>
-        <BannerPreview mode={animationMode} settings={settings} titleSettings={titleSettings} />
+        <BannerPreview mode={mode} settings={settings} titleSettings={titleSettings} />
         <div className="container overflow-hidden max-w-6xl flex flex-col p-4 bg-gray-600 mx-auto h-screen justify-start items-center md:items-start">
           <div className="mt-4">
             {/* Top Row */}
             <div className="flex items-start gap-4">
               <div className="flex flex-col gap-4">
-                {!!getInitialState(animationMode)?.foreground && <ColorPicker label={"foreground"} onChange={(e) => handleColorChange(e)} />}
+                {!!getInitialState(mode)?.foreground && <ColorPicker label={"foreground"} onChange={(e) => handleColorChange(e)} />}
                 <ColorPicker label={"background"} onChange={handleColorChange} />
               </div>
-            <ModePicker mode={animationMode} onClick={(e) => {setAnimationMode(e)}} />
+            <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
             <button type="button" onClick={toggleTitle} className="font-medium text-base bg-gray-50 text-gray-800 px-4 py-2 rounded-md shadow-md">Toggle Title <span className="text-xs text-gray-500">(for display only.)</span></button>
             </div>
           </div>
