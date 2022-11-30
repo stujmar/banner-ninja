@@ -2,6 +2,7 @@ const getInitialState = (mode: string) => {
   switch (mode) {
     case "waves":
       return {
+        mode: "waves",
         x: 0,
         y: 100,
         radius: 15,
@@ -16,6 +17,7 @@ const getInitialState = (mode: string) => {
       }
     case "default": 
     return {
+      mode: "default",
       background: "#00FF00",
     }
   };

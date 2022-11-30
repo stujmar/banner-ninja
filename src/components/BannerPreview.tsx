@@ -14,7 +14,6 @@ type BannerPreviewProps = {
 
 const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => {
   const size = { width: window.innerWidth, height: 250 };
-  const [localMode, setLocalMode] = useState(mode);
   const requestIdRef: any = useRef(null);
   const canvasRef: any = useRef(null);
   const waveRef = useRef(getInitialState(mode));
@@ -22,14 +21,11 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   const [task, setTask] = useState("");
 
   useEffect(() => {
-    console.log("settings", settings);
     waveRef.current = settings;
   }, [settings]);
 
   useEffect(() => {
     waveRef.current = getInitialState(mode);
-    setLocalMode(mode);
-    updateWave(mode);
   }, [mode]);
 
   useEffect(() => {
@@ -37,15 +33,9 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     return () => cancelAnimationFrame(requestIdRef.current);
   },[]);
 
-  useEffect(() => {
-    updateWave(mode);
-  }, [localMode]);
-
   const updateWave = (_mode : string) => {
 
-    if (_mode === "waves") {
-      console.log("mode is waves");
-      // const wave = waveRef.current;
+    if (waveRef.current.mode === "waves") {
       waveRef.current.x > window.innerWidth ? (waveRef.current.x = 0) : (waveRef.current.x += 1);
     }
   };
@@ -55,15 +45,12 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   }
 
   const renderFrame = () => {
-    console.log("rendering frame");
     const ctx = canvasRef.current!.getContext("2d");
     updateWave(mode);
     renderWave.call(ctx, size, waveRef.current);
-    // ...
   };
 
   const tick = () => {
-    // console.log("tick");
     if (!canvasRef.current) return;
     renderFrame();
     requestAnimationFrame(tick);
