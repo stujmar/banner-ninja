@@ -21,7 +21,9 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   const [task, setTask] = useState("");
 
   useEffect(() => {
-    waveRef.current = settings;
+    let updatedSettings = { ...settings }; // possibly sloppy.
+    updatedSettings.x = waveRef?.current?.x;
+    waveRef.current = updatedSettings;
   }, [settings]);
 
   useEffect(() => {
@@ -34,9 +36,8 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   },[]);
 
   const updateWave = (_mode : string) => {
-
-    if (waveRef.current.mode === "waves") {
-      waveRef.current.x > window.innerWidth ? (waveRef.current.x = 0) : (waveRef.current.x += 1);
+    if (waveRef.current?.mode === "waves" && typeof waveRef.current.x === "number") {
+      waveRef?.current?.x > window.innerWidth ? (waveRef.current.x = 0) : (waveRef.current.x += 1);
     }
   };
 
