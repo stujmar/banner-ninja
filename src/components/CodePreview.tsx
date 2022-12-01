@@ -113,7 +113,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
         {isLoading && <div className="absolute h-full w-full z-20 inset-0 bg-black/10 flex justify-center items-center">
           <img className="opacity-50 w-16" src={loadingGif} />
         </div>}
-        <div className="relative pt-8" style={{background: "rgb(248, 248, 255)"}}>
+        <div className="relative" style={{background: "rgb(248, 248, 255)"}}>
         <SyntaxHighlighter language="javascript" style={docco}>
         {displayCode}
         </SyntaxHighlighter>
