@@ -10,7 +10,7 @@ function App() {
   const settingsRef = useRef(null);
   const [color, setColor] = useState("#dce775");
   const [initalized, setInitalized] = useState(false);
-  const [settings, setSettings] = useState({
+  const [settings, setSettings] = useState<any>({
     background: "#dce775"
   });
   const [mode, setMode] = useState("default");
@@ -48,7 +48,7 @@ function App() {
     <div>
         <BannerPreview mode={mode} settings={settings} titleSettings={titleSettings} />
         <div className="container overflow-hidden max-w-6xl flex flex-col p-4 bg-gray-600 mx-auto h-screen justify-start items-center md:items-start">
-          <div className="mt-4">
+          <div>
             {/* Top Row */}
             <div className="flex items-start gap-4">
               <div className="flex flex-col gap-4">
