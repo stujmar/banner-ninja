@@ -20,6 +20,18 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   const inputRef = React.createRef<HTMLInputElement>();
   const [task, setTask] = useState("");
 
+  function handleResize() {
+    console.log('resized to: ', window.innerWidth, 'x', window.innerHeight)
+    console.log(canvasRef.current)
+    let canvasToUpdate : any = document.getElementById('previewCanvas');
+    console.log(canvasToUpdate);
+    if (canvasToUpdate !== undefined) {
+      console.log('canvasToUpdate is defined');
+      canvasToUpdate.style.width = updateWidth();
+    }
+  }
+  window.addEventListener('resize', handleResize)
+
   useEffect(() => {
     let updatedSettings = { ...settings }; // possibly sloppy.
     updatedSettings.x = waveRef?.current?.x;
@@ -79,7 +91,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
             </EditableTitle>
             }
         </div>
-        <canvas id="previewCanvas" ref={canvasRef} width={updateWidth()} height="256"  className="-z-10 absolute inset-0"></canvas>
+        <canvas id="previewCanvas" ref={canvasRef} height="256" className="-z-10 absolute inset-0"></canvas>
     </div>
   );
 };
