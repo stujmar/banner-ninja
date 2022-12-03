@@ -1,8 +1,9 @@
 function renderWave(size, wave) {
-  // console.log("rendering", size);
   this.fillStyle = wave.background;
   this.rect(0, 0, size.width, size.height);
   this.fill();
+  // console.log("painting bg", wave.background, size);
+
 
   const drawCircle = (wave) => {
     this.save();
@@ -16,12 +17,21 @@ function renderWave(size, wave) {
   };
   // console.log(wave)
   const drawLine = (wave) => {
+    this.save();
+    let centerY = size.height/2;
+    let previousX = -1;
     this.strokeStyle = wave.foreground.slice(0);
     this.lineWidth = wave.lineWidth;
     this.beginPath()
-    this.moveTo(0, size.height/2)
-    this.lineTo(size.width, size.height/2)
+    this.moveTo(-wave.lineWidth, centerY)
+    for (let i = 0; i < size.width; i++) {
+      if (i > previousX) {
+        this.lineTo(i, centerY + Math.sin(i * 0.01) * 100)
+      }
+    }
     this.stroke()
+    this.restore();
+
     //   for (let waveCount = 1; waveCount <= wave.echo + 1; waveCount++) {
     //     this.beginPath();
     //     this.moveTo(-wave.lineWidth, size.height/2);
