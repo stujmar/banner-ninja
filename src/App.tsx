@@ -4,6 +4,7 @@ import ColorPicker from './components/ColorPicker';
 import CodePreview from './components/CodePreview';
 import ModePicker from './components/ModePIcker';
 import getInitialState from './components/animations/getInitialState';
+import ToggleButton from './components/ToggleButton';
 
 function App() {
   let canvas: any, ctx: any;
@@ -56,7 +57,7 @@ function App() {
                 <ColorPicker label={"background"} onChange={handleColorChange} />
               </div>
             <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
-            <button type="button" onClick={toggleTitle} className="font-medium text-left bg-white text-slate-800 p-3 rounded-md border border-slate-300 shadow-md hover:shadow-sm">Toggle Title <span className="text-xs text-slate-500">(for display only.)</span></button>
+            <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
             </div>
           </div>
           <div className="p-2"></div>

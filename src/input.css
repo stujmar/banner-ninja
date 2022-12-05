@@ -4,6 +4,7 @@
 
 body {
   overflow: hidden;
+  background-color: #f8fafc;
 }
 
 .circle-picker span div span div {
