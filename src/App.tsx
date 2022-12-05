@@ -47,7 +47,7 @@ function App() {
   return (
     <div>
         <BannerPreview mode={mode} settings={settings} titleSettings={titleSettings} />
-        <div className="container overflow-hidden max-w-6xl flex flex-col p-4 bg-gray-600 mx-auto h-screen justify-start items-center md:items-start">
+        <div className="container overflow-hidden max-w-6xl flex flex-col p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row */}
             <div className="flex items-start gap-4">
@@ -56,7 +56,7 @@ function App() {
                 <ColorPicker label={"background"} onChange={handleColorChange} />
               </div>
             <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
-            <button type="button" onClick={toggleTitle} className="font-medium text-base bg-gray-50 text-gray-800 px-4 py-2 rounded-md shadow-md">Toggle Title <span className="text-xs text-gray-500">(for display only.)</span></button>
+            <button type="button" onClick={toggleTitle} className="font-medium text-left bg-white text-slate-800 p-3 rounded-md border border-slate-300 shadow-md hover:shadow-sm">Toggle Title <span className="text-xs text-slate-500">(for display only.)</span></button>
             </div>
           </div>
           <div className="p-2"></div>

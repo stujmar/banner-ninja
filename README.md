@@ -14,5 +14,3 @@ Also trying out a React/TypeScript/Vite build.
 - [ ] Fix fill issue with wave on bg color change.
 - [ ] Get some sort of donate button.
 - [ ] Get better system for conditional controls.
-
-

@@ -10,7 +10,7 @@ const ModePicker = ({onClick, mode}: ModePickerProps) => {
         onClick(event.target.value);
     }
     return (
-        <div className="h-24 bg-gray-50 rounded-lg p-3">
+        <div className="h-24 p-3 bg-white rounded-md border border-slate-300 shadow-md">
             <p className="text-lg font-medium text-gray-800">Animation Mode</p>
             <div className="flex gap-2 mt-4">
                 <div className="flex items-center">

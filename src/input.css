@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 body {
-  background-color: rgb(75 85 99);
   overflow: hidden;
+}
+
+.circle-picker span div span div {
+  border: 1px solid #94a3b8;
 }
