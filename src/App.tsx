@@ -5,6 +5,7 @@ import CodePreview from './components/CodePreview';
 import ModePicker from './components/ModePIcker';
 import getInitialState from './components/animations/getInitialState';
 import ToggleButton from './components/ToggleButton';
+import Fader from './components/Fader';
 
 function App() {
   let canvas: any, ctx: any;
@@ -45,6 +46,10 @@ function App() {
     });
   }
 
+  const handleSettingsChange = (e: any) => {
+    console.log(e.target.value);
+  }
+
   return (
     <div>
         <BannerPreview mode={mode} settings={settings} titleSettings={titleSettings} />
@@ -58,6 +63,7 @@ function App() {
               </div>
             <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
             <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
+            <Fader label="Test Fader" min={0} max={0} value={0} step={0} onChange={handleSettingsChange}/>
             </div>
           </div>
           <div className="p-2"></div>
