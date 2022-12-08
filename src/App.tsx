@@ -12,10 +12,8 @@ function App() {
   const settingsRef = useRef(null);
   const [color, setColor] = useState("#dce775");
   const [initalized, setInitalized] = useState(false);
-  const [settings, setSettings] = useState<any>({
-    background: "#dce775"
-  });
   const [mode, setMode] = useState("default");
+  const [settings, setSettings] = useState<any>(getInitialState(mode));
   const [titleSettings, setTitleSettings] = useState({
     text: "Banner Ninja",
     isActive: true,
@@ -32,7 +30,6 @@ function App() {
     });
   }
 
-  useEffect(() => {}, [mode]);
   const handleModeChange = (mode: string) => {
     setMode(mode);
     setSettings(getInitialState(mode));
