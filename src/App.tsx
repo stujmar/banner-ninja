@@ -10,14 +10,14 @@ import Fader from './components/Fader';
 function App() {
   let canvas: any, ctx: any;
   const settingsRef = useRef(null);
-  const [color, setColor] = useState("#dce775");
-  const [initalized, setInitalized] = useState(false);
+  // const [initalized, setInitalized] = useState(false);
   const [mode, setMode] = useState("default");
   const [settings, setSettings] = useState<any>(getInitialState(mode));
   const [titleSettings, setTitleSettings] = useState({
     text: "Banner Ninja",
     isActive: true,
   });
+  const [controls, setControls] = useState([]);
 
   const idHash = useMemo(() => {
     return Math.random().toString(36).substring(2, 6) + Math.random().toString(36).substring(2, 6)
@@ -34,6 +34,33 @@ function App() {
     setMode(mode);
     setSettings(getInitialState(mode));
   }
+
+  // useEffect to update settings
+  useEffect(() => {
+    console.log(settings)
+    settingsRef.current = settings;
+    setControls(
+
+      settings.properties.map((property: any) => {
+        switch (property.type) {
+          case "color":
+            return <ColorPicker key={property.label} label={property.label} onChange={handleColorChange} />
+          case "range":
+            return <Fader 
+                      key={property.label} 
+                      label={property.label} 
+                      min={property.min}
+                      max={property.max}
+                      step={property.step}
+                      value={property.value}
+                      onChange={handleSettingsChange} />
+          default:
+            break;
+        }
+        // console.log(property.label);
+      })
+    )
+  }, [settings]);
 
   const handleColorChange = (newColor: {label: string, value: string}) => {
     let labelString: string = newColor.label.toLowerCase();
@@ -53,14 +80,15 @@ function App() {
         <div className="container overflow-hidden max-w-6xl flex flex-col p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row */}
-            <div className="flex items-start gap-4">
+            <div className="flex items-start flex-wrap gap-4">
+            <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
               <div className="flex flex-col gap-4">
                 {!!getInitialState(mode)?.foreground && <ColorPicker label={"foreground"} onChange={(e) => handleColorChange(e)} />}
                 <ColorPicker label={"background"} onChange={handleColorChange} />
               </div>
-            <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
             <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
-            <Fader label="Test Fader" min={0} max={0} value={0} step={0} onChange={handleSettingsChange}/>
+            {/* <Fader label="Test Fader" min={0} max={0} value={0} step={0} onChange={handleSettingsChange}/> */}
+            {controls}
             </div>
           </div>
           <div className="p-2"></div>

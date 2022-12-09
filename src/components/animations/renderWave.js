@@ -2,33 +2,35 @@ function renderWave(size, wave) {
   this.fillStyle = wave.background;
   this.rect(0, 0, size.width, size.height);
   this.fill();
-  // console.log("painting bg", wave.background, size);
 
+  let [amplitude, frequency, lineColor, lineWidth] = wave.properties;
 
   const drawCircle = (wave) => {
+
     this.save();
     this.beginPath();
     this.arc(wave.x, wave.y, wave.radius, 0, Math.PI * 2);
     this.fillStyle = wave.foreground;
     this.globalAlpha = wave.alpha;
-    this.fill();
+    // this.fill();
     this.closePath();
     this.restore();
   };
-  // console.log(wave)
+
   const drawLine = (wave) => {
     this.save();
     let centerY = size.height/2;
     let previousX = -1;
     this.strokeStyle = wave.foreground.slice(0);
-    this.lineWidth = wave.lineWidth;
+    this.lineWidth = lineWidth.value;
     this.beginPath()
-    this.moveTo(-wave.lineWidth, centerY)
+    this.moveTo(-lineWidth.value, centerY)
     for (let i = 0; i < size.width; i++) {
       if (i > previousX) {
-        this.lineTo(i, centerY + Math.sin(i * 0.01) * 100)
+        this.lineTo(i, centerY + Math.sin(i * 0.01) * amplitude.value)
       }
     }
+    this.fillStyle = "none";
     this.stroke()
     this.restore();
 

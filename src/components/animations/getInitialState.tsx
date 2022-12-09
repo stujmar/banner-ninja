@@ -9,6 +9,7 @@ const getInitialState = (mode: string) => {
         properties: [
           {
             label: "Amplitude",
+            attribute: "amplitude",
             type: "range",
             min: -500,
             max: 500,
@@ -17,6 +18,7 @@ const getInitialState = (mode: string) => {
           },
           {
             label: "Frequency",
+            attribute: "frequency",
             type: "range",
             min: 0.01, 
             max: 0.5,
@@ -24,18 +26,20 @@ const getInitialState = (mode: string) => {
             step: 0.001
           },
           {
+            label: "Line Color",
+            attribute: "lineColor",
+            type: "color",
+            value: "#000000"
+          },
+          {
             label: "Line Width",
+            attribute: "lineWidth",
             type: "range",
             min: 1,
             max: 20,
             value: 7.2,
             step: 1
           },
-          {
-            label: "Line Color",
-            type: "color",
-            value: "#000000"
-          }
         ],
         trails: 0.016,
         echo: 10,
@@ -46,6 +50,13 @@ const getInitialState = (mode: string) => {
     case "default": 
     return {
       mode: "default",
+      properties: [
+        {
+          label: "Color",
+          type: "color",
+          value: "#000000"
+        }
+      ],
       background: "#00FF00",
     }
   };
