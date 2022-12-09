@@ -1,6 +1,7 @@
 import React from 'react';
 
 type FaderProps = {
+  attribute: string;
   label: string;
   min: number;
   max: number;
@@ -9,10 +10,10 @@ type FaderProps = {
   onChange: (e: any) => void;
 };
 
-const Fader = ({label, min, max, value, step, onChange}: FaderProps) => {
+const Fader = ({attribute, label, min, max, value, step, onChange}: FaderProps) => {
 
   const handleChange = (e: any) => {
-    onChange(e);
+    onChange({target: {name: attribute, value: e.target.value}});
   }
 
   return (

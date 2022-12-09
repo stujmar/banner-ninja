@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
 import { CirclePicker } from 'react-color';
 
+interface Payload {
+  target: {
+    value: string;
+    name: string;
+  }
+}
+
 type ColorPickerProps = {
+  attribute: string;
   label: string;
   onChange: (color: {label: string, value: string}) => void;
 }
 
-const ColorPicker = ({label, onChange}: ColorPickerProps) => {
+const ColorPicker = ({attribute, label, onChange}: ColorPickerProps) => {
 
   const [activeColor, setActiveColor] = useState("#DCE775");
 
-  const handleColorChange = (color: string) => {
-    setActiveColor(color);
-    onChange({label: label, value: color});
+  const handleColorChange = (e: any) => {
+    // setActiveColor(color);
+    const changePayload: Payload = {target: {name: attribute, value: e.hex}};
+    onChange(changePayload);
   }
 
 
@@ -23,7 +32,7 @@ const ColorPicker = ({label, onChange}: ColorPickerProps) => {
       <CirclePicker 
         color={activeColor}
         colors={["#999999", "#FFFFFF", "#000000", "#ff5722", "#DCE775", "#03a9f4"]}
-        onChangeComplete={(color: { hex: string; }) => handleColorChange(color.hex)}
+        onChangeComplete={(e) => handleColorChange(e)}
         />
     </div>
   );

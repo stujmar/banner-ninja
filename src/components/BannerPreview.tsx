@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import EditableTitle from './EditableTitle';
 import renderWave from './animations/renderWave';
 import getInitialState from './animations/getInitialState';
+import renderDefault from './animations/renderDefault';
 
 type BannerPreviewProps = {
   mode: string,
@@ -48,9 +49,10 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     }
   };
 
-  const updateWidth = () => {
-    return window.innerWidth;
-  }
+  // Old news?
+  // const updateWidth = () => {
+  //   return window.innerWidth;
+  // }
 
   const establishContext = () => {
     console.log("establishing context");
@@ -70,7 +72,9 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     }
     updateWave(mode);
     if (waveRef.current?.mode  === "waves") {
-    renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
+      renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
+    } else if (waveRef.current?.mode === "default") {
+      renderDefault.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
     }
   };
 

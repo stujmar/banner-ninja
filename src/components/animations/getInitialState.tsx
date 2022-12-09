@@ -54,7 +54,7 @@ const getInitialState = (mode: string) => {
         {
           label: "Color",
           type: "color",
-          value: "#000000"
+          value: "#cbd5e1"
         }
       ],
       background: "#00FF00",

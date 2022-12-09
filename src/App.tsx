@@ -8,7 +8,7 @@ import ToggleButton from './components/ToggleButton';
 import Fader from './components/Fader';
 
 function App() {
-  let canvas: any, ctx: any;
+  // let canvas: any, ctx: any;
   const settingsRef = useRef(null);
   // const [initalized, setInitalized] = useState(false);
   const [mode, setMode] = useState("default");
@@ -19,6 +19,7 @@ function App() {
   });
   const [controls, setControls] = useState([]);
 
+  // Set an id for the banner preview
   const idHash = useMemo(() => {
     return Math.random().toString(36).substring(2, 6) + Math.random().toString(36).substring(2, 6)
   }, []);
@@ -44,11 +45,12 @@ function App() {
       settings.properties.map((property: any) => {
         switch (property.type) {
           case "color":
-            return <ColorPicker key={property.label} label={property.label} onChange={handleColorChange} />
+            return <ColorPicker key={property.label} attribute={property.attribute} label={property.label} onChange={handleSettingsChange} />
           case "range":
             return <Fader 
                       key={property.label} 
                       label={property.label} 
+                      attribute={property.attribute}
                       min={property.min}
                       max={property.max}
                       step={property.step}
@@ -71,7 +73,8 @@ function App() {
   }
 
   const handleSettingsChange = (e: any) => {
-    console.log(e.target.value);
+    let [name, value] = [e.target.name, e.target.value];
+    console.log(name, value);
   }
 
   return (
