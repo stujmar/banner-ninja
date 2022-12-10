@@ -44,8 +44,6 @@ const getInitialState = (mode: string) => {
         trails: 0.016,
         echo: 10,
         echoOffset: 120,
-        background: "#dce775",
-        foreground: "#000000",
       }
     case "default": 
     return {
@@ -53,11 +51,11 @@ const getInitialState = (mode: string) => {
       properties: [
         {
           label: "Color",
+          attribute: "background",
           type: "color",
           value: "#cbd5e1"
         }
       ],
-      background: "#00FF00",
     }
   };
 }

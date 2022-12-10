@@ -23,7 +23,6 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   const [task, setTask] = useState("");
 
   function handleResize() {
-    console.log("resize");
     establishContext();
   }
   window.addEventListener('resize', handleResize)
@@ -55,18 +54,15 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   // }
 
   const establishContext = () => {
-    console.log("establishing context");
     canvasRef.current = document.getElementById('previewCanvas');
     const canvas = canvasRef.current;
     canvas.width = screen.width;
-    console.log("canvas width", canvas.width);
     canvas.height = 256;
     const context = canvas.getContext('2d');
     contextRef.current = context;
   };
 
   const renderFrame = () => {
-    // let ctx = canvasRef.current.getContext("2d");
     if (!contextRef.current) {
       establishContext();
     }

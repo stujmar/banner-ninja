@@ -74,7 +74,20 @@ function App() {
 
   const handleSettingsChange = (e: any) => {
     let [name, value] = [e.target.name, e.target.value];
-    console.log(name, value);
+    // update the properties array in the settings object
+    let newProperties = settings.properties.map((property: any) => {
+      console.log(property.attribute, name, property.value, value)
+      if (property.attribute === name) {
+        return {...property, value: value};
+      }
+    });
+    console.log("new properties:", newProperties)
+    let newSettings = {...settings, properties: newProperties}
+    console.log("new settings:", newSettings)
+    setSettings({
+      ...settings,
+      properties: newProperties,
+    });
   }
 
   return (
@@ -85,10 +98,10 @@ function App() {
             {/* Top Row */}
             <div className="flex items-start flex-wrap gap-4">
             <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
-              <div className="flex flex-col gap-4">
+              {/* <div className="flex flex-col gap-4">
                 {!!getInitialState(mode)?.foreground && <ColorPicker label={"foreground"} onChange={(e) => handleColorChange(e)} />}
                 <ColorPicker label={"background"} onChange={handleColorChange} />
-              </div>
+              </div> */}
             <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
             {/* <Fader label="Test Fader" min={0} max={0} value={0} step={0} onChange={handleSettingsChange}/> */}
             {controls}
