@@ -38,7 +38,6 @@ function App() {
 
   // useEffect to update settings
   useEffect(() => {
-    console.log(settings)
     settingsRef.current = settings;
     setControls(
 
@@ -59,7 +58,6 @@ function App() {
           default:
             break;
         }
-        // console.log(property.label);
       })
     )
   }, [settings]);
@@ -76,16 +74,13 @@ function App() {
     let [name, value] = [e.target.name, e.target.value];
     // update the properties array in the settings object
     let newProperties = settings.properties.map((property: any) => {
-      console.log(property.attribute, name, property.value, value)
       if (property.attribute === name) {
         return {...property, value: value};
       } else {
         return property;
       }
     });
-    console.log("new properties:", newProperties)
     let newSettings = {...settings, properties: newProperties}
-    console.log("new settings:", newSettings)
     setSettings({
       ...settings,
       properties: newProperties,

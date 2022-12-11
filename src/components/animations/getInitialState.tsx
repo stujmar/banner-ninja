@@ -23,9 +23,9 @@ const getInitialState = (mode: string) => {
             label: "Amplitude",
             attribute: "amplitude",
             type: "range",
-            min: -500,
-            max: 500,
-            value: 144,
+            min: -250,
+            max: 250,
+            value: 60,
             step: 1
           },
           {
@@ -33,7 +33,7 @@ const getInitialState = (mode: string) => {
             attribute: "frequency",
             type: "range",
             min: 0.01, 
-            max: 0.5,
+            max: 0.1,
             value: 0.012,
             step: 0.001
           },

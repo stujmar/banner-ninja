@@ -11,7 +11,6 @@ type SliderProps = {
 const Slider = ({property, minimum, maximum, value, step}: SliderProps) => {
 
   const handleChange = (event: any) => {
-    console.log(event.target.value);
   }
 
   return (
