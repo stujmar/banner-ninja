@@ -1,36 +1,28 @@
 function renderWave(size, wave) {
-  this.fillStyle = wave.background;
-  this.rect(0, 0, size.width, size.height);
-  this.fill();
-
-  let [amplitude, frequency, lineColor, lineWidth] = wave.properties;
-
-  const drawCircle = (wave) => {
-
+  let [lineColor, backgroundColor, amplitude, frequency, lineWidth] = wave.properties;
+  
+  const drawBackground = () => {
     this.save();
-    this.beginPath();
-    this.arc(wave.x, wave.y, wave.radius, 0, Math.PI * 2);
-    this.fillStyle = wave.foreground;
-    this.globalAlpha = wave.alpha;
+    this.clearRect(0, 0, size.width, size.height);
+    this.fillStyle = backgroundColor.value;
+    this.rect(0, 0, size.width, size.height/2);
     // this.fill();
-    this.closePath();
     this.restore();
   };
 
-  const drawLine = (wave) => {
+  const drawLine = () => {
     this.save();
     let centerY = size.height/2;
-    let previousX = -1;
-    this.strokeStyle = wave.foreground.slice(0);
+    let previousX = -10;
+    this.strokeStyle = lineColor.value.slice(0);
     this.lineWidth = lineWidth.value;
     this.beginPath()
     this.moveTo(-lineWidth.value, centerY)
-    for (let i = 0; i < size.width; i++) {
-      if (i > previousX) {
-        this.lineTo(i, centerY + Math.sin(i * 0.01) * amplitude.value)
-      }
+    for (let i = 50; i < size.width - 50; i+=10) {
+        this.lineTo(i -10, centerY + Math.sin(i * 0.01) * amplitude.value)
     }
     this.fillStyle = "none";
+    // this.closePath();
     this.stroke()
     this.restore();
 
@@ -49,7 +41,8 @@ function renderWave(size, wave) {
     // }
   }
 
-  drawLine(wave);
+  drawBackground();
+  drawLine();
 }
 
 export default renderWave;

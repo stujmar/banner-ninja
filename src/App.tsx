@@ -79,6 +79,8 @@ function App() {
       console.log(property.attribute, name, property.value, value)
       if (property.attribute === name) {
         return {...property, value: value};
+      } else {
+        return property;
       }
     });
     console.log("new properties:", newProperties)

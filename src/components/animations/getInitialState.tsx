@@ -8,6 +8,18 @@ const getInitialState = (mode: string) => {
         radius: 15,
         properties: [
           {
+            label: "Line Color",
+            attribute: "lineColor",
+            type: "color",
+            value: "#475569"
+          },
+          {
+            label: "Background Color",
+            attribute: "backgroundColor",
+            type: "color",
+            value: "#cbd5e1"
+          },
+          {
             label: "Amplitude",
             attribute: "amplitude",
             type: "range",
@@ -24,12 +36,6 @@ const getInitialState = (mode: string) => {
             max: 0.5,
             value: 0.012,
             step: 0.001
-          },
-          {
-            label: "Line Color",
-            attribute: "lineColor",
-            type: "color",
-            value: "#000000"
           },
           {
             label: "Line Width",
