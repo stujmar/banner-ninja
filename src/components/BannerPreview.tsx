@@ -27,14 +27,16 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   }
   window.addEventListener('resize', handleResize)
 
-  useEffect(() => {
-    let updatedSettings = { ...settings }; // possibly sloppy.
-    updatedSettings.x = waveRef?.current?.x;
-    waveRef.current = updatedSettings;
-  }, [settings]);
+  // useEffect(() => {
+  //   let updatedSettings = { ...settings }; // possibly sloppy.
+  //   updatedSettings.x = waveRef?.current?.x;
+  //   waveRef.current = updatedSettings;
+  // }, [settings]);
 
   useEffect(() => {
     waveRef.current = getInitialState(mode);
+    // console.log("mode changed", mode);
+    // console.log(settings);
   }, [mode]);
 
   useEffect(() => {
@@ -68,7 +70,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     }
     updateWave(mode);
     if (waveRef.current?.mode  === "waves") {
-      renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
+      waveRef.current.increment = renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
     } else if (waveRef.current?.mode === "default") {
       renderDefault.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
     }
@@ -77,6 +79,10 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   const tick = () => {
     if (!canvasRef.current) return;
     renderFrame();
+    // console.log(waveRef.current, settings)
+    if (waveRef.current !== settings) {
+      // console.log("settings changed");
+    }
     requestAnimationFrame(tick);
   };
 

@@ -44,7 +44,7 @@ function App() {
       settings.properties.map((property: any) => {
         switch (property.type) {
           case "color":
-            return <ColorPicker key={property.label} attribute={property.attribute} label={property.label} onChange={handleSettingsChange} />
+            return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleSettingsChange} />
           case "range":
             return <Fader 
                       key={property.label} 
@@ -85,22 +85,21 @@ function App() {
       ...settings,
       properties: newProperties,
     });
+    // console.log(typeof settings, typeof settingsRef)
+    // console.log("before:", settings, settingsRef.current)
+    // settingsRef.current = {...settingsRef.current, properties: newProperties};
+    // console.log("after:", settings, settingsRef.current)
   }
 
   return (
     <div>
-        <BannerPreview mode={mode} settings={settings} titleSettings={titleSettings} />
+        <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} />
         <div className="container overflow-hidden max-w-6xl flex flex-col p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row */}
             <div className="flex items-start flex-wrap gap-4">
             <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
-              {/* <div className="flex flex-col gap-4">
-                {!!getInitialState(mode)?.foreground && <ColorPicker label={"foreground"} onChange={(e) => handleColorChange(e)} />}
-                <ColorPicker label={"background"} onChange={handleColorChange} />
-              </div> */}
             <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
-            {/* <Fader label="Test Fader" min={0} max={0} value={0} step={0} onChange={handleSettingsChange}/> */}
             {controls}
             </div>
           </div>

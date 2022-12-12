@@ -5,7 +5,7 @@ const getInitialState = (mode: string) => {
         mode: "waves",
         x: 0,
         y: 100,
-        radius: 15,
+        increment: 0,
         properties: [
           {
             label: "Line Color",
@@ -29,8 +29,17 @@ const getInitialState = (mode: string) => {
             step: 1
           },
           {
-            label: "Frequency",
-            attribute: "frequency",
+            label: "Line Width",
+            attribute: "lineWidth",
+            type: "range",
+            min: 0,
+            max: 24,
+            value: 12,
+            step: 3
+          },
+          {
+            label: "Wave Length",
+            attribute: "waveLength",
             type: "range",
             min: 0.01, 
             max: 0.1,
@@ -38,13 +47,13 @@ const getInitialState = (mode: string) => {
             step: 0.001
           },
           {
-            label: "Line Width",
-            attribute: "lineWidth",
+            label: "Frequency",
+            attribute: "frequency",
             type: "range",
-            min: 1,
-            max: 20,
-            value: 7.2,
-            step: 1
+            min: 0.01, 
+            max: 0.1,
+            value: 0.01,
+            step: 0.01
           },
         ],
         trails: 0.016,
