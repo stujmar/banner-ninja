@@ -27,11 +27,12 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   }
   window.addEventListener('resize', handleResize)
 
-  // useEffect(() => {
-  //   let updatedSettings = { ...settings }; // possibly sloppy.
-  //   updatedSettings.x = waveRef?.current?.x;
-  //   waveRef.current = updatedSettings;
-  // }, [settings]);
+  // This might be what is slowing everything down?
+  useEffect(() => {
+    let updatedSettings = { ...settings }; // possibly sloppy.
+    updatedSettings.x = waveRef?.current?.x;
+    waveRef.current = updatedSettings;
+  }, [settings]);
 
   useEffect(() => {
     waveRef.current = getInitialState(mode);

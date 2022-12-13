@@ -72,6 +72,7 @@ function App() {
 
   const handleSettingsChange = (e: any) => {
     let [name, value] = [e.target.name, e.target.value];
+    console.log(name, value)
     // update the properties array in the settings object
     let newProperties = settings.properties.map((property: any) => {
       if (property.attribute === name) {
