@@ -12,7 +12,7 @@ type ColorPickerProps = {
   attribute: string;
   label: string;
   value: string;
-  onChange: (color: {label: string, value: string}) => void;
+  onChange: (e: any) => void;
 }
 
 const ColorPicker = ({attribute, value, label, onChange}: ColorPickerProps) => {
@@ -21,8 +21,10 @@ const ColorPicker = ({attribute, value, label, onChange}: ColorPickerProps) => {
 
   const handleColorChange = (e: any) => {
     setActiveColor(attribute);
-    const changePayload: Payload = {target: {name: attribute, value: e.hex}};
-    onChange(changePayload);
+    // const changePayload: Payload = {target: {name: attribute, value: e.hex}};
+    // onChange(changePayload);
+    const payload = {target: {label: attribute, value: e.hex}};
+    onChange(payload);
     console.log(activeColor, attribute)
   }
 
