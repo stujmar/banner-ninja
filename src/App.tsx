@@ -72,8 +72,7 @@ function App() {
 
   const handleSettingsChange = (e: any) => {
     let [name, value] = [e.target.name, e.target.value];
-    console.log(name, value)
-    // update the properties array in the settings object
+    if(name !== "increment") {
     let newProperties = settings.properties.map((property: any) => {
       if (property.attribute === name) {
         return {...property, value: value};
@@ -81,20 +80,21 @@ function App() {
         return property;
       }
     });
-    let newSettings = {...settings, properties: newProperties}
     setSettings({
       ...settings,
       properties: newProperties,
     });
-    // console.log(typeof settings, typeof settingsRef)
-    // console.log("before:", settings, settingsRef.current)
-    // settingsRef.current = {...settingsRef.current, properties: newProperties};
-    // console.log("after:", settings, settingsRef.current)
+  } else {
+    setSettings({
+      ...settings,
+      increment: value,
+    });
+  }
   }
 
   return (
     <div>
-        <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} />
+        <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleSettingsChange}/>
         <div className="container overflow-hidden max-w-6xl flex flex-col p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row */}

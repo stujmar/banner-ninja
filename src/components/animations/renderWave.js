@@ -1,7 +1,10 @@
 function renderWave(size, wave) {
-  let [lineColor, backgroundColor, amplitude, lineWidth, waveLength, frequency] = wave.properties;
+  let [
+    lineColor, backgroundColor, 
+    amplitude, count, lineWidth, waveLength, frequency] = wave.properties;
   let increment = wave.increment;
-
+  let offset = 50;
+    // console.log(wave.increment, typeof wave.increment, frequency.value, typeof frequency.value)
   const drawBackground = () => {
     this.fillStyle = "none";
     this.save();
@@ -17,13 +20,13 @@ function renderWave(size, wave) {
       let centerY = size.height/2;
       this.strokeStyle = lineColor.value.slice(0);
       this.lineWidth = lineWidth.value;
-      for (let waveCount = 0 ; waveCount < 3; waveCount++) {
+      for (let waveCount = 0 ; waveCount < count.value; waveCount++) {
         this.beginPath()
         this.moveTo(-25, centerY)
         let previous = -200;
         for (let i = -10; i < size.width + 25; i+=1) {
           if (previous < i){
-            this.lineTo(i, (centerY - (waveCount*50) + 50) + Math.sin(i * waveLength.value + increment) * amplitude.value)
+            this.lineTo(i, (centerY - (waveCount*offset) + (count.value*(offset/2) - offset/2)) + Math.sin(i * waveLength.value + increment) * amplitude.value)
           }
           previous = i;
         }
@@ -35,8 +38,9 @@ function renderWave(size, wave) {
 
   drawBackground();
   drawLine();
-  increment += frequency.value;
-  return increment;
+  wave.increment += parseFloat(frequency.value);
+  // wave.increment += .2;
+  return wave;
 }
 
 export default renderWave;

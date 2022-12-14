@@ -11,9 +11,10 @@ type BannerPreviewProps = {
     text: string;
     isActive: boolean;
   }
+  updateSettings: (settings: any) => void;
 }
 
-const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => {
+const BannerPreview = ({ mode, settings, updateSettings, titleSettings}: BannerPreviewProps) => {
   const size = { width: screen.width, height: 256 };
   const requestIdRef: any = useRef(null);
   const canvasRef: any = useRef(null);
@@ -71,7 +72,8 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     }
     updateWave(mode);
     if (waveRef.current?.mode  === "waves") {
-      waveRef.current.increment = renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
+      waveRef.current = renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
+      // updateSettings({target:{value: waveRef.current?.increment, name: "increment"}})
     } else if (waveRef.current?.mode === "default") {
       renderDefault.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
     }

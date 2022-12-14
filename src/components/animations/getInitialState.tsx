@@ -29,6 +29,15 @@ const getInitialState = (mode: string) => {
             step: 1
           },
           {
+            label: "Count",
+            attribute: "Count",
+            type: "range",
+            min: 1, 
+            max: 8,
+            value: 3,
+            step: 1
+          },
+          {
             label: "Line Width",
             attribute: "lineWidth",
             type: "range",
