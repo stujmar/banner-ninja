@@ -6,17 +6,18 @@ import loadingGif from '../assets/loading.gif';
 import Tippy from '@tippyjs/react';
 
 type CodePreviewProps = {
-  color: string;
+  settings: any;
   idHash: string;
 }
 
-const CodePreview = ({color, idHash}: CodePreviewProps) => {
+const CodePreview = ({settings, idHash}: CodePreviewProps) => {
+  let [backgroundColor] = settings.properties
   const prefix = ` <canvas id="bannerCanvas_${idHash}" style="width: 100%; height:256px;"></canvas>
   <script>`
   const javaScriptBody = `
     const canvas = document.getElementById("bannerCanvas_${idHash}");
     const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "${color}";
+    ctx.fillStyle = "${backgroundColor.value}";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 `
   const suffix = `  </script>`
@@ -70,9 +71,7 @@ const CodePreview = ({color, idHash}: CodePreviewProps) => {
     } else {
       minifyCode();
     }
-  }, [color])
-
-  const minifyInfo = () => {}
+  }, [settings])
 
   return (
     <div className="w-full rounded-lg p-3 relative overflow-hidden border border-slate-300 shadow-md bg-white">

@@ -8,7 +8,7 @@ Also trying out a React/TypeScript/Vite build.
 ## Todo
 ----
 - [ ] Fix Edges of blur feature
-- [ ] Get default code preview working again.
+- [ ] Get conditional unpacking of code preview vars based on mode.
 - [ ] Fix messy issue with title.
 - [ ] Rough out Waves Code Preview.
 - [ ] Fix fill issue with wave on bg color change.

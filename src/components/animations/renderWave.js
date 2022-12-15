@@ -4,7 +4,6 @@ function renderWave(size, wave) {
     amplitude, count, lineWidth, waveLength, frequency] = wave.properties;
   let increment = wave.increment;
   let offset = 50;
-    // console.log(wave.increment, typeof wave.increment, frequency.value, typeof frequency.value)
   const drawBackground = () => {
     this.fillStyle = "none";
     this.save();
