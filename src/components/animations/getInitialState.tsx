@@ -6,6 +6,7 @@ const getInitialState = (mode: string) => {
         x: 0,
         y: 100,
         increment: 0,
+        blur: 0,
         properties: [
           {
             label: "Line Color",

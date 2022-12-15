@@ -52,11 +52,6 @@ const BannerPreview = ({ mode, settings, updateSettings, titleSettings}: BannerP
     }
   };
 
-  // Old news?
-  // const updateWidth = () => {
-  //   return window.innerWidth;
-  // }
-
   const establishContext = () => {
     canvasRef.current = document.getElementById('previewCanvas');
     const canvas = canvasRef.current;
@@ -111,7 +106,8 @@ const BannerPreview = ({ mode, settings, updateSettings, titleSettings}: BannerP
             </EditableTitle>
             }
         </div>
-        <canvas id="previewCanvas" ref={canvasRef} height="256" className="-z-10 absolute inset-0"></canvas>
+        <div style={{backdropFilter: `blur(${waveRef.current?.blur}px)`}} className="absolute -z-10 inset-0 bg-white/0"></div>
+        <canvas id="previewCanvas" ref={canvasRef} height="256" className="absolute -z-20 inset-0"></canvas>
     </div>
   );
 };

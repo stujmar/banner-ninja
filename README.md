@@ -7,12 +7,16 @@ Also trying out a React/TypeScript/Vite build.
 
 ## Todo
 ----
-- [ ] Get the default mode working again.
-- [ ] Get the wave animating in 'waves' mode.
+- [ ] Fix Edges of blur feature
+- [ ] Get default code preview working again.
 - [ ] Fix messy issue with title.
-- [ ] Fix weird scaling issue.
+- [ ] Rough out Waves Code Preview.
 - [ ] Fix fill issue with wave on bg color change.
 - [ ] Get some sort of donate button.
-- [ ] Get better system for conditional controls.
+- [ ] Fix issue with base vs nested property updates.
 - [ ] Rebuild color picker + pick better default colors.
+- [ ] Start Plasma Feature.
+- [ ] Start Orbs Feature.
+- [ ] Pick better font.
+- [ ] Look into two way binding error on blur.
 - [ ] Get app deployed on actual domain, update API gateway CORS address.

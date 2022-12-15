@@ -72,7 +72,7 @@ function App() {
 
   const handleSettingsChange = (e: any) => {
     let [name, value] = [e.target.name, e.target.value];
-    if(name !== "increment") {
+    if(name !== "increment" && name !== "blur") {
     let newProperties = settings.properties.map((property: any) => {
       if (property.attribute === name) {
         return {...property, value: value};
@@ -83,6 +83,11 @@ function App() {
     setSettings({
       ...settings,
       properties: newProperties,
+    });
+  } else if (name === "blur") {
+    setSettings({
+      ...settings,
+      blur: value,
     });
   } else {
     setSettings({
@@ -101,6 +106,15 @@ function App() {
             <div className="flex items-start flex-wrap gap-4">
             <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
             <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
+            <Fader 
+              label={"Blur"} 
+              attribute={"blur"}
+              min={0}
+              max={15}
+              step={1}
+              value={settings.blur}
+              onChange={handleSettingsChange}
+            />
             {controls}
             </div>
           </div>
