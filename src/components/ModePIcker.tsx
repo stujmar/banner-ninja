@@ -11,7 +11,7 @@ const ModePicker = ({onClick, mode}: ModePickerProps) => {
     }
     return (
         <div className="h-24 p-3 bg-white rounded-md border border-slate-300 shadow-md">
-            <p className="text-lg font-medium text-gray-800">Animation Mode</p>
+            <p className="text-lg font-nunito font-bold text-gray-800">Animation Mode</p>
             <div className="flex gap-2 mt-4">
                 <div className="flex items-center">
                     <input checked={ mode == "default" } id="default-radio-1" onChange={(e) => handleChange(e)} type="radio" value="default" name="mode-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>

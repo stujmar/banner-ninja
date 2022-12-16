@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-nunito {
+  font-family: 'Nunito', sans-serif;
+}
+
 body {
   overflow: hidden;
   background-color: #f8fafc;

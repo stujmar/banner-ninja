@@ -114,7 +114,7 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
         {isLoading && <div className="absolute h-full w-full z-20 inset-0 bg-slate-50 flex justify-center items-center">
           <img className="opacity-50 w-16" src={loadingGif} />
         </div>}
-        <div className="relative border border-slate-300 rounded-md overflow-hidden">
+        <div className="relative border font-mono border-slate-300 rounded-md overflow-hidden">
         <SyntaxHighlighter language="javascript" style={docco}>
         {displayCode}
         </SyntaxHighlighter>
