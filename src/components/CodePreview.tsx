@@ -4,6 +4,7 @@ import axios from 'axios';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import loadingGif from '../assets/loading.gif';
 import Tippy from '@tippyjs/react';
+import getCodePreview from './animations/getCodePreview';
 
 type CodePreviewProps = {
   settings: any;
@@ -11,6 +12,7 @@ type CodePreviewProps = {
 }
 
 const CodePreview = ({settings, idHash}: CodePreviewProps) => {
+  getCodePreview(settings, idHash);
   let [backgroundColor] = settings.properties
   const prefix = ` <canvas id="bannerCanvas_${idHash}" style="width: 100%; height:256px;"></canvas>
   <script>`
