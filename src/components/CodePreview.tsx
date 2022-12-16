@@ -79,7 +79,7 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
     <div className="w-full rounded-lg p-3 relative overflow-hidden border border-slate-300 shadow-md bg-white">
         <div className="flex justify-between items-end w-full">
           <div className="flex items-end gap-4">
-          <div className="text-slate-800 font-medium text-lg">Code Preview</div>
+          <div className="text-slate-800 font-nunito font-bold text-lg">Code Preview</div>
           <label className="flex">
               <input
                 className="mr-2"
@@ -88,7 +88,7 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
                 onChange={()=>{setIsMinified(!isMinified)}}
                 />
               <div className="flex gap-1 items">
-                <span className="-ml-1 text-slate-900">Minify</span>
+                <span className="font-nunito font-medium -ml-1 text-slate-900">Minify</span>
                 <Tippy placement="right" theme="material" content={
                   <div className="text-sm leading-3 w-max font-medium text-red-800">
                     <span>For best performance </span><br />

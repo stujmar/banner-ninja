@@ -21,8 +21,6 @@ const ColorPicker = ({attribute, value, label, onChange}: ColorPickerProps) => {
 
   const handleColorChange = (e: any) => {
     setActiveColor(attribute);
-    // const changePayload: Payload = {target: {name: attribute, value: e.hex}};
-    // onChange(changePayload);
     const payload = {target: {name: attribute, value: e.hex}};
     onChange(payload);
     console.log(activeColor, attribute)
@@ -31,7 +29,7 @@ const ColorPicker = ({attribute, value, label, onChange}: ColorPickerProps) => {
 
   return (
     <div className="bg-white p-3 border border-slate-300 rounded-md shadow-md">
-      <div className="text-gray-800 font-medium text-lg font-medium">{label.slice(0,1).toUpperCase() + label.slice(1)}</div>
+      <div className="text-gray-800 font-nunito font-bold text-lg">{label.slice(0,1).toUpperCase() + label.slice(1)}</div>
       <div className="w-full p-2"></div>
       <CirclePicker 
         color={value}
