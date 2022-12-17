@@ -62,14 +62,6 @@ function App() {
     )
   }, [settings]);
 
-  const handleColorChange = (newColor: {label: string, value: string}) => {
-    let labelString: string = newColor.label.toLowerCase();
-    setSettings({
-      ...settings,
-      [labelString]: newColor.value,
-    });
-  }
-
   const handleSettingsChange = (e: any) => {
     let [name, value] = [e.target.name, e.target.value];
     if(name !== "increment" && name !== "blur") {
@@ -98,23 +90,28 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="pb-24">
         <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleSettingsChange}/>
-        <div className="container overflow-hidden max-w-6xl flex flex-col p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
+        <div className="container max-w-6xl p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row */}
-            <div className="flex items-start flex-wrap gap-4">
-            <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
-            <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
-            <Fader 
-              label={"Blur"} 
-              attribute={"blur"}
-              min={0}
-              max={15}
-              step={1}
-              value={settings.blur}
-              onChange={handleSettingsChange}
-            />
+            <div className="relative mt-3 p-4 flex flex-wrap items-start gap-3 border-2 border-slate-400 rounded-lg w-full">
+              <div className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 px-2 bg-slate-50">General Settings</div>
+              <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
+              <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
+              <Fader 
+                label={"Blur"} 
+                attribute={"blur"}
+                min={0}
+                max={15}
+                step={1}
+                value={settings.blur}
+                onChange={handleSettingsChange}
+              />
+            </div>
+            {/* Mode Specific Settings */}
+            <div className="relative mt-6 p-4 flex items-start flex-wrap gap-3 border-2 border-slate-400 rounded-lg w-full">
+              <div className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 px-2 bg-slate-50">{mode.charAt(0).toUpperCase() + mode.slice(1)} Settings</div>
             {controls}
             </div>
           </div>
