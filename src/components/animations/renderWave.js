@@ -1,9 +1,9 @@
 function renderWave(size, wave) {
   let [
     lineColor, backgroundColor, 
-    amplitude, count, lineWidth, waveLength, frequency] = wave.properties;
+    amplitude, count, countOffset, lineWidth, waveLength, frequency] = wave.properties;
   let increment = wave.increment;
-  let offset = 50;
+  let offset = countOffset.value;
   const drawBackground = () => {
     this.fillStyle = "none";
     this.save();

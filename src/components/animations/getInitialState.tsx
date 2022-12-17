@@ -39,13 +39,22 @@ const getInitialState = (mode: string) => {
             step: 1
           },
           {
+            label: "Count Offset",
+            attribute: "Count Offest",
+            type: "range",
+            min: 10, 
+            max: 100,
+            value: 50,
+            step: 5
+          },
+          {
             label: "Line Width",
             attribute: "lineWidth",
             type: "range",
             min: 0,
-            max: 24,
+            max: 36,
             value: 12,
-            step: 3
+            step: 4
           },
           {
             label: "Wave Length",
