@@ -103,7 +103,7 @@ function App() {
                 label={"Blur"} 
                 attribute={"blur"}
                 min={0}
-                max={15}
+                max={14}
                 step={1}
                 value={settings.blur}
                 onChange={handleSettingsChange}
