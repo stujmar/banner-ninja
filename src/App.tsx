@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import BannerPreview from './components/BannerPreview';
 import ColorPicker from './components/ColorPicker';
 import CodePreview from './components/CodePreview';
-import ModePicker from './components/ModePIcker';
+import ModePicker from './components/ModePicker';
 import getInitialState from './components/animations/getInitialState';
 import ToggleButton from './components/ToggleButton';
 import Fader from './components/Fader';

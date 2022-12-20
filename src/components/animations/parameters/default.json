@@ -1,0 +1,11 @@
+{
+    "mode": "default",
+    "properties": [
+      {
+        "label": "Color",
+        "attribute": "background",
+        "type": "color",
+        "value": "#cbd5e1"
+      }
+    ]
+}

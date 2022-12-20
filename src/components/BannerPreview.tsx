@@ -37,8 +37,6 @@ const BannerPreview = ({ mode, settings, updateSettings, titleSettings}: BannerP
 
   useEffect(() => {
     waveRef.current = getInitialState(mode);
-    // console.log("mode changed", mode);
-    // console.log(settings);
   }, [mode]);
 
   useEffect(() => {
@@ -98,7 +96,7 @@ const BannerPreview = ({ mode, settings, updateSettings, titleSettings}: BannerP
                 ref={inputRef}
                 type="text"
                 name="task"
-                className="text-4xl font-bold text-gray-800 bg-transparent focus:outline-none"
+                className="text-4xl font-nunito font-bold text-gray-900 bg-transparent focus:outline-none"
                 placeholder="Banner Ninja"
                 value={task}
                 onChange={e => setTask(e.target.value)}

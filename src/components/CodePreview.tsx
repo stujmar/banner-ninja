@@ -4,7 +4,7 @@ import axios from 'axios';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import loadingGif from '../assets/loading.gif';
 import Tippy from '@tippyjs/react';
-import getCodePreview from './animations/getCodePreview';
+import getCodePreview from './codePreviews/getCodePreview';
 
 type CodePreviewProps = {
   settings: any;
