@@ -46,14 +46,10 @@ function App() {
           case "color":
             return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleSettingsChange} />
           case "range":
+            console.log(property);
             return <Fader 
                       key={property.label} 
-                      label={property.label} 
-                      attribute={property.attribute}
-                      min={property.min}
-                      max={property.max}
-                      step={property.step}
-                      value={property.value}
+                      settings={property}
                       onChange={handleSettingsChange} />
           default:
             break;
@@ -99,13 +95,16 @@ function App() {
               <div className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 px-2 bg-slate-50">General Settings</div>
               <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
               <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
-              <Fader 
-                label={"Blur"} 
-                attribute={"blur"}
-                min={0}
-                max={14}
-                step={1}
-                value={settings.blur}
+              <Fader
+                settings={{
+                  attribute: "blur",
+                  label: "Blur",
+                  min: 0,
+                  max: 14,
+                  step: 1,
+                  value: settings.blur,
+                  invert: false,
+                }}
                 onChange={handleSettingsChange}
               />
             </div>
