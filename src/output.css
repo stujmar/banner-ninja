@@ -1044,6 +1044,10 @@ body {
   background-color: #f8fafc;
 }
 
+.rtl {
+  direction: rtl;
+}
+
 .circle-picker span div span div {
   border: 1px solid #94a3b8;
 }
