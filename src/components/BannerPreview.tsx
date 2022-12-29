@@ -80,7 +80,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   };
 
   return (
-    <div id="bannerParent" className="h-64 bg-transparent relative">
+    <div id="bannerParent" className="h-64 bg-transparent relative overflow-hidden">
         <div className="flex justify-center items-center w-full h-full">
           { titleSettings.isActive && 
           <EditableTitle
