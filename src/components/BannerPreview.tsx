@@ -4,17 +4,7 @@ import renderWave from './animations/renderWave';
 import getInitialState from './animations/getInitialState';
 import renderDefault from './animations/renderDefault';
 
-type BannerPreviewProps = {
-  mode: string,
-  settings: any,
-  titleSettings: {
-    text: string;
-    isActive: boolean;
-  }
-  updateSettings: (settings: any) => void;
-}
-
-type settings = {
+interface Setting {
   mode: string,
   x: number,
   y: number,
@@ -22,6 +12,17 @@ type settings = {
   blur: number
   properties: any[]
 }
+
+type BannerPreviewProps = {
+  mode: string,
+  settings: Setting,
+  titleSettings: {
+    text: string;
+    isActive: boolean;
+  }
+  updateSettings: (settings: any) => void;
+}
+
 
 const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => {
   const size = { width: screen.width, height: 256 };

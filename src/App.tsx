@@ -9,10 +9,10 @@ import Fader from './components/Fader';
 
 function App() {
   // let canvas: any, ctx: any;
-  const settingsRef = useRef(null);
   // const [initalized, setInitalized] = useState(false);
   const [mode, setMode] = useState("default");
   const [settings, setSettings] = useState<any>(getInitialState(mode));
+  const settingsRef = useRef(settings);
   const [titleSettings, setTitleSettings] = useState({
     text: "Banner Ninja",
     isActive: true,
