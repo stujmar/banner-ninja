@@ -14,6 +14,15 @@ type BannerPreviewProps = {
   updateSettings: (settings: any) => void;
 }
 
+type settings = {
+  mode: string,
+  x: number,
+  y: number,
+  increment: number,
+  blur: number
+  properties: any[]
+}
+
 const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => {
   const size = { width: screen.width, height: 256 };
   const requestIdRef: any = useRef(null);

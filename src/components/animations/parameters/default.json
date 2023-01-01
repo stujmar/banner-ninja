@@ -5,7 +5,8 @@
         "label": "Color",
         "attribute": "background",
         "type": "color",
-        "value": "#cbd5e1"
+        "value": "#cbd5e1",
+        "blur": 0
       }
     ]
 }
