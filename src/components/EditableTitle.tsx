@@ -41,7 +41,7 @@ const EditableTitle = ({ text, type, placeholder, children, childRef}: EditableT
         </div>
       ) : (
         <div
-          className={`font-nunito font-bold editable-${type}`}
+          className={`editable-${type}`}
           onClick={() => setEditing(true)}
         >
           <span className="text-4xl font-nunito font-bold text-gray-800 w-12">

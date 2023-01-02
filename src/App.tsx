@@ -8,8 +8,7 @@ import ToggleButton from './components/ToggleButton';
 import Fader from './components/Fader';
 
 function App() {
-  // let canvas: any, ctx: any;
-  // const [initalized, setInitalized] = useState(false);
+
   const [mode, setMode] = useState("default");
   const [settings, setSettings] = useState<any>(getInitialState(mode));
   const settingsRef = useRef(settings);
@@ -19,7 +18,9 @@ function App() {
   });
   const [controls, setControls] = useState([]);
 
-  // Set an id for the banner preview
+  /**
+   * Generate a random hash id for the banner preview
+   */
   const idHash = useMemo(() => {
     return Math.random().toString(36).substring(2, 6) + Math.random().toString(36).substring(2, 6)
   }, []);
@@ -36,7 +37,7 @@ function App() {
     setSettings(getInitialState(mode));
   }
 
-  // useEffect to update settings
+  // Update settings.
   useEffect(() => {
     settingsRef.current = settings;
     setControls(
