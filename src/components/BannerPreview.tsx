@@ -29,14 +29,14 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   const requestIdRef: any = useRef(null);
   const canvasRef: any = useRef(null);
   const contextRef: any = useRef(null);
-  const waveRef = useRef(getInitialState(mode));
+  const waveRef: any = useRef(getInitialState(mode));
   const inputRef = React.createRef<HTMLInputElement>();
   const [task, setTask] = useState("");
 
   function handleResize() {
     establishContext();
   }
-  window.addEventListener('resize', handleResize)
+  window.addEventListener('resize', handleResize);
 
   // This might be what is slowing everything down?
   useEffect(() => {
