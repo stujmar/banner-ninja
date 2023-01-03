@@ -94,7 +94,7 @@ function App() {
             {/* Top Row */}
             <div className="relative mt-3 p-4 flex flex-wrap items-start gap-3 border-2 border-slate-400 rounded-lg w-full">
               <div className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 px-2 bg-slate-50">General Settings</div>
-              <ModePicker mode={mode} onClick={(e) => {handleModeChange(e)}} />
+              <ModePicker mode={mode} onClick={(e: any) => {handleModeChange(e)}} />
               <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
               <Fader
                 settings={{
