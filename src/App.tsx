@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import BannerPreview from './components/BannerPreview';
 import ColorPicker from './components/ColorPicker';
 import CodePreview from './components/CodePreview';
-import ModePicker from './components/ModePicker';
+import ModeSwitcher from './components/ModeSwitcher';
 import getInitialState from './components/animations/getInitialState';
 import ToggleButton from './components/ToggleButton';
 import Fader from './components/Fader';
@@ -94,7 +94,7 @@ function App() {
             {/* Top Row */}
             <div className="relative mt-3 p-4 flex flex-wrap items-start gap-3 border-2 border-slate-400 rounded-lg w-full">
               <div className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 px-2 bg-slate-50">General Settings</div>
-              <ModePicker mode={mode} onClick={(e: any) => {handleModeChange(e)}} />
+              <ModeSwitcher mode={mode} onClick={(e: any) => {handleModeChange(e)}} />
               <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
               <Fader
                 settings={{
