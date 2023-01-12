@@ -6,10 +6,7 @@ type FaderProps = {
 };
 
 const Fader = ({settings, onChange}: FaderProps) => {
-  // attribute, label, min, max, value, step
-  console.log("settings:", settings)
   const { attribute, label, min, max, value, step, invert } = settings;
-  console.log(invert,"invert is true");
   const handleChange = (e: any) => {
     onChange({target: {name: attribute, value: e.target.value}});
   }
