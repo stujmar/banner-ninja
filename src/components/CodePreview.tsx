@@ -28,6 +28,7 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isMinified, setIsMinified] = useState(false);
   const [displayCode, setDisplayCode] = useState(`${prefix}${javaScriptBody}${suffix}`);
+  const [newDisplayCode, setNewDisplayCode] = useState("bort");
 
   const copyToClipboard = () => {
     setIsCopying(true);
@@ -68,6 +69,7 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
   }, [isMinified]);
 
   useEffect(() => { // update code on color change
+    setNewDisplayCode(getCodePreview(settings, idHash));
     if (!isMinified) {
       setDisplayCode(`${prefix}${javaScriptBody}${suffix}`);
     } else {
@@ -119,6 +121,7 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
         {displayCode}
         </SyntaxHighlighter>
         </div>
+        {newDisplayCode}
       </div>
     </div>
   );

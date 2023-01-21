@@ -1,5 +1,6 @@
 const getCodePreview = (settings: any, hashId: string) => {
   console.log("generating code preview for:", settings.mode, hashId);
+  console.log(settings);
   switch (settings.mode) {
     case "wave":
       return generateWaveCodePreview(settings, hashId);

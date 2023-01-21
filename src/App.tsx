@@ -47,7 +47,6 @@ function App() {
           case "color":
             return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleSettingsChange} />
           case "range":
-            console.log(property);
             return <Fader 
                       key={property.label} 
                       settings={property}
@@ -88,6 +87,7 @@ function App() {
 
   return (
     <div className="pb-24">
+      
         <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleSettingsChange}/>
         <div className="container max-w-6xl p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
@@ -118,6 +118,7 @@ function App() {
           <div className="p-2"></div>
           {/* Code Preview */}
           <CodePreview idHash={idHash} settings={settings} />
+        <div className="p-2 bg-green-100 text-blue-900">app level mode: {mode}</div>
         </div>
     </div>
   )
