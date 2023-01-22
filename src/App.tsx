@@ -12,6 +12,8 @@ function App() {
   const [mode, setMode] = useState("default");
   const [settings, setSettings] = useState<any>(getInitialState(mode));
   const settingsRef = useRef(settings);
+  const [toggleGeneralSettings, setToggleGeneralSettings] = useState(true);
+  const [toggleModeSettings, setToggleModeSettings] = useState(true);
   const [titleSettings, setTitleSettings] = useState({
     text: "Banner Ninja",
     isActive: true,
@@ -36,6 +38,14 @@ function App() {
     setMode(mode);
     setSettings(getInitialState(mode));
   }
+
+  const toggleSettingsVisibility = (setting: string) => {
+    if (setting === "general") {
+      setToggleGeneralSettings(!toggleGeneralSettings);
+    } else {
+      setToggleModeSettings(!toggleModeSettings);
+    }
+  };
 
   // Update settings.
   useEffect(() => {
@@ -92,10 +102,16 @@ function App() {
         <div className="container max-w-6xl p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row - Border Element */}
-            <div className="relative mt-3 p-4 border-2 border-slate-400 rounded-lg w-full">
-              <div className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 px-2 bg-slate-50">General Settings</div>
+            <div className="relative mt-3 px-1 py-3 sm:p-4 sm:border-2 border-slate-400 rounded-lg w-full">
+            <div className="sm:hidden -top-1 absolute w-11/12 border-t-2 border-slate-400"></div>
+              <button onClick={() => toggleSettingsVisibility("general")} className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 pr-2 sm:px-2 bg-slate-50">General Settings</button>
+              <button onClick={() => toggleSettingsVisibility("general")} className="absolute select-none focus:outline-none pt-px -top-3.5 right-0 sm:right-3 px-1 bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 stroke-slate-500 transition duration-100 ${toggleGeneralSettings ? "" : "-rotate-90"}`}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </button>
               {/* General Settings Grid */}
-              <div className="flex flex-wrap items-start gap-3 module-border sm:no-module-border">
+              {toggleGeneralSettings ? <div className="flex flex-wrap items-start gap-3 module-border sm:no-module-border">
                 <ModeSwitcher mode={mode} onClick={(e: any) => {handleModeChange(e)}} />
                 <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
                 <Fader
@@ -111,15 +127,22 @@ function App() {
                   onChange={handleSettingsChange}
                 />
 
-              </div>
+              </div> : null}
             </div>
             {/* Mode Specific Settings */}
-            <div className="relative mt-6 p-4 flex items-start flex-wrap gap-3 border-2 border-slate-400 rounded-lg w-full">
-              <div className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 px-2 bg-slate-50">{mode.charAt(0).toUpperCase() + mode.slice(1)} Settings</div>
+            <div className="relative mt-4 sm:mt-6 px-1 py-3 sm:p-4 sm:border-2 border-slate-400 rounded-lg w-full">
+            <div className="sm:hidden -top-1 absolute w-11/12 border-t-2 border-slate-400"></div>
+              <button onClick={() => toggleSettingsVisibility("mode")} className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 pr-2 sm:px-2 bg-slate-50">{mode.charAt(0).toUpperCase() + mode.slice(1)} Settings</button>
+              <button onClick={() => toggleSettingsVisibility("mode")} className="absolute select-none focus:outline-none pt-px -top-3.5 right-0 sm:right-3 px-1 bg-slate-50">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 stroke-slate-500 transition duration-100 ${toggleModeSettings ? "" : "-rotate-90"}`}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+              </button>
               {/* Mode Settings Grid */}
+              {toggleModeSettings ?
               <div className="flex flex-wrap items-start gap-3 module-border sm:no-module-border">
                 {controls}
-              </div>
+              </div> : null}
             </div>
           </div>
           <div className="p-2"></div>
