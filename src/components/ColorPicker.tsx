@@ -28,7 +28,7 @@ const ColorPicker = ({attribute, value, label, onChange}: ColorPickerProps) => {
 
 
   return (
-    <div className="bg-white p-3 border border-slate-300 rounded-md shadow-md">
+    <div className="sm:module-border">
       <div className="text-gray-800 font-nunito font-bold text-lg">{label.slice(0,1).toUpperCase() + label.slice(1)}</div>
       <div className="w-full p-2"></div>
       <CirclePicker 

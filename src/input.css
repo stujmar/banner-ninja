@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .module-border {
+    @apply p-3 bg-white rounded-md border border-slate-300 shadow-md
+  }
+  .no-module-border {
+    @apply p-0 border-none bg-transparent rounded-none shadow-none
+  }
+}
+
 * {
   box-sizing: border-box;
 }

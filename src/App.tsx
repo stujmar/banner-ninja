@@ -91,28 +91,35 @@ function App() {
         <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleSettingsChange}/>
         <div className="container max-w-6xl p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
-            {/* Top Row */}
-            <div className="relative mt-3 p-4 flex flex-wrap items-start gap-3 border-2 border-slate-400 rounded-lg w-full">
+            {/* Top Row - Border Element */}
+            <div className="relative mt-3 p-4 border-2 border-slate-400 rounded-lg w-full">
               <div className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 px-2 bg-slate-50">General Settings</div>
-              <ModeSwitcher mode={mode} onClick={(e: any) => {handleModeChange(e)}} />
-              <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
-              <Fader
-                settings={{
-                  attribute: "blur",
-                  label: "Blur",
-                  min: 0,
-                  max: 14,
-                  step: 1,
-                  value: settings.blur,
-                  invert: false,
-                }}
-                onChange={handleSettingsChange}
-              />
+              {/* General Settings Grid */}
+              <div className="flex flex-wrap items-start gap-3 module-border sm:no-module-border">
+                <ModeSwitcher mode={mode} onClick={(e: any) => {handleModeChange(e)}} />
+                <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
+                <Fader
+                  settings={{
+                    attribute: "blur",
+                    label: "Blur",
+                    min: 0,
+                    max: 14,
+                    step: 1,
+                    value: settings.blur,
+                    invert: false,
+                  }}
+                  onChange={handleSettingsChange}
+                />
+
+              </div>
             </div>
             {/* Mode Specific Settings */}
             <div className="relative mt-6 p-4 flex items-start flex-wrap gap-3 border-2 border-slate-400 rounded-lg w-full">
               <div className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 px-2 bg-slate-50">{mode.charAt(0).toUpperCase() + mode.slice(1)} Settings</div>
-            {controls}
+              {/* Mode Settings Grid */}
+              <div className="flex flex-wrap items-start gap-3 module-border sm:no-module-border">
+                {controls}
+              </div>
             </div>
           </div>
           <div className="p-2"></div>
