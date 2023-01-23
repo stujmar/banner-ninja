@@ -6,6 +6,7 @@ import ModeSwitcher from './components/ModeSwitcher';
 import getInitialState from './components/animations/getInitialState';
 import ToggleButton from './components/ToggleButton';
 import Fader from './components/Fader';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -148,7 +149,8 @@ function App() {
           <div className="p-2"></div>
           {/* Code Preview */}
           <CodePreview idHash={idHash} settings={settings} />
-        <div className="p-2 bg-green-100 text-blue-900">app level mode: {mode}</div>
+        {/* <div className="p-2 bg-green-100 text-blue-900">app level mode: {mode}</div> */}
+        <Footer text="Created by Stuart John Marsh" />
         </div>
     </div>
   )
