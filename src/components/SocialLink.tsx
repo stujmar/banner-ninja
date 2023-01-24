@@ -3,7 +3,7 @@ import React from 'react';
 type SocialLinkProps = {
     text: string;
     url: string;
-    svg: Element;
+    svg: string;
 };
 
 const SocialLink = ({text, svg, url}: SocialLinkProps) => {
