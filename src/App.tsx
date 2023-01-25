@@ -149,7 +149,6 @@ function App() {
           <div className="p-2"></div>
           {/* Code Preview */}
           <CodePreview idHash={idHash} settings={settings} />
-        {/* <div className="p-2 bg-green-100 text-blue-900">app level mode: {mode}</div> */}
         <Footer text="Created by Stuart John Marsh" />
         </div>
     </div>

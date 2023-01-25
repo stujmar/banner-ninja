@@ -23,7 +23,6 @@ const ColorPicker = ({attribute, value, label, onChange}: ColorPickerProps) => {
     setActiveColor(attribute);
     const payload = {target: {name: attribute, value: e.hex}};
     onChange(payload);
-    console.log(activeColor, attribute)
   }
 
 

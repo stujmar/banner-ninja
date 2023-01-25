@@ -1,8 +1,10 @@
+import { generateWaveCodePreview } from "./getWaveCodePreview";
+import { generateBokehCodePreview } from "./getBokehCodePreview";
+import { generatePlasmaCodePreview } from "./getPlasmaCodePreview";
+
 const getCodePreview = (settings: any, hashId: string) => {
-  console.log("generating code preview for:", settings.mode, hashId);
-  console.log(settings);
   switch (settings.mode) {
-    case "wave":
+    case "waves":
       return generateWaveCodePreview(settings, hashId);
     case "bokeh":
       return generateBokehCodePreview(settings, hashId);
@@ -12,17 +14,5 @@ const getCodePreview = (settings: any, hashId: string) => {
       return "default";
   }
 }
-
-const generateWaveCodePreview = (settings: any, hashId: string) => {
-  return "waveCode";
-};
-
-const generateBokehCodePreview = (settings: any, hashId: string) => {
-  return "bokehCode";
-};
-
-const generatePlasmaCodePreview = (settings: any, hashId: string) => {
-  return "plasmaCode";
-};
 
 export default getCodePreview;
