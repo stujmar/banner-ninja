@@ -1,5 +1,7 @@
 {
     "mode": "default",
+    "blur": 0,
+    "height": 256,
     "properties": [
       {
         "label": "Color",

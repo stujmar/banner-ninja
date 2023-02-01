@@ -56,12 +56,12 @@ function App() {
       settings.properties.map((property: any) => {
         switch (property.type) {
           case "color":
-            return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleSettingsChange} />
+            return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handlePropertyChange} />
           case "range":
             return <Fader 
                       key={property.label} 
                       settings={property}
-                      onChange={handleSettingsChange} />
+                      onChange={handlePropertyChange} />
           default:
             break;
         }
@@ -69,7 +69,7 @@ function App() {
     )
   }, [settings]);
 
-  const handleSettingsChange = (e: any) => {
+  const handlePropertyChange = (e: any) => {
     let [name, value] = [e.target.name, e.target.value];
     if(name !== "increment" && name !== "blur") {
     let newProperties = settings.properties.map((property: any) => {
@@ -96,10 +96,19 @@ function App() {
   }
   }
 
+  const handleSettingsChange = (e: any) => {
+    // console.log(e.target.name, e.target.value);
+    let [name, value] = [e.target.name, e.target.value];
+    setSettings({
+      ...settings,
+      [name]: value,
+    });
+  }
+
   return (
     <div className="pb-24">
       
-        <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleSettingsChange}/>
+        <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handlePropertyChange}/>
         <div className="container max-w-6xl p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row - Border Element */}
@@ -122,7 +131,19 @@ function App() {
                     min: 0,
                     max: 14,
                     step: 1,
-                    value: settings.blur,
+                    value: settingsRef.current.blur,
+                    invert: false,
+                  }}
+                  onChange={handleSettingsChange}
+                />
+                <Fader
+                  settings={{
+                    attribute: "height",
+                    label: "Height",
+                    min: 128,
+                    max: 1024,
+                    step: 8,
+                    value: settingsRef.current.height,
                     invert: false,
                   }}
                   onChange={handleSettingsChange}

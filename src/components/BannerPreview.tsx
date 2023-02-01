@@ -32,6 +32,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   const waveRef: any = useRef(getInitialState(mode));
   const inputRef = React.createRef<HTMLInputElement>();
   const [task, setTask] = useState("");
+  const [height, setHeight] = useState(256);
 
   function handleResize() {
     establishContext();
@@ -43,6 +44,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     let updatedSettings = { ...settings }; // possibly sloppy.
     updatedSettings.x = waveRef?.current?.x;
     waveRef.current = updatedSettings;
+    setHeight(waveRef.current.height);
   }, [settings]);
 
   useEffect(() => {
@@ -64,10 +66,15 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     canvasRef.current = document.getElementById('previewCanvas');
     const canvas = canvasRef.current;
     canvas.width = screen.width;
-    canvas.height = 256;
+    console.log(waveRef.current.height)
+    canvas.height = height;
     const context = canvas.getContext('2d');
     contextRef.current = context;
   };
+
+  useEffect(() => {
+    establishContext();
+  },[height])
 
   const renderFrame = () => {
     if (!contextRef.current) {
@@ -90,7 +97,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   };
 
   return (
-    <div id="bannerParent" className="h-64 bg-transparent relative overflow-hidden">
+    <div id="bannerParent" style={{height: height + "px"}} className="bg-transparent relative overflow-hidden">
         <div className="flex justify-center items-center w-full h-full">
           { titleSettings.isActive && 
           <EditableTitle
@@ -112,7 +119,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
             }
         </div>
         <div style={{backdropFilter: `blur(${waveRef.current?.blur}px)`}} className="absolute -z-10 inset-0 bg-white/0"></div>
-        <canvas id="previewCanvas" ref={canvasRef} height="256" className="absolute -z-20 inset-0"></canvas>
+        <canvas id="previewCanvas" ref={canvasRef} className="absolute -z-20 inset-0"></canvas>
     </div>
   );
 };
