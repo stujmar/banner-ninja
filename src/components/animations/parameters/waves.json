@@ -2,9 +2,9 @@
     "mode": "waves",
     "x": 0,
     "y": 100,
-    "increment": 0,
     "blur": 0,
     "height": 256,
+    "increment": 0,
     "properties": [
     {
         "label": "Line Color",

@@ -141,7 +141,7 @@ function App() {
                     attribute: "height",
                     label: "Height",
                     min: 128,
-                    max: 1024,
+                    max: 512,
                     step: 8,
                     value: settingsRef.current.height,
                     invert: false,

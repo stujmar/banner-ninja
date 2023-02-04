@@ -7,16 +7,16 @@ function renderWave(size, wave) {
   const drawBackground = () => {
     this.fillStyle = "none";
     this.save();
-      this.clearRect(0, 0, size.width, size.height);
+      this.clearRect(0, 0, size.width, wave.height);
       this.fillStyle = backgroundColor.value;
-      this.fillRect(0, 0, size.width, size.height);
+      this.fillRect(0, 0, size.width, wave.height);
     this.restore();
   };
 
   const drawLine = () => {
     
     this.save();
-      let centerY = size.height/2;
+      let centerY = wave.height/2;
       this.strokeStyle = lineColor.value.slice(0);
       this.lineWidth = lineWidth.value;
       for (let waveCount = 0 ; waveCount < count.value; waveCount++) {
