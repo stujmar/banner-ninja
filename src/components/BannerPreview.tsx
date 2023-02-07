@@ -66,7 +66,6 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     canvasRef.current = document.getElementById('previewCanvas');
     const canvas = canvasRef.current;
     canvas.width = screen.width;
-    console.log(waveRef.current.height, canvas.height, height)
     canvas.height = waveRef.current.height;
     const context = canvas.getContext('2d');
     contextRef.current = context;
