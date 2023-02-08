@@ -52,16 +52,15 @@ function App() {
   useEffect(() => {
     settingsRef.current = settings;
     setControls(
-
       settings.properties.map((property: any) => {
         switch (property.type) {
           case "color":
-            return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handlePropertyChange} />
+            return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleChangeRouter} />
           case "range":
             return <Fader 
                       key={property.label} 
                       settings={property}
-                      onChange={handlePropertyChange} />
+                      onChange={handleChangeRouter} />
           default:
             break;
         }
@@ -69,9 +68,11 @@ function App() {
     )
   }, [settings]);
 
-  const handlePropertyChange = (e: any) => {
-    let [name, value] = [e.target.name, e.target.value];
-    if(name !== "increment" && name !== "blur") {
+  const handleBaseChange = (name: string, value: number) => {
+    console.log("base change", name, value);
+  };
+
+  const handlePropertyChange = (name: string, value: number) => {
     let newProperties = settings.properties.map((property: any) => {
       if (property.attribute === name) {
         return {...property, value: value};
@@ -79,6 +80,43 @@ function App() {
         return property;
       }
     });
+    setSettings({
+      ...settings,
+      properties: newProperties,
+    });
+  };
+
+  const handleAnimationChange = (name: string, value: number) => {
+    let [attribute, aniType] = [name.split("-")[0], name.split("-")[1]];
+
+    let newProperties = settings.properties.map((property: any) => {
+      if (property.attribute === attribute) {
+        let newAnimation =  {
+          "isActive": true,
+          "min": aniType == "min" ? value : property.animation.min,
+          "max": aniType == "max" ? value : property.animation.max,
+        }
+        return {...property, animation: newAnimation};
+      } else {
+        return property;
+      }
+    });
+    setSettings({
+      ...settings,
+      properties: newProperties,
+    });
+  };
+
+  const oldHandlePropertyChange = (e: any) => {
+    let [name, value] = [e.target.name, e.target.value];
+    if(name !== "increment" && name !== "blur") {
+      let newProperties = settings.properties.map((property: any) => {
+        if (property.attribute === name) {
+          return {...property, value: value};
+        } else {
+          return property;
+        }
+      });
     setSettings({
       ...settings,
       properties: newProperties,
@@ -94,10 +132,25 @@ function App() {
       increment: value,
     });
   }
+}
+
+  const handleChangeRouter = (e: any) => {
+    let [type, name, value] = [e.target.type, e.target.name, e.target.value];
+    switch (type) {
+      case "base":
+        handleBaseChange(name, value);
+        break;
+      case "property":
+        handlePropertyChange(name, value);
+        break;
+      case "animation":
+        handleAnimationChange(name, value);
+        break;
+    }
   }
 
   const handleSettingsChange = (e: any) => {
-    // console.log(e.target.name, e.target.value);
+  // console.log(e.target.name, e.target.value);
     let [name, value] = [e.target.name, e.target.value];
     setSettings({
       ...settings,
@@ -108,7 +161,7 @@ function App() {
   return (
     <div className="pb-24">
       
-        <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handlePropertyChange}/>
+        <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleChangeRouter}/>
         <div className="container max-w-6xl p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row - Border Element */}
