@@ -24,15 +24,15 @@
         "label": "Amplitude",
         "attribute": "amplitude",
         "type": "range",
-        "min": -250,
+        "min": 0,
         "max": 250,
         "value": 60,
         "step": 1,
         "isAnimated": true,
         "animation": {
           "isActive": false,
-          "min": -250,
-          "max": 250
+          "min": 5,
+          "max": 10
         }
       },
       {
