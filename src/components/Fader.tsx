@@ -17,6 +17,7 @@ const Fader = ({settings, onChange}: FaderProps) => {
   }
 
   const toggleIsAnimated = () => {
+    onChange({target: {type: "animation", name: `${attribute}-isActive`, value: !aniActive}});
     setAniActive(!aniActive);
   }
 

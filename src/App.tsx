@@ -88,11 +88,10 @@ function App() {
 
   const handleAnimationChange = (name: string, value: number) => {
     let [attribute, aniType] = [name.split("-")[0], name.split("-")[1]];
-
     let newProperties = settings.properties.map((property: any) => {
       if (property.attribute === attribute) {
         let newAnimation =  {
-          "isActive": true,
+          "isActive": aniType == "isActive" ? value : property.animation.isActive,
           "min": aniType == "min" ? value : property.animation.min,
           "max": aniType == "max" ? value : property.animation.max,
         }
@@ -150,7 +149,6 @@ function App() {
   }
 
   const handleSettingsChange = (e: any) => {
-  // console.log(e.target.name, e.target.value);
     let [name, value] = [e.target.name, e.target.value];
     setSettings({
       ...settings,

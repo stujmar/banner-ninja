@@ -27,13 +27,18 @@ function renderWave(size, wave) {
     pingPong(increment, amplitude.animation.min, amplitude.animation.max, amplitude.step) 
     : 
     amplitude.value;
-  console.log(activeAmplitude)
+  let activeCount = count.isAnimated && count.animation.isActive ?
+    pingPong(increment, count.animation.min, count.animation.max, count.step)
+    :
+    count.value;
+
+  console.log(amplitude.animation.isActive, count.animation.isActive)
   const drawLine = () => {
     this.save();
       let centerY = wave.height/2;
       this.strokeStyle = lineColor.value.slice(0);
       this.lineWidth = lineWidth.value;
-      for (let waveCount = 0 ; waveCount < count.value; waveCount++) {
+      for (let waveCount = 0 ; waveCount < activeCount; waveCount++) {
         this.beginPath()
         this.moveTo(-25, centerY)
         let previous = -200;
