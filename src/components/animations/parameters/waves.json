@@ -4,7 +4,6 @@
     "y": 100,
     "blur": 0,
     "height": 256,
-    "increment": 0,
     "properties": [
     {
         "label": "Line Color",
@@ -24,8 +23,8 @@
         "label": "Amplitude",
         "attribute": "amplitude",
         "type": "range",
-        "min": 0,
-        "max": 250,
+        "min": -200,
+        "max": 200,
         "value": 60,
         "step": 1,
         "isAnimated": true,

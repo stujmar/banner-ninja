@@ -2,15 +2,22 @@
     "mode": "bokeh",
     "x": 0,
     "y": 100,
-    "increment": 0,
     "blur": 0,
     "height": 256,
     "properties": [
       {
+        "label": "Circle Color",
+        "attribute": "circleColor",
+        "type": "color",
+        "value": "#475569",
+        "isAnimated": false
+      },
+      {
         "label": "Background Color",
         "attribute": "backgroundColor",
         "type": "color",
-        "value": "#cbd5e1"
+        "value": "#cbd5e1",
+        "isAnimated": false
       }
     ],
     "trails": 0.016,

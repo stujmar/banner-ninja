@@ -4,7 +4,6 @@
     "y": 100,
     "blur": 0,
     "height": 256,
-    "increment": 0,
     "properties": [
     {
         "label": "Line Color",

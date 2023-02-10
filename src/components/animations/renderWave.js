@@ -1,8 +1,8 @@
-function renderWave(size, wave) {
+function renderWave(size, wave, increment) {
+  // console.log("coming into renderWave", increment)
   let [
     lineColor, backgroundColor, 
     amplitude, count, countOffset, lineWidth, waveLength, frequency] = wave.properties;
-  let increment = wave.increment;
   let offset = countOffset.value;
   const drawBackground = () => {
     this.fillStyle = "none";
@@ -32,7 +32,6 @@ function renderWave(size, wave) {
     :
     count.value;
 
-  console.log(amplitude.animation.isActive, count.animation.isActive)
   const drawLine = () => {
     this.save();
       let centerY = wave.height/2;
@@ -56,8 +55,7 @@ function renderWave(size, wave) {
 
   drawBackground();
   drawLine();
-  wave.increment += parseFloat(frequency.value);
-  // wave.increment += .2;
+  wave.increment = increment += parseFloat(frequency.value);
   return wave;
 }
 

@@ -3,6 +3,7 @@ import EditableTitle from './EditableTitle';
 import renderWave from './animations/renderWave';
 import getInitialState from './animations/getInitialState';
 import renderDefault from './animations/renderDefault';
+import renderBokeh from './animations/renderBokeh';
 
 interface Setting {
   mode: string,
@@ -32,6 +33,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
   const waveRef: any = useRef(getInitialState(mode));
   const inputRef = React.createRef<HTMLInputElement>();
   const [task, setTask] = useState("");
+  let increment = 0;
   const [height, setHeight] = useState(256);
 
   function handleResize() {
@@ -56,7 +58,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     return () => cancelAnimationFrame(requestIdRef.current);
   },[]);
 
-  const updateWave = (_mode : string) => {
+  const updateAnimation = (_mode : string) => {
     if (waveRef.current?.mode === "waves" && typeof waveRef.current.x === "number") {
       waveRef?.current?.x > window.innerWidth ? (waveRef.current.x = 0) : (waveRef.current.x += .1);
     }
@@ -79,9 +81,13 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     if (waveRef.current !== settings) {
       establishContext();
     }
-    updateWave(mode);
+    updateAnimation(mode);
     if (waveRef.current?.mode  === "waves") {
-      waveRef.current = renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
+      waveRef.current = renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current, increment);
+      // console.log(increment, waveRef.current.increment)
+      increment = waveRef.current.increment
+    } else if (waveRef.current?.mode === "bokeh") {
+      waveRef.current = renderBokeh.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
     } else if (waveRef.current?.mode === "default") {
       renderDefault.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
     }
