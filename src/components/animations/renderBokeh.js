@@ -1,5 +1,15 @@
 function renderBokeh(size, wave) {
-    let [circleColor, backgroundColor] = wave.properties;
+    
+    let [circleColor, backgroundColor, count] = wave.properties;
+    let circlePositions = wave.persist.circlePositions || {};
+    if (Object.keys(circlePositions).length !== parseInt(count.value)) {
+        circlePositions = {};
+        for (let i = 0; i < count.value; i++) {
+            circlePositions[i] = {"x": random(0,1), "y": random(0,1)};
+        }
+    }
+
+
     const drawBackground = () => {
         this.fillStyle = "none";
         this.save();
@@ -9,16 +19,18 @@ function renderBokeh(size, wave) {
         this.restore();
     }
 
-    const drawCircle = () => {
+    const drawCircle = (i) => {
         this.save();
             this.beginPath();
-            // make circle fill red
             this.fillStyle = circleColor.value;
-            this.arc(100, 75, 50, 0, 2 * Math.PI);
-            this.stroke();
+            this.arc(circlePositions[i].x * size.width, circlePositions[i].y * wave.height, 50, 0, 2 * Math.PI);
             this.fill();
         this.restore();
     };
+
+    function random(min, max) {
+        return parseFloat((Math.random() * (max - min) + min).toFixed(2));
+    }
 
     const pingPong = (value, min, max, step) => {
         let rate = parseFloat(value.toFixed(2)) * 100 * step;
@@ -30,7 +42,11 @@ function renderBokeh(size, wave) {
         return min + (result > range ? range * 2 - result : result);
     }
     drawBackground();
-    drawCircle();
+    for (let i = 0; i < count.value; i++) {
+        drawCircle(i);
+    }
+
+    wave.persist.circlePositions = circlePositions;
     return wave;
 }
 

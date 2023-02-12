@@ -31,3 +31,23 @@ body {
 .circle-picker span div span div {
   border: 1px solid #94a3b8;
 }
+
+  input[type="range"]{
+    /* background: linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) 50%, #fff 50%, #fff 100%); */
+    border: solid 1px gray;
+    border-radius: 8px;
+    height: 7px;
+    width: 134px;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  
+  input::-webkit-slider-thumb {
+    background-color: rgb(238, 238, 238);
+    border: solid 1px rgb(148 163 184);
+    border-radius: 0;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    -webkit-appearance: none;
+  }

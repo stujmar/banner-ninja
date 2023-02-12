@@ -3,34 +3,37 @@ function renderWave(size, wave, increment) {
   let [
     lineColor, backgroundColor, 
     amplitude, count, countOffset, lineWidth, waveLength, frequency] = wave.properties;
-  let offset = countOffset.value;
-  const drawBackground = () => {
-    this.fillStyle = "none";
-    this.save();
+    const drawBackground = () => {
+      this.fillStyle = "none";
+      this.save();
       this.clearRect(0, 0, size.width, wave.height);
       this.fillStyle = backgroundColor.value;
       this.fillRect(0, 0, size.width, wave.height);
-    this.restore();
-  };
-
-  const pingPong = (value, min, max, step) => {
-    let rate = parseFloat(value.toFixed(2)) * 100 * step;
-    let range = max - min;
-    let result = (rate - min) % (range * 2);
-    if (result < 0) {
-      result += range * 2;
+      this.restore();
+    };
+    
+    const pingPong = (value, min, max, step) => {
+      let rate = parseFloat(value.toFixed(2)) * 100 * step;
+      let range = max - min;
+      let result = (rate - min) % (range * 2);
+      if (result < 0) {
+        result += range * 2;
+      }
+      return min + (result > range ? range * 2 - result : result);
     }
-    return min + (result > range ? range * 2 - result : result);
-  }
-
-  let activeAmplitude = amplitude.isAnimated && amplitude.animation.isActive ? 
+    
+    let activeAmplitude = (amplitude.isAnimated && amplitude.animation.isActive ? 
     pingPong(increment, amplitude.animation.min, amplitude.animation.max, amplitude.step) 
     : 
-    amplitude.value;
-  let activeCount = count.isAnimated && count.animation.isActive ?
+    amplitude.value) - 250;
+    let activeCount = count.isAnimated && count.animation.isActive ?
     pingPong(increment, count.animation.min, count.animation.max, count.step)
     :
     count.value;
+    let activeCountOffset = countOffset.isAnimated && countOffset.animation.isActive ?
+    pingPong(increment, countOffset.animation.min, countOffset.animation.max, countOffset.step)
+    :
+    countOffset.value;
 
   const drawLine = () => {
     this.save();
@@ -43,7 +46,7 @@ function renderWave(size, wave, increment) {
         let previous = -200;
         for (let i = -10; i < size.width + 25; i+=1) {
           if (previous < i){
-            this.lineTo(i, (centerY - (waveCount*offset) + (count.value*(offset/2) - offset/2)) + Math.sin(i * waveLength.value + increment) * activeAmplitude)
+            this.lineTo(i, (centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * waveLength.value + increment) * activeAmplitude)
           }
           previous = i;
         }

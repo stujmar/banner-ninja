@@ -84,7 +84,6 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
     updateAnimation(mode);
     if (waveRef.current?.mode  === "waves") {
       waveRef.current = renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current, increment);
-      // console.log(increment, waveRef.current.increment)
       increment = waveRef.current.increment
     } else if (waveRef.current?.mode === "bokeh") {
       waveRef.current = renderBokeh.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);

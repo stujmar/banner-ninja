@@ -4,6 +4,9 @@
     "y": 100,
     "blur": 0,
     "height": 256,
+    "persist" : {
+      "circlePositions": {}
+    },
     "properties": [
       {
         "label": "Circle Color",
@@ -18,6 +21,21 @@
         "type": "color",
         "value": "#cbd5e1",
         "isAnimated": false
+      },
+      {
+        "label": "Count",
+        "attribute": "Count",
+        "type": "range",
+        "min": 6, 
+        "max": 32,
+        "value": 8,
+        "step": 1,
+        "isAnimated": true,
+        "animation": {
+          "isActive": false,
+          "min": 1,
+          "max": 8
+        }
       }
     ],
     "trails": 0.016,
