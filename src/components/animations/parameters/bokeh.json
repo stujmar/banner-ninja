@@ -12,14 +12,14 @@
         "label": "Circle Color",
         "attribute": "circleColor",
         "type": "color",
-        "value": "#475569",
+        "value": "#E4E4C6",
         "isAnimated": false
       },
       {
         "label": "Background Color",
         "attribute": "backgroundColor",
         "type": "color",
-        "value": "#cbd5e1",
+        "value": "#1D2F43",
         "isAnimated": false
       },
       {

@@ -44,7 +44,7 @@ const EditableTitle = ({ text, type, placeholder, children, childRef}: EditableT
           className={`editable-${type}`}
           onClick={() => setEditing(true)}
         >
-          <span className="text-4xl font-nunito font-bold text-gray-800 w-12">
+          <span className="text-4xl font-nunito font-bold text-gray-700 w-12">
             {text || placeholder || "Editable content"}
           </span>
         </div>

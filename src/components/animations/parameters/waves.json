@@ -40,7 +40,7 @@
         "type": "range",
         "min": 1, 
         "max": 8,
-        "value": 3,
+        "value": 2,
         "step": 1,
         "isAnimated": false
       },
@@ -49,8 +49,8 @@
         "attribute": "countOffest",
         "type": "range",
         "min": 10, 
-        "max": 100,
-        "value": 50,
+        "max": 150,
+        "value": 100,
         "step": 5,
         "isAnimated": true,
         "animation": {
@@ -65,7 +65,7 @@
         "type": "range",
         "min": 0,
         "max": 36,
-        "value": 12,
+        "value": 8,
         "step": 4,
         "isAnimated": false
       },
@@ -75,7 +75,7 @@
         "type": "range",
         "min": 0.01, 
         "max": 0.1,
-        "value": 0.012,
+        "value": 0.05,
         "step": 0.001,
         "isAnimated": false
       },
