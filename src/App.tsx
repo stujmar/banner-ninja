@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 
 function App() {
 
-  const [mode, setMode] = useState("default");
+  const [mode, setMode] = useState("waves");
   const [settings, setSettings] = useState<any>(getInitialState(mode));
   const settingsRef = useRef(settings);
   const [toggleGeneralSettings, setToggleGeneralSettings] = useState(true);
@@ -160,7 +160,7 @@ function App() {
     <div className="pb-24">
       
         <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleChangeRouter}/>
-        <div className="container max-w-6xl p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
+        <div className="container max-w-[1090px] p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row - Border Element */}
             <div className="relative mt-3 px-1 py-3 sm:p-4 sm:border-2 border-slate-400 rounded-lg w-full">

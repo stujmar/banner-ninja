@@ -37,7 +37,8 @@ const Fader = ({settings, onChange}: FaderProps) => {
         </svg></button>}
 
       </div>
-      {settings.isAnimated && aniActive ?  
+      {settings.isAnimated && aniActive ?
+      <>
         <div className="flex flex-col gap-2">
           <div className="flex flex-col justify-between items-start">
             <span className="font-nunito font-bold text-left text-slate-800">Min</span>
@@ -52,6 +53,15 @@ const Fader = ({settings, onChange}: FaderProps) => {
               className={`accent-lime-500 bg-black ${invert ? "rtl" : ""}`} type="range" name={`${attribute}-max`} onChange={(e) => handleAniChange(e)} value={settings.animation.max} min={min} max={max} step={step}></input>
           </div>
         </div>
+        {/*<!-- Double range slider (flat design)  -->*/}
+        {/* <div class="range-slider flat" data-ticks-position='top' style={{ min: -500, '--max':500, '--value-a':-220, '--value-b':400, '--suffix':"%", '--text-value-a':"-220", '--text-value-b':"400"}}>
+          <input type="range" min="-500" max="500" value="-220" onInput="this.parentNode.style.setProperty('--value-a',this.value); this.parentNode.style.setProperty('--text-value-a', JSON.stringify(this.value))"></input>
+          <output></output>
+          <input type="range" min="-500" max="500" value="400" onInput="this.parentNode.style.setProperty('--value-b',this.value); this.parentNode.style.setProperty('--text-value-b', JSON.stringify(this.value))"></input>
+          <output></output>
+          <div className='range-slider__progress'></div>
+        </div> */}
+      </>
       :
       <input
       style={{background: `linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) ${((value - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}

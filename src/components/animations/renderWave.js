@@ -44,9 +44,10 @@ function renderWave(size, wave, increment) {
         this.beginPath()
         this.moveTo(-25, centerY)
         let previous = -200;
+        let calcIncrement = increment * parseFloat(frequency.value);
         for (let i = -10; i < size.width + 25; i+=1) {
           if (previous < i){
-            this.lineTo(i, (centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * waveLength.value + increment) * activeAmplitude)
+            this.lineTo(i, (centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * waveLength.value + calcIncrement) * activeAmplitude)
           }
           previous = i;
         }
@@ -58,7 +59,8 @@ function renderWave(size, wave, increment) {
 
   drawBackground();
   drawLine();
-  wave.increment = increment += parseFloat(frequency.value);
+  wave.increment = parseFloat((increment += .01).toFixed(2));
+  // wave.increment = increment += parseFloat(frequency.value);
   return wave;
 }
 

@@ -59,7 +59,7 @@ const Footer = ({text}: FooterProps) => {
     }, []);
 
   return (
-    <div className="container mx-auto max-w-6xl px-4 py-16">
+    <div className="container mx-auto max-w-5xl px-4 py-16">
       <div className="flex justify-center gap-2 text-slate-700 text-lg font-nunito font-medium">
         - {text}
         {socialLinks}-

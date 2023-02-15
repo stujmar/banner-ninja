@@ -3,13 +3,13 @@
     "x": 0,
     "y": 100,
     "blur": 0,
-    "height": 256,
+    "height": 216,
     "properties": [
     {
         "label": "Line Color",
         "attribute": "lineColor",
         "type": "color",
-        "value": "#475569",
+        "value": "#A9B7CE",
         "isAnimated": false
       },
       {
@@ -31,7 +31,8 @@
         "animation": {
           "isActive": false,
           "min": 150,
-          "max": 200
+          "max": 200,
+          "rate": 0.5
         }
       },
       {
@@ -40,7 +41,7 @@
         "type": "range",
         "min": 1, 
         "max": 8,
-        "value": 2,
+        "value": 6,
         "step": 1,
         "isAnimated": false
       },
@@ -50,13 +51,14 @@
         "type": "range",
         "min": 10, 
         "max": 150,
-        "value": 100,
+        "value": 50,
         "step": 5,
         "isAnimated": true,
         "animation": {
           "isActive": false,
           "min": 0,
-          "max": 100
+          "max": 100,
+          "rate": 0.5
         }
       },
       {
@@ -74,8 +76,8 @@
         "attribute": "waveLength",
         "type": "range",
         "min": 0.01, 
-        "max": 0.1,
-        "value": 0.05,
+        "max": 0.15,
+        "value": 0.08,
         "step": 0.001,
         "isAnimated": false
       },
@@ -83,10 +85,10 @@
         "label": "Frequency",
         "attribute": "frequency",
         "type": "range",
-        "min": 0.005, 
-        "max": 0.5,
-        "value": 0.01,
-        "step": 0.005,
+        "min": 0, 
+        "max": 100,
+        "value": 1,
+        "step": 5,
         "isAnimated": false
       }
     ],
