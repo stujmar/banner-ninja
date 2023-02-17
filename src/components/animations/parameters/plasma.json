@@ -9,11 +9,11 @@
         "label": "Plasma Color",
         "attribute": "plasmaColor",
         "type": "gradient",
-        "value": [{ "id": 1, "value": "#00FF00" },
-        { "id": 2, "value": "#ffff00" },
-        { "id": 3, "value": "#ff0000" },
-        { "id": 4, "value": "#ffffff" },
-        { "id": 5, "value": "#00ffff" }]
+        "value": [{ "id": 1, "value": "#2b2b2b" },
+        { "id": 2, "value": "#2b2b2b" },
+        { "id": 3, "value": "#00cbff" },
+        { "id": 4, "value": "#be4fea" },
+        { "id": 5, "value": "#f55020" }]
       },
       {
         "label": "Amplitude",

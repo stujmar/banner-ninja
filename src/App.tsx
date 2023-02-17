@@ -58,7 +58,7 @@ function App() {
           case "color":
             return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleChangeRouter} />
           case "gradient":
-            return <Gradient key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleChangeRouter} />
+            return <Gradient key={property.label} colors={property.value} attribute={property.attribute} label={property.label} onChange={handleChangeRouter} />
           case "range":
             return <Fader 
                       key={property.label} 

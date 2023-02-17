@@ -4,17 +4,17 @@ import { ChromePicker } from 'react-color';
 type GradientProps = {
   attribute: string;
   label: string;
-  value: any[];
+  colors: any[];
   onChange: (e: any) => void;
 }
 
-const Gradient = ({attribute, value, label, onChange}: GradientProps) => {
+const Gradient = ({attribute, colors, label, onChange}: GradientProps) => {
   const [popup, setPopup] = useState(false);
   const [activeColor, setActiveColor] = useState(0);
   const [colorCount, setColorCount] = useState(5);
 
   const handleColorChange = (e: any) => {
-    let newColors = value.map((color: any) => {
+    let newColors = colors.map((color: any) => {
       if (color.id === activeColor) {
         return {id: color.id, value: e.hex};
       } else {
@@ -34,19 +34,21 @@ const Gradient = ({attribute, value, label, onChange}: GradientProps) => {
     <div className="sm:module-border w-40">
       {popup ? <button onClick={() => {setPopup(false)}} className="fixed top-0 left-0 z-30 h-screen w-screen" ></button> : null}
       <div className="text-gray-800 font-nunito font-bold">{label.slice(0,1).toUpperCase() + label.slice(1)}</div>
-      <div className="flex items-start">
-        <button className="mt-1 w-3/12 -mb-2 h-6 rounded-l-lg border border-slate-400 border-r-none" style={{background: value[0].value}} onClick={() => {handlePopUp(1)}}></button>
-        <button className="mt-1 w-3/12 -mb-2 h-6 border border-slate-400 border-r-none" style={{background: value[1].value}} onClick={() => {handlePopUp(2)}}></button>
-        <button className="mt-1 w-3/12 -mb-2 h-6 border border-slate-400 border-r-none" style={{background:  value[2].value}} onClick={() => {handlePopUp(3)}}></button>
-        <button className="mt-1 w-3/12 -mb-2 h-6 border border-slate-400 border-r-none" style={{background:  value[3].value}} onClick={() => {handlePopUp(4)}}></button>
-        <button className="mt-1 w-3/12 -mb-2 h-6 rounded-r-lg border border-slate-400 border-r-none" style={{background:  value[4].value}} onClick={() => {handlePopUp(5)}}></button>
-        <select className="mt-1" name="color-count" id="color-count">
+      <div 
+        className="flex gap-2 items-center mt-1 p-2 border border-slate-400 rounded-full"
+        style={{background: `linear-gradient(90deg, ${colors[0].value} 5%, ${colors[1].value} 30%, ${colors[2].value} 50%, ${colors[3].value} 70%, ${colors[4].value} 95%)`}}>
+        <button className="w-6 h-4 rounded-full border border-slate-200 gradient-hover" style={{background: colors[0].value}} onClick={() => {handlePopUp(1)}}></button>
+        <button className="w-6 h-4 rounded-full border border-slate-200 gradient-hover" style={{background: colors[1].value}} onClick={() => {handlePopUp(2)}}></button>
+        <button className="w-6 h-4 rounded-full border border-slate-200 gradient-hover" style={{background: colors[2].value}} onClick={() => {handlePopUp(3)}}></button>
+        <button className="w-6 h-4 rounded-full border border-slate-200 gradient-hover" style={{background: colors[3].value}} onClick={() => {handlePopUp(4)}}></button>
+        <button className="w-6 h-4 rounded-full border border-slate-200 gradient-hover" style={{background: colors[4].value}} onClick={() => {handlePopUp(5)}}></button>
+      </div>
+        {/* <select className="mt-1" name="color-count" id="color-count">
             <option value="3">3</option>
           <option value="5">5</option>
-        </select>
-      </div>
+        </select> */}
       {popup ? <div className="absolute z-40"><ChromePicker
-        color={value[activeColor-1].value}
+        color={colors[activeColor-1].value}
         onChangeComplete={(e) => handleColorChange(e)}
         /></div> : null}
     </div>
