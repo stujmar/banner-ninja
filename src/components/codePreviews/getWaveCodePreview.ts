@@ -1,6 +1,7 @@
 export const generateWaveCodePreview = (settings: any, hashId: string) => {
     let [ lineColor, backgroundColor, amplitude, count, countOffset, lineWidth, waveLength, frequency ] = settings.properties;
-    const prefix = ` <canvas id="bannerCanvas_${hashId}" style="width: 100%; height:${settings.height}px;"></canvas>`
+    const prefix = ` <canvas id="bannerCanvas_${hashId}" style="width: 100%; height:${settings.height}px;"></canvas>
+  <script>`
     const javaScriptBody = `
     const canvas = document.getElementById("bannerCanvas_${hashId}");
     const ctx = canvas.getContext("2d");

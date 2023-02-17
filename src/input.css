@@ -4,13 +4,13 @@
 
 @layer components {
   .module-border {
-    @apply p-3 bg-white rounded-md border border-slate-300 shadow-md
+    @apply p-3 pt-2 bg-white rounded-md border border-slate-300 shadow-md
   }
   .no-module-border {
     @apply p-0 border-none bg-transparent rounded-none shadow-none
   }
   .gradient-hover {
-    @apply hover:scale-115 transform transition duration-200 ease-in-out cursor-pointer
+    @apply hover:scale-110 transform transition duration-200 ease-in-out cursor-pointer
   }
 }
 

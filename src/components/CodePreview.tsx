@@ -27,8 +27,8 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
   const [isCopying, setIsCopying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isMinified, setIsMinified] = useState(false);
-  const [displayCode, setDisplayCode] = useState(`${prefix}${javaScriptBody}${suffix}`);
-  const [newDisplayCode, setNewDisplayCode] = useState("bort");
+  // const [displayCode, setDisplayCode] = useState(`${prefix}${javaScriptBody}${suffix}`);
+  const [displayCode, setDisplayCode] = useState("bort");
 
   const copyToClipboard = () => {
     setIsCopying(true);
@@ -69,9 +69,9 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
   }, [isMinified]);
 
   useEffect(() => { // update code on color change
-    setNewDisplayCode(getCodePreview(settings, idHash));
+    setDisplayCode(getCodePreview(settings, idHash));
     if (!isMinified) {
-      setDisplayCode(`${prefix}${javaScriptBody}${suffix}`);
+      setDisplayCode(getCodePreview(settings, idHash));
     } else {
       minifyCode();
     }
@@ -118,7 +118,7 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
         </div>}
         <div className="relative border font-mono border-slate-300 rounded-md overflow-hidden">
         <SyntaxHighlighter language="javascript" style={docco}>      
-          {newDisplayCode}
+          {displayCode}
         </SyntaxHighlighter>
         </div>
       </div>

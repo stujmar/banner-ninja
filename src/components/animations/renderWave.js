@@ -2,7 +2,7 @@ function renderWave(size, wave, increment) {
   // console.log("coming into renderWave", increment)
   let [
     lineColor, backgroundColor, 
-    amplitude, count, countOffset, lineWidth, waveLength, frequency] = wave.properties;
+    amplitude, count, countOffset, lineWidth, waveLength, frequency, jitter] = wave.properties;
     const drawBackground = () => {
       this.fillStyle = "none";
       this.save();
@@ -20,6 +20,15 @@ function renderWave(size, wave, increment) {
         result += range * 2;
       }
       return min + (result > range ? range * 2 - result : result);
+    }
+
+    // give a number a random jitter above or below the value.
+    const jitterWave = (value) => {
+      const getRandomFloat = (min, max) => {
+        return Math.random() * (max - min) + min;
+      }
+      return value + getRandomFloat(-jitter.value, jitter.value);
+ 
     }
     
     let activeAmplitude = (amplitude.isAnimated && amplitude.animation.isActive ? 
@@ -47,7 +56,9 @@ function renderWave(size, wave, increment) {
         let calcIncrement = increment * parseFloat(frequency.value);
         for (let i = -10; i < size.width + 25; i+=1) {
           if (previous < i){
-            this.lineTo(i, (centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * waveLength.value + calcIncrement) * activeAmplitude)
+            this.lineTo(
+              i, 
+              jitterWave((centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * waveLength.value + calcIncrement) * activeAmplitude))
           }
           previous = i;
         }
