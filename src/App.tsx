@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import BannerPreview from './components/BannerPreview';
 import ColorPicker from './components/ColorPicker';
 import CodePreview from './components/CodePreview';
+import Gradient from './components/Gradient';
 import ModeSwitcher from './components/ModeSwitcher';
 import getInitialState from './components/animations/getInitialState';
 import ToggleButton from './components/ToggleButton';
@@ -56,6 +57,8 @@ function App() {
         switch (property.type) {
           case "color":
             return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleChangeRouter} />
+          case "gradient":
+            return <Gradient key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleChangeRouter} />
           case "range":
             return <Fader 
                       key={property.label} 

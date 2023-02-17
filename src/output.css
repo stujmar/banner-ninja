@@ -749,6 +749,18 @@ video {
   width: 1rem;
 }
 
+.w-10\/12 {
+  width: 83.333333%;
+}
+
+.w-4\/12 {
+  width: 33.333333%;
+}
+
+.w-3\/12 {
+  width: 25%;
+}
+
 .max-w-\[1090px\] {
   max-width: 1090px;
 }
@@ -852,6 +864,16 @@ video {
 
 .rounded-full {
   border-radius: 9999px;
+}
+
+.rounded-l-lg {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.rounded-r-lg {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 .border {

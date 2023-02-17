@@ -22,7 +22,7 @@ const ModeSwitcher = ({onClick, mode}: ModePickerProps) => {
                     <label htmlFor="default-radio-2" className="font-nunito font-medium ml-2 text-sm text-gray-900">Bokeh</label>
                 </div>
                 <div className="flex items-center">
-                    <input disabled checked={ mode == "plasma" } id="default-radio-3" type="radio" onChange={(e) => handleChange(e)} value="plasma" name="mode-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                    <input checked={ mode == "plasma" } id="default-radio-3" type="radio" onChange={(e) => handleChange(e)} value="plasma" name="mode-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                     <label htmlFor="default-radio-3" className="font-nunito font-medium ml-2 text-sm text-gray-300">Plasma</label>
                 </div>
             </div>
