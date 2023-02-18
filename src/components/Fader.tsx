@@ -3,14 +3,15 @@ import React, { useState } from 'react';
 type FaderProps = {
   settings: any;
   onChange: (e: any) => void;
+  base?: boolean;
 };
 
-const Fader = ({settings, onChange}: FaderProps) => {
+const Fader = ({settings, onChange, base}: FaderProps) => {
   const [aniActive, setAniActive] = useState<boolean>(settings.isAnimated ? settings.animation.isActive : false);
   const { attribute, label, min, max, value, step, invert } = settings;
   
   const handlePropertyChange = (e: any) => {
-    onChange({target: {type: "property", name: attribute, value: e.target.value}});
+    onChange({target: {type: base ? "base" : "property", name: attribute, value: e.target.value}});
   }
   const handleAniChange = (e: any) => {
     onChange({target: {type: "animation", name: e.target.name, value: e.target.value}});

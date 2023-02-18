@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 function App() {
 
   const [mode, setMode] = useState("waves");
+  const [blur, setBlur] = useState(0);
   const [settings, setSettings] = useState<any>(getInitialState(mode));
   const settingsRef = useRef(settings);
   const [toggleGeneralSettings, setToggleGeneralSettings] = useState(true);
@@ -69,10 +70,17 @@ function App() {
         }
       })
     )
+    setBlur(settings.blur);
   }, [settings]);
 
   const handleBaseChange = (name: string, value: number) => {
-    console.log("base change", name, value);
+    setSettings({
+      ...settings,
+      [name]: value,
+    });
+    if (name === "blur") {
+      setBlur(value);
+    }
   };
 
   const handlePropertyChange = (name: string, value: number) => {
@@ -109,33 +117,6 @@ function App() {
     });
   };
 
-  const oldHandlePropertyChange = (e: any) => {
-    let [name, value] = [e.target.name, e.target.value];
-    if(name !== "increment" && name !== "blur") {
-      let newProperties = settings.properties.map((property: any) => {
-        if (property.attribute === name) {
-          return {...property, value: value};
-        } else {
-          return property;
-        }
-      });
-    setSettings({
-      ...settings,
-      properties: newProperties,
-    });
-  } else if (name === "blur") {
-    setSettings({
-      ...settings,
-      blur: value,
-    });
-  } else {
-    setSettings({
-      ...settings,
-      increment: value,
-    });
-  }
-}
-
   const handleChangeRouter = (e: any) => {
     let [type, name, value] = [e.target.type, e.target.name, e.target.value];
     switch (type) {
@@ -151,18 +132,9 @@ function App() {
     }
   }
 
-  const handleSettingsChange = (e: any) => {
-    let [name, value] = [e.target.name, e.target.value];
-    setSettings({
-      ...settings,
-      [name]: value,
-    });
-  }
-
   return (
     <div className="pb-24">
-      
-        <BannerPreview mode={mode} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleChangeRouter}/>
+        <BannerPreview mode={mode} blur={blur} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleChangeRouter}/>
         <div className="container max-w-[1090px] p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
           <div>
             {/* Top Row - Border Element */}
@@ -188,7 +160,8 @@ function App() {
                     value: settingsRef.current.blur,
                     invert: false,
                   }}
-                  onChange={handleSettingsChange}
+                  onChange={handleChangeRouter}
+                  base={true}
                 />
                 <Fader
                   settings={{
@@ -200,7 +173,8 @@ function App() {
                     value: settingsRef.current.height,
                     invert: false,
                   }}
-                  onChange={handleSettingsChange}
+                  onChange={handleChangeRouter}
+                  base={true}
                 />
 
               </div> : null}

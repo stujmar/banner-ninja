@@ -17,6 +17,7 @@ interface Setting {
 type BannerPreviewProps = {
   mode: string,
   settings: Setting,
+  blur: number,
   titleSettings: {
     text: string;
     isActive: boolean;
@@ -25,7 +26,7 @@ type BannerPreviewProps = {
 }
 
 
-const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => {
+const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProps) => {
   const size = { width: screen.width, height: 256 };
   const requestIdRef: any = useRef(null);
   const canvasRef: any = useRef(null);
@@ -122,7 +123,7 @@ const BannerPreview = ({ mode, settings, titleSettings}: BannerPreviewProps) => 
             </EditableTitle>
             }
         </div>
-        <div style={{backdropFilter: `blur(${waveRef.current?.blur}px)`}} className="absolute -z-10 inset-0 bg-white/0"></div>
+        <div style={{backdropFilter: `blur(${blur}px)`}} className="absolute -z-10 inset-0 h-screen bg-white/0"></div>
         <canvas id="previewCanvas" ref={canvasRef} className="absolute -z-20 inset-0"></canvas>
     </div>
   );

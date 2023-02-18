@@ -33,7 +33,7 @@ const ColorPicker = ({attribute, value, label, onChange}: ColorPickerProps) => {
       <button className="w-full" onClick={() => {setPopup(!popup)}}><div style={{background: value}} className="mt-1 w-full -mb-2 h-6 rounded-lg border border-slate-400"></div></button>
       {popup ? <div className="absolute z-40"><ChromePicker
         color={value}
-        onChangeComplete={(e) => handleColorChange(e)}
+        onChange={(e) => handleColorChange(e)}
         /></div> : null}
     </div>
   );
