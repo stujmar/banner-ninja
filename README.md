@@ -7,16 +7,16 @@ Also trying out a React/TypeScript/Vite build.
 
 ## Todo
 ----
-- [ ] Fix Edges of blur feature/ blur zeroing glitch
-- [ ] Look into two way binding error on blur.
-- [ ] Get conditional unpacking of code preview vars based on mode.
+- [ ] Add x Count/Count offset?
+- [ ] Make title editor.
+- [ ] Grain filter?
 - [ ] Fix messy issue with title.
-- [ ] Rough out Waves Code Preview.
+- [ ] Rough out Waves Code count feature.
 - [ ] Get some sort of donate button.
-- [ ] Fix issue with base vs nested property updates.
+- [ ] Work on mode color themes.
 - [ ] Rebuild color picker + pick better default colors.
-- [ ] Start Plasma Feature.
-- [ ] Start Bokeh/Orbs Feature.
+- [ ] Start Plasma Preview.
+- [ ] Get bokehs moving.
 - [ ] Get app deployed on actual domain, update API gateway CORS address.
-- [ ] Be able to inverse ranges.
-- [ ] Be able to animate properties.
+- [ ] Remap wavelength.
+- [ ] Be able to animate properties rate.

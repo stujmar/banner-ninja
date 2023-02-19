@@ -3,7 +3,7 @@
     "x": 0,
     "y": 100,
     "blur": 10,
-    "height": 256,
+    "height": 216,
     "persist" : {
       "circlePositions": {}
     },

@@ -38,7 +38,9 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
   const [height, setHeight] = useState(256);
 
   function handleResize() {
+    if (size.width !== window.innerWidth) {
     establishContext();
+    }
   }
   window.addEventListener('resize', handleResize);
 
@@ -79,9 +81,6 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
   },[height])
 
   const renderFrame = () => {
-    if (waveRef.current !== settings) {
-      establishContext();
-    }
     updateAnimation(mode);
     if (waveRef.current?.mode  === "waves") {
       waveRef.current = renderWave.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current, increment);

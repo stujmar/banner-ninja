@@ -1,13 +1,13 @@
 function renderWave(size, wave, increment) {
-  // console.log("coming into renderWave", increment)
   let [
     lineColor, backgroundColor, 
-    amplitude, count, countOffset, lineWidth, waveLength, frequency, jitter] = wave.properties;
+    amplitude, count, countOffset, lineWidth, waveLength, frequency, jitter, trails] = wave.properties;
     const drawBackground = () => {
+      let alpha = (255 - trails.value).toString(16);
+      alpha = trails.value >= 240 ? 0 + alpha : alpha;
       this.fillStyle = "none";
       this.save();
-      this.clearRect(0, 0, size.width, wave.height);
-      this.fillStyle = backgroundColor.value;
+      this.fillStyle = backgroundColor.value + alpha;
       this.fillRect(0, 0, size.width, wave.height);
       this.restore();
     };
@@ -27,8 +27,8 @@ function renderWave(size, wave, increment) {
       const getRandomFloat = (min, max) => {
         return Math.random() * (max - min) + min;
       }
+      return Math.sin((value * (increment + 5)) / 10) * jitter.value + value + (1 * jitter.value);
       return value + getRandomFloat(-jitter.value, jitter.value);
- 
     }
     
     let activeAmplitude = (amplitude.isAnimated && amplitude.animation.isActive ? 
@@ -45,6 +45,7 @@ function renderWave(size, wave, increment) {
     countOffset.value;
 
   const drawLine = () => {
+    // console.log("drawLine", increment);
     this.save();
       let centerY = wave.height/2;
       this.strokeStyle = lineColor.value.slice(0);

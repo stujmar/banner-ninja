@@ -20,7 +20,9 @@ export const generateWaveCodePreview = (settings: any, hashId: string) => {
     function step() {
       ctx.beginPath();
       ctx.moveTo(-5, canvas.height / 2);
-      ctx.lineTo(canvas.width +5, canvas.height / 2);
+      for (let i = 0; i < canvas.width; i++) {
+        ctx.lineTo(i, canvas.height / 2 + Math.sin(i / 50 + increment) * 50);
+      }
       ctx.strokeStyle = "${lineColor.value}";
       ctx.stroke();
       increment += .01;
