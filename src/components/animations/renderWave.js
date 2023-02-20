@@ -27,8 +27,8 @@ function renderWave(size, wave, increment) {
       const getRandomFloat = (min, max) => {
         return Math.random() * (max - min) + min;
       }
-      return Math.sin((value * (increment + 5)) / 10) * jitter.value + value + (1 * jitter.value);
       return value + getRandomFloat(-jitter.value, jitter.value);
+      return Math.sin((value * (increment + 5)) / 10) * jitter.value + value + (1 * jitter.value);
     }
     
     let activeAmplitude = (amplitude.isAnimated && amplitude.animation.isActive ? 
