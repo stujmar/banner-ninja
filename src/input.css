@@ -35,16 +35,36 @@ body {
   border: 1px solid #94a3b8;
 }
 
-  input[type="range"]{
-    /* background: linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) 50%, #fff 50%, #fff 100%); */
-    border: solid 1px rgb(148 163 184);
-    border-radius: 8px;
-    height: 7px;
-    width: 134px;
-    outline: none;
-    appearance: none;
-  }
-  
+input[type="range"] {
+  /* background: linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) 50%, #fff 50%, #fff 100%); */
+  border: solid 1px rgb(148 163 184);
+  border-radius: 8px;
+  height: 7px;
+  width: 134px;
+  outline: none;
+  appearance: none;
+}
+
+input[type="range"].fader-range {
+  border: none;
+  background:transparent;
+  -webkit-appearance: none; 
+  appearance: none;
+  pointer-events: none;
+  z-index: 10;
+}
+
+input[type=range].fader-range::-webkit-slider-thumb {
+  /* border: 1px solid green; */
+  pointer-events: all;
+  z-index: 20;
+}
+
+input[type=range]::-moz-range-thumb {
+  border: 1px solid blue;
+  z-index: 30;
+}
+
   input::-webkit-slider-thumb {
     background-color: rgb(238, 238, 238);
     border: solid 1px rgb(148 163 184);

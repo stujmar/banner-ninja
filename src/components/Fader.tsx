@@ -41,21 +41,15 @@ const Fader = ({settings, onChange, base}: FaderProps) => {
       </div>
       {settings.isAnimated && aniActive ?
       <>
+        <FaderRange settings={settings} onChange={handleAniChange} />
         <div className="flex flex-col gap-2">
           <div className="flex flex-col justify-between items-start">
-            <span className="font-nunito font-bold text-left text-slate-800">Min</span>
+            <span className="font-nunito font-bold text-left text-slate-800">Rate</span>
             <input
-              style={{background: `linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) ${((settings.animation.min - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}
-              className={`accent-lime-500 bg-slate-200 border text-red-400 border-slate-400 rounded-full mt-2 h-2 appearance-none ${invert ? "rtl" : ""}`} type="range" name={`${attribute}-min`} onChange={(e) => handleAniChange(e)} value={settings.animation.min} min={min} max={max} step={step}></input>
-          </div>
-          <div className="flex flex-col justify-between items-start">
-            <span className="font-nunito font-bold text-left text-slate-800">Max</span>
-            <input
-              style={{background: `linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) ${((settings.animation.max - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}
-              className={`accent-lime-500 bg-black ${invert ? "rtl" : ""}`} type="range" name={`${attribute}-max`} onChange={(e) => handleAniChange(e)} value={settings.animation.max} min={min} max={max} step={step}></input>
+              style={{background: `linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) ${(settings.animation.rate/10) * 100}%, #fff 0%, #fff 100%)`}}
+              className={`accent-lime-500 bg-black ${invert ? "rtl" : ""}`} type="range" name={`${attribute}-rate`} onChange={(e) => handleAniChange(e)} value={settings.animation.rate} min={1} max={10} step={0.05}></input>
           </div>
         </div>
-        <FaderRange settings={settings.animation} onChange={onChange} />
       </>
       :
       <input

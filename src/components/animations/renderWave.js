@@ -12,7 +12,7 @@ function renderWave(size, wave, increment) {
       this.restore();
     };
     
-    const pingPong = (value, min, max, step) => {
+    const pingPongXX = (value, min, max, step) => {
       let rate = parseFloat(value.toFixed(2)) * 100 * step;
       let range = max - min;
       let result = (rate - min) % (range * 2);
@@ -22,12 +22,27 @@ function renderWave(size, wave, increment) {
       return min + (result > range ? range * 2 - result : result);
     }
 
+    const pingPong = (increment, min, max, rate) => {
+      // make sure min is less than max
+      if (min > max) {
+        let temp = min;
+        min = max;
+        max = temp;
+      }
+      // console.log("pingPong", increment, min, max, rate)
+      let range = max - min;
+      let progress = Math.abs(Math.sin(increment * rate)) * range;
+      return min + progress;
+
+    }
+
     // give a number a random jitter above or below the value.
     const jitterWave = (value) => {
       const getRandomFloat = (min, max) => {
         return Math.random() * (max - min) + min;
       }
       return value + getRandomFloat(-jitter.value, jitter.value);
+      // Wip a more interesting jitter.
       return Math.sin((value * (increment + 5)) / 10) * jitter.value + value + (1 * jitter.value);
     }
     
@@ -40,7 +55,7 @@ function renderWave(size, wave, increment) {
     :
     count.value;
     let activeCountOffset = countOffset.isAnimated && countOffset.animation.isActive ?
-    pingPong(increment, countOffset.animation.min, countOffset.animation.max, countOffset.step)
+    pingPong(increment, countOffset.animation.min, countOffset.animation.max, countOffset.animation.rate)
     :
     countOffset.value;
 
