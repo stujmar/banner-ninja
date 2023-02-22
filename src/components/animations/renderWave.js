@@ -51,9 +51,9 @@ function renderWave(size, wave, increment) {
     pingPong(increment, lineWidth.animation.min, lineWidth.animation.max, lineWidth.animation.rate)
     :
     lineWidth.value;
+    let activeWaveLength = waveLength.max - (waveLength.value - waveLength.min)
 
   const drawLine = () => {
-    // console.log("drawLine", increment);
     this.save();
       let centerY = wave.height/2;
       this.strokeStyle = lineColor.value.slice(0);
@@ -67,7 +67,7 @@ function renderWave(size, wave, increment) {
           if (previous < i){
             this.lineTo(
               i - lineWidth.value, 
-              jitterWave((centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * waveLength.value + calcIncrement) * activeAmplitude))
+              jitterWave((centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * activeWaveLength + calcIncrement) * activeAmplitude))
           }
           previous = i;
         }

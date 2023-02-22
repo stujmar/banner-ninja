@@ -123,6 +123,7 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
             }
         </div>
         <div style={{backdropFilter: `blur(${blur}px)`}} className="absolute -z-10 inset-0 h-screen bg-white/0"></div>
+        <div style={{background: `${settings.properties[1].value}`}} className="absolute -z-20 inset-0 h-screen bg-white/0"></div>
         <canvas id="previewCanvas" ref={canvasRef} className="absolute -z-20 inset-0"></canvas>
     </div>
   );
