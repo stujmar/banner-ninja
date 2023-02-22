@@ -34,7 +34,7 @@ const Fader = ({settings, onChange, base}: FaderProps) => {
               fill="none" viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth={1.5}
-              className={`w-5 h-5 curson-pointer ${aniActive ? "text-slate-800" : "text-slate-400"}`}>
+              className={`w-5 h-5 curson-pointer ${aniActive ? "text-slate-700" : "text-slate-400"}`}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg></button>}
 

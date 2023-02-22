@@ -12,16 +12,6 @@ function renderWave(size, wave, increment) {
       this.restore();
     };
     
-    const pingPongXX = (value, min, max, step) => {
-      let rate = parseFloat(value.toFixed(2)) * 100 * step;
-      let range = max - min;
-      let result = (rate - min) % (range * 2);
-      if (result < 0) {
-        result += range * 2;
-      }
-      return min + (result > range ? range * 2 - result : result);
-    }
-
     const pingPong = (increment, min, max, rate) => {
       // make sure min is less than max
       if (min > max) {
@@ -29,7 +19,6 @@ function renderWave(size, wave, increment) {
         min = max;
         max = temp;
       }
-      // console.log("pingPong", increment, min, max, rate)
       let range = max - min;
       let progress = Math.abs(Math.sin(increment * rate)) * range;
       return min + progress;
@@ -47,9 +36,9 @@ function renderWave(size, wave, increment) {
     }
     
     let activeAmplitude = (amplitude.isAnimated && amplitude.animation.isActive ? 
-    pingPong(increment, amplitude.animation.min, amplitude.animation.max, amplitude.step) 
+    pingPong(increment, amplitude.animation.min, amplitude.animation.max, amplitude.animation.rate) 
     : 
-    amplitude.value) - 250;
+    amplitude.value) - 200;
     let activeCount = count.isAnimated && count.animation.isActive ?
     pingPong(increment, count.animation.min, count.animation.max, count.step)
     :
@@ -58,13 +47,17 @@ function renderWave(size, wave, increment) {
     pingPong(increment, countOffset.animation.min, countOffset.animation.max, countOffset.animation.rate)
     :
     countOffset.value;
+    let activeLineWidth = lineWidth.isAnimated && lineWidth.animation.isActive ?
+    pingPong(increment, lineWidth.animation.min, lineWidth.animation.max, lineWidth.animation.rate)
+    :
+    lineWidth.value;
 
   const drawLine = () => {
     // console.log("drawLine", increment);
     this.save();
       let centerY = wave.height/2;
       this.strokeStyle = lineColor.value.slice(0);
-      this.lineWidth = lineWidth.value;
+      this.lineWidth = activeLineWidth;
       for (let waveCount = 0 ; waveCount < activeCount; waveCount++) {
         this.beginPath()
         this.moveTo(-25, centerY)
@@ -73,7 +66,7 @@ function renderWave(size, wave, increment) {
         for (let i = -10; i < size.width + 25; i+=1) {
           if (previous < i){
             this.lineTo(
-              i, 
+              i - lineWidth.value, 
               jitterWave((centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * waveLength.value + calcIncrement) * activeAmplitude))
           }
           previous = i;

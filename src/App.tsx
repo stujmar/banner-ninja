@@ -103,8 +103,8 @@ function App() {
       if (property.attribute === attribute) {
         let newAnimation =  {
           "isActive": aniType == "isActive" ? value : property.animation.isActive,
-          "min": aniType == "min" ? value : property.animation.min,
-          "max": aniType == "max" ? value : property.animation.max,
+          "min": aniType == "min" ? value : parseFloat(property.animation.min),
+          "max": aniType == "max" ? value : parseFloat(property.animation.max),
           "rate": aniType == "rate" ? value : property.animation.rate,
         }
         return {...property, animation: newAnimation};
