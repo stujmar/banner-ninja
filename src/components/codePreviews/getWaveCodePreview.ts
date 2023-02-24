@@ -12,15 +12,17 @@ export const generateWaveCodePreview = (settings: any, hashId: string) => {
     };
     function establishContext() {
         canvas.width = window.outerWidth;
-        canvas.height = ${settings.height}};
+        canvas.height = ${settings.height};
         ctx = canvas.getContext("2d");
         ctx.fillStyle = "${backgroundColor.value}";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
     function step() {
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.lineWidth = ${lineWidth.value};
       ctx.beginPath();
       ctx.moveTo(-5, canvas.height / 2);
-      for (let i = 0; i < canvas.width; i++) {
+      for (let i = -${lineWidth.max}; i < canvas.width; i++) {
         ctx.lineTo(i, canvas.height / 2 + Math.sin(i / 50 + increment) * 50);
       }
       ctx.strokeStyle = "${lineColor.value}";

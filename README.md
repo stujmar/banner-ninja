@@ -15,8 +15,8 @@ Also trying out a React/TypeScript/Vite build.
 - [ ] Get some sort of donate button.
 - [ ] Work on mode color themes.
 - [ ] Rebuild color picker + pick better default colors.
-- [ ] Start Plasma Preview.
+- [ ] Start plasma Preview.
 - [ ] Get bokehs moving.
 - [ ] Get app deployed on actual domain, update API gateway CORS address.
-- [ ] Remap wavelength.
+- [ ] Way to save and load configs.
 - [ ] Be able to animate properties rate.

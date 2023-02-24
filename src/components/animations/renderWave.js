@@ -63,10 +63,10 @@ function renderWave(size, wave, increment) {
         this.moveTo(-25, centerY)
         let previous = -200;
         let calcIncrement = increment * parseFloat(frequency.value);
-        for (let i = -10; i < size.width + 25; i+=1) {
+        for (let i = -lineWidth.max; i < size.width + 25; i+=1) {
           if (previous < i){
             this.lineTo(
-              i - lineWidth.value, 
+              i, 
               jitterWave((centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * activeWaveLength + calcIncrement) * activeAmplitude))
           }
           previous = i;
