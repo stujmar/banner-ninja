@@ -37,7 +37,7 @@
       },
       {
         "label": "Count",
-        "attribute": "Count",
+        "attribute": "count",
         "type": "range",
         "min": 1, 
         "max": 8,
@@ -116,9 +116,26 @@
         "value": 150,
         "step": 1,
         "isAnimated": false
+      },
+      {
+        "label": "Echo",
+        "attribute": "echo",
+        "type": "range",
+        "min": 0, 
+        "max": 8,
+        "value": 0,
+        "step": 1,
+        "isAnimated": false
+      },
+      {
+        "label": "Echo Offset",
+        "attribute": "echoOffest",
+        "type": "range",
+        "min": 10, 
+        "max": 100,
+        "value": 10,
+        "step": 10,
+        "isAnimated": false
       }
-    ],
-    "trails": 0.016,
-    "echo": 10,
-    "echoOffset": 120
+    ]
   }

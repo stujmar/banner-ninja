@@ -717,6 +717,14 @@ video {
   height: 1.25rem;
 }
 
+.h-\[136px\] {
+  height: 136px;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
 .h-3 {
   height: 0.75rem;
 }
@@ -1194,6 +1202,14 @@ video {
 
 .duration-100 {
   transition-duration: 100ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
 * {

@@ -1,7 +1,7 @@
 function renderWave(size, wave, increment) {
   let [
     lineColor, backgroundColor, 
-    amplitude, count, countOffset, lineWidth, waveLength, frequency, jitter, trails] = wave.properties;
+    amplitude, count, countOffset, lineWidth, waveLength, frequency, jitter, trails, echo, echoOffset] = wave.properties;
     const drawBackground = () => {
       let alpha = (255 - trails.value).toString(16);
       alpha = trails.value >= 240 ? 0 + alpha : alpha;
@@ -53,7 +53,7 @@ function renderWave(size, wave, increment) {
     lineWidth.value;
     let activeWaveLength = waveLength.max - (waveLength.value - waveLength.min)
 
-  const drawLine = () => {
+  const drawLine = (_echo) => {
     this.save();
       let centerY = wave.height/2;
       this.strokeStyle = lineColor.value.slice(0);
@@ -63,10 +63,11 @@ function renderWave(size, wave, increment) {
         this.moveTo(-25, centerY)
         let previous = -200;
         let calcIncrement = increment * parseFloat(frequency.value);
-        for (let i = -lineWidth.max; i < size.width + 25; i+=1) {
+        let setBack = -lineWidth.max - (echoOffset.value * echo.value);
+        for (let i = setBack; i < size.width + 25; i+=1) {
           if (previous < i){
             this.lineTo(
-              i, 
+              i + (_echo * echoOffset.value), 
               jitterWave((centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * activeWaveLength + calcIncrement) * activeAmplitude))
           }
           previous = i;
@@ -78,7 +79,9 @@ function renderWave(size, wave, increment) {
   }
 
   drawBackground();
-  drawLine();
+  for (let _echo = 0; _echo < (parseInt(echo.value) + 1); _echo++) {
+  drawLine(_echo);
+  }
   wave.increment = parseFloat((increment += .01).toFixed(2));
   // wave.increment = increment += parseFloat(frequency.value);
   return wave;
