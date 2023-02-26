@@ -68,7 +68,7 @@ function renderWave(size, wave, increment) {
           if (previous < i){
             this.lineTo(
               i + (_echo * echoOffset.value), 
-              jitterWave((centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2)) + Math.sin(i * activeWaveLength + calcIncrement) * activeAmplitude))
+              jitterWave(centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2) + Math.sin(i * activeWaveLength + calcIncrement) * activeAmplitude))
           }
           previous = i;
         }

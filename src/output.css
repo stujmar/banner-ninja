@@ -653,6 +653,10 @@ video {
   margin-top: 0.75rem;
 }
 
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -663,10 +667,6 @@ video {
 
 .-ml-1 {
   margin-left: -0.25rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
 }
 
 .mt-2 {
@@ -1365,6 +1365,10 @@ input::-webkit-slider-thumb {
 
   .sm\:right-3 {
     right: 0.75rem;
+  }
+
+  .sm\:mt-0 {
+    margin-top: 0px;
   }
 
   .sm\:mt-6 {

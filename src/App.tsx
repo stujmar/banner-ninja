@@ -148,9 +148,9 @@ function App() {
                 </svg>
               </button>
               {/* General Settings Grid */}
-              {toggleGeneralSettings ? <div className="flex flex-wrap items-start gap-3 module-border sm:no-module-border">
+              {toggleGeneralSettings ? <div className="flex flex-wrap items-start gap-3 mt-1 sm:mt-0 module-border sm:no-module-border">
                 <ModeSwitcher mode={mode} onClick={(e: any) => {handleModeChange(e)}} />
-                <ToggleButton label={"Toggle Title"} explainer={"(for display only.)"} onClick={toggleTitle} />
+                <ToggleButton label={"Toggle Title"} explainer={""} onClick={toggleTitle} />
                 <Fader
                   settings={{
                     attribute: "blur",
@@ -191,7 +191,7 @@ function App() {
               </button>
               {/* Mode Settings Grid */}
               {toggleModeSettings ?
-              <div className="flex flex-wrap items-start gap-3 module-border sm:no-module-border">
+              <div className="flex flex-wrap items-start gap-3 mt-1 sm:mt-0 module-border sm:no-module-border">
                 {controls}
               </div> : null}
             </div>
