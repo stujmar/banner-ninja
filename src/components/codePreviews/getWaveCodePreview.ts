@@ -23,7 +23,7 @@ export const generateWaveCodePreview = (settings: any, hashId: string) => {
       ctx.beginPath();
       ctx.moveTo(-5, canvas.height / 2);
       for (let i = -${lineWidth.max}; i < canvas.width; i++) {
-        ctx.lineTo(i, canvas.height / 2 + Math.sin(i / 50 + increment) * 50);
+        ctx.lineTo(i, canvas.height / 2 + Math.sin(i / 50 + increment) * ${amplitude.value - (amplitude.max/2)});
       }
       ctx.strokeStyle = "${lineColor.value}";
       ctx.stroke();
