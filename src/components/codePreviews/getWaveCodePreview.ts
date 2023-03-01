@@ -8,6 +8,7 @@ export const generateWaveCodePreview = (settings: any, hashId: string) => {
     let increment = 0;
     let count = ${count.value};
     let countOffset = ${countOffset.value};
+    let jitter = ${jitter.value};
     const canvas = document.getElementById("bannerCanvas_${hashId}");
     establishContext();
     window.onresize = function() {
@@ -23,6 +24,7 @@ export const generateWaveCodePreview = (settings: any, hashId: string) => {
     function step() {
       let centerY = canvas.height/2;
       let previousX = -100;
+      let frequency = ${parseFloat(frequency.value)}*increment;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.lineWidth = ${lineWidth.value};
       ctx.strokeStyle = "${lineColor.value}";
@@ -32,7 +34,7 @@ export const generateWaveCodePreview = (settings: any, hashId: string) => {
         ctx.moveTo(-5, canvas.height / 2);
         for (let i = -${lineWidth.max}; i < canvas.width; i++) {
           if (i > previousX) {
-          ctx.lineTo(i, (centerY - (offsetY) + Math.sin(i * ${activeFrequency} + increment) * ${amplitude.value - (amplitude.max/2)}));
+          ctx.lineTo(i, applyJitter((centerY - (offsetY) + Math.sin(i * ${activeFrequency} + frequency) * ${amplitude.value - (amplitude.max/2)})));
           }
           previousX = i;
         }
@@ -42,6 +44,24 @@ export const generateWaveCodePreview = (settings: any, hashId: string) => {
       window.requestAnimationFrame(step);
     }
     window.requestAnimationFrame(step);
+
+    function applyJitter(value) {
+      function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+        }
+      return value + getRandomArbitrary(-jitter, jitter);
+    }
+
+    function pingPong(increment, min, max, rate) {
+      if (min > max) {
+        let temp = min;
+        min = max;
+        max = temp;
+      }
+      let range = max - min;
+      let progress = Math.abs(Math.sin(increment * rate)) * range;
+      return min + progress;
+    }
 `
   const suffix = `  </script>`
     return prefix + javaScriptBody + suffix;

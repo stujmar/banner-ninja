@@ -22,7 +22,6 @@ function renderWave(size, wave, increment) {
       let range = max - min;
       let progress = Math.abs(Math.sin(increment * rate)) * range;
       return min + progress;
-
     }
 
     // give a number a random jitter above or below the value.
