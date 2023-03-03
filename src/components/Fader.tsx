@@ -5,9 +5,10 @@ type FaderProps = {
   settings: any;
   onChange: (e: any) => void;
   base?: boolean;
+  theme: string;
 };
 
-const Fader = ({settings, onChange, base}: FaderProps) => {
+const Fader = ({settings, onChange, base, theme}: FaderProps) => {
   const [aniActive, setAniActive] = useState<boolean>(settings.isAnimated ? settings.animation.isActive : false);
   const { attribute, label, min, max, value, step, invert } = settings;
   
@@ -24,9 +25,9 @@ const Fader = ({settings, onChange, base}: FaderProps) => {
   }
 
   return (
-    <div className={`flex flex-col gap-2 sm:module-border w-40 transition-all overflow-hidden ${settings.isAnimated && aniActive ? "h-[136px]":"h-16"}`}>
+    <div className={`flex flex-col gap-2 sm:module-${theme}-border w-40 transition-all overflow-hidden ${settings.isAnimated && aniActive ? "h-[136px]":"h-16"}`}>
       <div className="flex justify-between items-center">
-        <span className="font-nunito font-bold text-left text-slate-800">{label}</span>
+        <span className={`font-nunito font-bold text-left text-${theme}-800`}>{label}</span>
         {settings.isAnimated && 
           <button onClick={toggleIsAnimated}>
             <svg 
@@ -34,7 +35,7 @@ const Fader = ({settings, onChange, base}: FaderProps) => {
               fill="none" viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth={1.5}
-              className={`w-5 h-5 curson-pointer ${aniActive ? "text-slate-700" : "text-slate-400"}`}>
+              className={`w-5 h-5 curson-pointer ${aniActive ? `text-${theme}-700` : `text-${theme}-400`}`}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg></button>}
       </div>
@@ -47,7 +48,7 @@ const Fader = ({settings, onChange, base}: FaderProps) => {
         <FaderRange settings={settings} onChange={handleAniChange} />
         <div className={`flex flex-col gap-2`}>
           <div className="flex flex-col mt-1 justify-between items-start">
-            <span className="font-nunito font-bold text-left text-slate-800">Rate</span>
+            <span className={`font-nunito font-bold text-left text-${theme}-800`}>Rate</span>
             <input
               style={{background: `linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) ${(settings.animation?.rate/10) * 100}%, #fff 0%, #fff 100%)`}}
               className={`accent-lime-500 bg-black`} type="range" name={`${attribute}-rate`} onChange={(e) => handleAniChange(e)} value={settings.animation?.rate} min={1} max={10} step={0.05}></input>

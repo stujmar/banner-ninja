@@ -2,9 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer base {
   .module-border {
     @apply p-3 pt-2 bg-white rounded-md border border-slate-300 shadow-md
+  }
+  .module-slate-border {
+    @apply p-3 pt-2 bg-white rounded-md border border-slate-300 shadow-md
+  }
+  .module-stone-border {
+    @apply p-3 pt-2 bg-white rounded-md border border-stone-300 shadow-md
+  }
+  .module-cosmic-border {
+    @apply p-3 pt-2 bg-white rounded-md border border-cosmic-300 shadow-md
   }
   .no-module-border {
     @apply p-0 border-none bg-transparent rounded-none shadow-none

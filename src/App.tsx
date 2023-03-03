@@ -22,6 +22,7 @@ function App() {
     isActive: true,
   });
   const [controls, setControls] = useState([]);
+  let theme: string = getTheme(mode);
 
   /**
    * Generate a random hash id for the banner preview
@@ -64,6 +65,7 @@ function App() {
             return <Fader 
                       key={property.label} 
                       settings={property}
+                      theme={theme}
                       onChange={handleChangeRouter} />
           default:
             break;
@@ -136,20 +138,21 @@ function App() {
   return (
     <div className="pb-24">
         <BannerPreview mode={mode} blur={blur} settings={settingsRef.current} titleSettings={titleSettings} updateSettings={handleChangeRouter}/>
-        <div className="container max-w-[1090px] p-4 bg-slate-50 mx-auto h-screen justify-start items-center md:items-start">
+        <div className={`bg-${theme}-50`}>
+        <div className={`container max-w-[1090px] p-4 bg-${theme}-50 mx-auto h-screen justify-start items-center md:items-start`}>
           <div>
             {/* Top Row - Border Element */}
-            <div className="relative mt-3 px-1 py-3 sm:p-4 sm:border-2 border-slate-400 rounded-lg w-full">
-            <div className="sm:hidden -top-1 absolute w-11/12 border-t-2 border-slate-400"></div>
-              <button onClick={() => toggleSettingsVisibility("general")} className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 pr-2 sm:px-2 bg-slate-50">General Settings</button>
-              <button onClick={() => toggleSettingsVisibility("general")} className="absolute select-none focus:outline-none pt-px -top-3.5 right-0 sm:right-3 px-1 bg-slate-50">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 stroke-slate-500 transition duration-100 ${toggleGeneralSettings ? "" : "-rotate-90"}`}>
+            <div className={`relative mt-3 px-1 py-3 sm:p-4 sm:border-2 border-${theme}-400 rounded-lg w-full`}>
+            <div className={`sm:hidden -top-1 absolute w-11/12 border-t-2 border-${theme}-400`}></div>
+              <button onClick={() => toggleSettingsVisibility("general")} className={`absolute font-nunito font-bold text-${theme}-600 pt-px -top-4 pr-2 sm:px-2 bg-${theme}-50`}>General Settings</button>
+              <button onClick={() => toggleSettingsVisibility("general")} className={`absolute select-none focus:outline-none pt-px -top-3.5 right-0 sm:right-3 px-1 bg-${theme}-50`}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 stroke-${theme}-500 transition duration-100 ${toggleGeneralSettings ? "" : "-rotate-90"}`}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
               </button>
               {/* General Settings Grid */}
               {toggleGeneralSettings ? <div className="flex flex-wrap items-start gap-3 mt-1 sm:mt-0 module-border sm:no-module-border">
-                <ModeSwitcher mode={mode} onClick={(e: any) => {handleModeChange(e)}} />
+                <ModeSwitcher mode={mode} theme={theme} onClick={(e: any) => {handleModeChange(e)}} />
                 <ToggleButton label={"Toggle Title"} explainer={""} onClick={toggleTitle} />
                 <Fader
                   settings={{
@@ -161,6 +164,7 @@ function App() {
                     value: settingsRef.current.blur,
                     invert: false,
                   }}
+                  theme={theme}
                   onChange={handleChangeRouter}
                   base={true}
                 />
@@ -174,6 +178,7 @@ function App() {
                     value: settingsRef.current.height,
                     invert: false,
                   }}
+                  theme={theme}
                   onChange={handleChangeRouter}
                   base={true}
                 />
@@ -181,11 +186,11 @@ function App() {
               </div> : null}
             </div>
             {/* Mode Specific Settings */}
-            <div className="relative mt-4 sm:mt-6 px-1 py-3 sm:p-4 sm:border-2 border-slate-400 rounded-lg w-full">
-            <div className="sm:hidden -top-1 absolute w-11/12 border-t-2 border-slate-400"></div>
-              <button onClick={() => toggleSettingsVisibility("mode")} className="absolute font-nunito font-bold text-slate-600 pt-px -top-4 pr-2 sm:px-2 bg-slate-50">{mode.charAt(0).toUpperCase() + mode.slice(1)} Settings</button>
-              <button onClick={() => toggleSettingsVisibility("mode")} className="absolute select-none focus:outline-none pt-px -top-3.5 right-0 sm:right-3 px-1 bg-slate-50">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 stroke-slate-500 transition duration-100 ${toggleModeSettings ? "" : "-rotate-90"}`}>
+            <div className={`relative mt-4 sm:mt-6 px-1 py-3 sm:p-4 sm:border-2 border-${theme}-400 rounded-lg w-full`}>
+            <div className={`sm:hidden -top-1 absolute w-11/12 border-t-2 border-${theme}-400`}></div>
+              <button onClick={() => toggleSettingsVisibility("mode")} className={`absolute font-nunito font-bold text-${theme}-600 pt-px -top-4 pr-2 sm:px-2 bg-${theme}-50`}>{mode.charAt(0).toUpperCase() + mode.slice(1)} Settings</button>
+              <button onClick={() => toggleSettingsVisibility("mode")} className={`absolute select-none focus:outline-none pt-px -top-3.5 right-0 sm:right-3 px-1 bg-${theme}-50`}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={`w-6 h-6 stroke-${theme}-500 transition duration-100 ${toggleModeSettings ? "" : "-rotate-90"}`}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
               </button>
@@ -201,8 +206,23 @@ function App() {
           <CodePreview idHash={idHash} settings={settings} />
         <Footer text="Created by Stuart John Marsh" />
         </div>
+        </div>
+
     </div>
   )
 }
 
 export default App;
+
+function getTheme(mode: string): string {
+  switch (mode) {
+    case "waves":
+      return "slate";
+    case "bokeh":
+      return "stone";
+    case "plasma":
+      return "cosmic";
+    default:
+      return "slate";
+  }
+}
