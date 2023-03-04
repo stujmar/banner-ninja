@@ -58,9 +58,9 @@ function App() {
       settings.properties.map((property: any) => {
         switch (property.type) {
           case "color":
-            return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} onChange={handleChangeRouter} />
+            return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} theme={theme} onChange={handleChangeRouter} />
           case "gradient":
-            return <Gradient key={property.label} colors={property.value} attribute={property.attribute} label={property.label} onChange={handleChangeRouter} />
+            return <Gradient key={property.label} colors={property.value} attribute={property.attribute} label={property.label} theme={theme} onChange={handleChangeRouter} />
           case "range":
             return <Fader 
                       key={property.label} 
