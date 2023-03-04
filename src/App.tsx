@@ -153,7 +153,7 @@ function App() {
               {/* General Settings Grid */}
               {toggleGeneralSettings ? <div className="flex flex-wrap items-start gap-3 mt-1 sm:mt-0 module-border sm:no-module-border">
                 <ModeSwitcher mode={mode} theme={theme} onClick={(e: any) => {handleModeChange(e)}} />
-                <ToggleButton label={"Toggle Title"} explainer={""} onClick={toggleTitle} />
+                <ToggleButton label={"Toggle Title"} explainer={""} theme={theme} onClick={toggleTitle} />
                 <Fader
                   settings={{
                     attribute: "blur",
@@ -203,7 +203,7 @@ function App() {
           </div>
           <div className="p-2"></div>
           {/* Code Preview */}
-          <CodePreview idHash={idHash} settings={settings} />
+          <CodePreview idHash={idHash} settings={settings} theme={theme}/>
         <Footer text="Created by Stuart John Marsh" />
         </div>
         </div>

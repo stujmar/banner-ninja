@@ -13,7 +13,7 @@
     @apply p-3 pt-2 bg-white rounded-md border border-stone-300 shadow-md
   }
   .module-cosmic-border {
-    @apply p-3 pt-2 bg-white rounded-md border border-cosmic-300 shadow-md
+    @apply p-3 pt-2 bg-white rounded-md border border-cosmic-200 shadow-md
   }
   .no-module-border {
     @apply p-0 border-none bg-transparent rounded-none shadow-none
@@ -36,22 +36,26 @@ body {
   background-color: #f8fafc;
 }
 
-.rtl {
-  direction: rtl;
-}
-
 .circle-picker span div span div {
   border: 1px solid #94a3b8;
 }
 
 input[type="range"] {
-  /* background: linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) 50%, #fff 50%, #fff 100%); */
-  border: solid 1px rgb(148 163 184);
   border-radius: 8px;
   height: 7px;
   width: 134px;
   outline: none;
   appearance: none;
+}
+
+input[type="range"].slate {
+  border: solid 1px rgb(148 163 184);
+}
+input[type="range"].stone {
+  border: solid 1px rgb(184, 153, 148);
+}
+input[type="range"].cosmic {
+  border: solid 1px #a5b4fc;
 }
 
 input[type="range"].fader-range {
@@ -74,12 +78,27 @@ input[type=range]::-moz-range-thumb {
   z-index: 30;
 }
 
-  input::-webkit-slider-thumb {
-    background-color: rgb(238, 238, 238);
-    border: solid 1px rgb(148 163 184);
-    border-radius: 0;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    -webkit-appearance: none;
-  }
+
+
+input::-webkit-slider-thumb {
+  border-radius: 0;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  -webkit-appearance: none;
+}
+
+input.slate::-webkit-slider-thumb {
+  background-color: #f1f5f9;
+  border: solid 1px rgb(148 163 184);
+}
+
+input.stone::-webkit-slider-thumb {
+  background-color: #fafaf9;
+  border: solid 1px rgb(184, 153, 148);
+}
+
+input.cosmic::-webkit-slider-thumb {
+  background-color: #f5f5f4;
+  border: solid 1px #a5b4fc;
+}

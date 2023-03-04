@@ -12,6 +12,17 @@ const Fader = ({settings, onChange, base, theme}: FaderProps) => {
   const [aniActive, setAniActive] = useState<boolean>(settings.isAnimated ? settings.animation.isActive : false);
   const { attribute, label, min, max, value, step, invert } = settings;
   
+  const getThemeColor = () => {
+    switch (theme) {
+      case "slate": // slate-400
+        return "#94a3b8";
+      case "stone": // stone-400
+        return "#a8a29e";
+      case "cosmic": // Indigo-400
+        return "#818cf8";
+    }
+  };
+
   const handlePropertyChange = (e: any) => {
     onChange({target: {type: base ? "base" : "property", name: attribute, value: parseFloat(e.target.value)}});
   }
@@ -41,8 +52,8 @@ const Fader = ({settings, onChange, base, theme}: FaderProps) => {
       </div>
       {(settings.isAnimated && aniActive)
         || <input
-          style={{background: `linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) ${((value - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}
-          type="range" name="timeSlider"
+          style={{background: `linear-gradient(to right, ${getThemeColor()} 0%, ${getThemeColor()} ${((value - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}
+          type="range" name="timeSlider" className={`${theme}`}
           onChange={(e) => handlePropertyChange(e)} value={value} min={min} max={max} step={step}></input>}
       <div className={`${!aniActive ? "" : "transition ease-in duration-300"} ${settings.isAnimated && aniActive ? "opacity-100":"opacity-0"}`}>
         <FaderRange settings={settings} onChange={handleAniChange} />
@@ -51,7 +62,7 @@ const Fader = ({settings, onChange, base, theme}: FaderProps) => {
             <span className={`font-nunito font-bold text-left text-${theme}-800`}>Rate</span>
             <input
               style={{background: `linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) ${(settings.animation?.rate/10) * 100}%, #fff 0%, #fff 100%)`}}
-              className={`accent-lime-500 bg-black`} type="range" name={`${attribute}-rate`} onChange={(e) => handleAniChange(e)} value={settings.animation?.rate} min={1} max={10} step={0.05}></input>
+              className={`${theme}`} type="range" name={`${attribute}-rate`} onChange={(e) => handleAniChange(e)} value={settings.animation?.rate} min={1} max={10} step={0.05}></input>
           </div>
         </div>
       </div>

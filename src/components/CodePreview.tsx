@@ -8,10 +8,11 @@ import getCodePreview from './codePreviews/getCodePreview';
 
 type CodePreviewProps = {
   settings: any;
+  theme: string;
   idHash: string;
 }
 
-const CodePreview = ({settings, idHash}: CodePreviewProps) => {
+const CodePreview = ({settings, theme, idHash}: CodePreviewProps) => {
   getCodePreview(settings, idHash);
   let [backgroundColor] = settings.properties
   const prefix = ` <canvas id="bannerCanvas_${idHash}" style="width: 100%; height:256px;"></canvas>
@@ -27,7 +28,6 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
   const [isCopying, setIsCopying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isMinified, setIsMinified] = useState(false);
-  // const [displayCode, setDisplayCode] = useState(`${prefix}${javaScriptBody}${suffix}`);
   const [displayCode, setDisplayCode] = useState("bort");
 
   const copyToClipboard = () => {
@@ -78,7 +78,7 @@ const CodePreview = ({settings, idHash}: CodePreviewProps) => {
   }, [settings])
 
   return (
-    <div className="w-full rounded-lg p-3 relative overflow-hidden border border-slate-300 shadow-md bg-white">
+    <div className={`w-full rounded-lg p-3 relative overflow-hidden border border-${theme}-300 shadow-md bg-white`}>
         <div className="flex justify-between items-end w-full">
           <div className="flex items-end gap-4">
           <div className="text-slate-800 font-nunito font-bold text-lg">Code Preview</div>
