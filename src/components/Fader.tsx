@@ -56,7 +56,7 @@ const Fader = ({settings, onChange, base, theme}: FaderProps) => {
           type="range" name="timeSlider" className={`${theme}`}
           onChange={(e) => handlePropertyChange(e)} value={value} min={min} max={max} step={step}></input>}
       <div className={`${!aniActive ? "" : "transition ease-in duration-300"} ${settings.isAnimated && aniActive ? "opacity-100":"opacity-0"}`}>
-        <FaderRange settings={settings} onChange={handleAniChange} />
+        <FaderRange settings={settings} theme={theme} onChange={handleAniChange} />
         <div className={`flex flex-col gap-2`}>
           <div className="flex flex-col mt-1 justify-between items-start">
             <span className={`font-nunito font-bold text-left text-${theme}-800`}>Rate</span>

@@ -2,10 +2,11 @@ import React from 'react';
 
 type FaderRangeProps = {
     settings: any;
+    theme: string;
     onChange: (value: any) => void;
   }
 
-  const FaderRange = ({ settings, onChange }: FaderRangeProps) => {
+  const FaderRange = ({ settings, theme, onChange }: FaderRangeProps) => {
     const handleChangeMin = (e: any) => {
       onChange({target: {type: "animation", name: `${settings.attribute}-min`, value: parseFloat(e.target.value)}});
     }
@@ -26,11 +27,11 @@ type FaderRangeProps = {
       <div className="flex flex-col">
         <label className="font-nunito font-bold text-left text-slate-800">Min/Max</label>
         <div className="relative h-3 mt-2">
-          <input className="fader-range absolute top-0 left-0" type="range" min={settings.min} max={settings.max} value={settings.animation?.min} onChange={handleChangeMin}></input>
+          <input className={`${theme} fader-range absolute top-0 left-0`} type="range" min={settings.min} max={settings.max} value={settings.animation?.min} onChange={handleChangeMin}></input>
           <div 
             style={{"background": `linear-gradient(to right, #fff ${firstPosition}%, rgb(148 163 184) ${firstPosition}%, rgb(148 163 184) ${secondPosition}%, #fff 0%, #fff 100%)`}}
             className="border h-2 rounded border-slate-400"></div>
-          <input className="fader-range absolute top-0 left-0" type="range" min={settings.min} max={settings.max} value={settings.animation?.max} onChange={handleChangeMax}></input>
+          <input className={`${theme} fader-range absolute top-0 left-0`} type="range" min={settings.min} max={settings.max} value={settings.animation?.max} onChange={handleChangeMax}></input>
         </div>
       </div>
     );
