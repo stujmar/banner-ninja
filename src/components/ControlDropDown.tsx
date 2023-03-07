@@ -7,7 +7,7 @@ type ControlDropDownProps = {
 
 const ControlDropDown = ({settings, onChange}: ControlDropDownProps) => {
   const [options, setOptions] = useState<any>([]);
-  const { attribute, label, min, max, value, step, invert } = settings;
+  const {attribute, label, min, max, value, step} = settings;
 
   const handleChange = (e: any) => {
     onChange({target: {name: attribute, value: e.target.value}});

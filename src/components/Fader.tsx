@@ -10,7 +10,7 @@ type FaderProps = {
 
 const Fader = ({settings, onChange, base, theme}: FaderProps) => {
   const [aniActive, setAniActive] = useState<boolean>(settings.isAnimated ? settings.animation.isActive : false);
-  const { attribute, label, min, max, value, step, invert } = settings;
+  const { attribute, label, min, max, value, step } = settings;
   
   const getThemeColor = () => {
     switch (theme) {

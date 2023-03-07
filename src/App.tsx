@@ -162,7 +162,6 @@ function App() {
                     max: 14,
                     step: 1,
                     value: settingsRef.current.blur,
-                    invert: false,
                   }}
                   theme={theme}
                   onChange={handleChangeRouter}
@@ -176,7 +175,6 @@ function App() {
                     max: 512,
                     step: 8,
                     value: settingsRef.current.height,
-                    invert: false,
                   }}
                   theme={theme}
                   onChange={handleChangeRouter}
