@@ -32,13 +32,13 @@
         "step": 1
       },
       {
-        "label": "Bokeh Layer",
-        "attribute": "bokehLayer",
-        "type": "bokehLayer",
+        "label": "Bokeh Layers",
+        "attribute": "bokehLayers",
+        "type": "bokehLayers",
         "value": [
-          {"count": 2, "color": "#ff0000"},
-          {"count": 2, "color": "#00ff00"},
-          {"count": 2, "color": "#0000ff"}
+          {"count": 5, "color": "#ff0000"},
+          {"count": 10, "color": "#00ff00"},
+          {"count": 15, "color": "#0000ff"}
         ]
       }
     ],

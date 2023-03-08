@@ -8,6 +8,7 @@ import getInitialState from './components/animations/getInitialState';
 import ToggleButton from './components/ToggleButton';
 import Fader from './components/Fader';
 import Footer from './components/Footer';
+import BokehLayers from './components/BokehLayers';
 
 function App() {
 
@@ -61,6 +62,8 @@ function App() {
             return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} theme={theme} onChange={handleChangeRouter} />
           case "gradient":
             return <Gradient key={property.label} colors={property.value} attribute={property.attribute} label={property.label} theme={theme} onChange={handleChangeRouter} />
+          case "bokehLayers":
+            return <BokehLayers key={property.label}  settings={property} theme={theme} onChange={handleChangeRouter} />
           case "range":
             return <Fader 
                       key={property.label} 
