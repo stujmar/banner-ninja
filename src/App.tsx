@@ -89,7 +89,6 @@ function App() {
   };
 
   const handlePropertyChange = (name: string, value: number) => {
-    console.log(name, value, "handlePropertyChange")
     let newProperties = settings.properties.map((property: any) => {
       if (property.attribute === name) {
         return {...property, value: value};
@@ -126,7 +125,6 @@ function App() {
 
   const handleChangeRouter = (e: any) => {
     let [type, name, value] = [e.target.type, e.target.name, e.target.value];
-    console.log(type, name, value)
     switch (type) {
       case "base":
         handleBaseChange(name, value);

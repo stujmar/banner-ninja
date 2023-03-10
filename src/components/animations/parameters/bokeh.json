@@ -36,9 +36,9 @@
         "attribute": "bokehLayers",
         "type": "bokehLayers",
         "layers": [
-          {"count": 5, "color": "#ff0000"},
-          {"count": 10, "color": "#00ff00"},
-          {"count": 15, "color": "#0000ff"}
+          {"count": 5, "color": "#ff0000", "blur": 10},
+          {"count": 10, "color": "#00ff00", "blur": 5},
+          {"count": 15, "color": "#0000ff", "blur": 0}
         ]
       }
     ],

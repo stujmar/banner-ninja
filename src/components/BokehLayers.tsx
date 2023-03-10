@@ -16,14 +16,11 @@ const BokehLayers = ({settings, onChange, theme}: BokehLayersProps) => {
 
   const addLayer = () => {
     let newLayers = settings.layers;
-    console.log("adding new layer")
     newLayers.push({id: layers.length, count: 0, color: "#000000"});
     onChange({target: {type: "property", name: "bokehLayers", value: newLayers}});
   };
 
   const removeLayer = (id: number) => {
-    console.log(id);
-    //remove layer of index id from layers
     let newLayers = settings.layers;
     delete newLayers[id];
     onChange({target: {type: "property", name: "bokehLayers", value: newLayers}});
