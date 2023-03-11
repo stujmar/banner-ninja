@@ -4,7 +4,7 @@ module.exports = {
   safelist: [
     'bg-slate-50', 'bg-stone-50', 'bg-cosmic-50',
     'text-slate-400', 'text-stone-400', 'text-cosmic-400',
-    'text-slate-600', 'text-stone-600', 'text-cosmic-600',
+    'text-slate-600', 'te85xt-stone-600', 'text-cosmic-600',
     'text-slate-800', 'text-stone-800', 'text-cosmic-800',
     'text-slate-900', 'text-stone-900', 'text-cosmic-900',
     'stroke-slate-500', 'stroke-stone-500', 'stroke-cosmic-500',

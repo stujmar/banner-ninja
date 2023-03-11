@@ -47,7 +47,7 @@ const FaderSimple = ({onChange, label, theme}: FaderSimpleProps) => {
   }
 
   return (
-    <div className={`flex flex-col gap-2 sm:module-${theme}-border w-40 transition-all overflow-hidden ${settings.isAnimated && aniActive ? "h-[136px]":"h-16"}`}>
+    <div className={`flex flex-col gap-2 w-40 transition-all overflow-hidden ${false ? "h-[136px]":"h-12"}`}>
       <div className="flex justify-between items-center">
         <span className={`font-nunito font-bold text-left text-${theme}-800`}>{label}</span>
         {isAnimated && 
