@@ -14,9 +14,17 @@ const BokehLayers = ({settings, onChange, theme}: BokehLayersProps) => {
     onChange({target: {type: "bokehLayers", name: settings.attribute, value: e.target.value}});
   }
 
+  const changeLayer = (id: number, values: any) => {
+    console.log("changeLayer")
+    console.log(id, values);
+    let newLayers = settings.layers;
+    newLayers[id] = values;
+    onChange({target: {type: "property", name: "bokehLayers", value: newLayers}});
+  };
+
   const addLayer = () => {
     let newLayers = settings.layers;
-    newLayers.push({id: layers.length, count: 0, color: "#000000"});
+    newLayers.push({id: layers.length, count: 0, color: "rgba(50,50,100,0.75)"});
     onChange({target: {type: "property", name: "bokehLayers", value: newLayers}});
   };
 
@@ -28,7 +36,7 @@ const BokehLayers = ({settings, onChange, theme}: BokehLayersProps) => {
 
   useEffect(() => {
     setLayers(settings.layers.map((property: any, index: number) => {
-      return <BokehLayer key={index} id={index} settings={property} onClick={(id) => removeLayer(id)} theme={theme} />
+      return <BokehLayer key={index} id={index} settings={property} onChange={changeLayer} onClick={(id) => removeLayer(id)} theme={theme} />
       }))
   }, [settings]);
 

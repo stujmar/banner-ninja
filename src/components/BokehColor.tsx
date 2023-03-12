@@ -11,11 +11,11 @@ type BokehColorProps = {
 const BokehColor = ({settings, id, theme, onClick}: BokehColorProps) => {
     const [popup, setPopup] = useState(false);
     const handleChange = (e: any) => {
-        onClick({target: {type: "color", name: "color", value: e.target.value}});
+        console.log(e);
+        onClick({target: {type: "color", name: "color", value: e}});
     };
-    console.log(settings);
     return (
-        <div className={`w-32`}>
+        <div className="cursor-pointer w-32">
         {popup ? <button onClick={() => {setPopup(false)}} className="fixed top-0 left-0 z-30 h-screen w-screen" ></button> : null}
         <div className={`text-${theme}-800 font-nunito font-bold`}>{`Color`}</div>
         <button className="w-full" onClick={() => {setPopup(!popup)}}><div style={{background: settings.color}} className={`mt-1 w-full -mb-2 h-6 rounded-lg border border-${theme}-400`}></div></button>

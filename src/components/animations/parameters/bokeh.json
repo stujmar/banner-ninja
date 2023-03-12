@@ -36,9 +36,15 @@
         "attribute": "bokehLayers",
         "type": "bokehLayers",
         "layers": [
-          {"count": 5, "color": "#ff0000", "blur": 10},
-          {"count": 10, "color": "#00ff00", "blur": 5},
-          {"count": 15, "color": "#0000ff", "blur": 0}
+          {
+            "count": 5, 
+            "color": "rgba(255,0,0,1.0)",
+            "blur": 10,
+            "movementRate": 1,
+            "movementAmount": 1
+          },
+          {"count": 10, "color": "rgba(0,255,0,1.0)", "blur": 5},
+          {"count": 15, "color": "rgba(50,10,155,0.5)", "blur": 0}
         ]
       }
     ],
