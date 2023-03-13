@@ -649,6 +649,11 @@ video {
   margin-right: auto;
 }
 
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -691,6 +696,10 @@ video {
 
 .ml-1 {
   margin-left: 0.25rem;
+}
+
+.block {
+  display: block;
 }
 
 .inline-block {
@@ -812,6 +821,10 @@ video {
   cursor: grab;
 }
 
+.touch-none {
+  touch-action: none;
+}
+
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -820,6 +833,12 @@ video {
 
 .resize {
   resize: both;
+}
+
+.appearance-none {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .flex-col {
@@ -998,6 +1017,11 @@ video {
 .bg-lime-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(132 204 22 / var(--tw-bg-opacity));
+}
+
+.bg-stone-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(120 113 108 / var(--tw-bg-opacity));
 }
 
 .fill-stone-300 {
@@ -1200,11 +1224,6 @@ video {
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
-.text-stone-300 {
-  --tw-text-opacity: 1;
-  color: rgb(214 211 209 / var(--tw-text-opacity));
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1245,6 +1264,11 @@ video {
   color: rgb(51 65 85 / var(--tw-text-opacity));
 }
 
+.text-stone-600 {
+  --tw-text-opacity: 1;
+  color: rgb(87 83 78 / var(--tw-text-opacity));
+}
+
 .accent-slate-600 {
   accent-color: #475569;
 }
@@ -1255,6 +1279,14 @@ video {
 
 .accent-cosmic-600 {
   accent-color: #6159c7;
+}
+
+.accent-pink-500 {
+  accent-color: #ec4899;
+}
+
+.accent-stone-500 {
+  accent-color: #78716c;
 }
 
 .opacity-100 {
@@ -1393,6 +1425,32 @@ input.stone::-webkit-slider-thumb {
 input.cosmic::-webkit-slider-thumb {
   background-color: #f5f5f4;
   border: solid 1px #a5b4fc;
+}
+
+.react-var-ui-xy-control:before {
+  bottom: -100rem;
+  left: calc(50% - 1px);
+  top: -100rem;
+  width: 2px;
+}
+
+.react-var-ui-xy-control:after {
+  height: 2px;
+  left: -100rem;
+  right: -100rem;
+  top: calc(50% - 1px);
+}
+
+.react-var-ui-xy-control:after, .react-var-ui-xy-control:before {
+  background: #78716c;
+  content: "";
+  opacity: .25;
+  position: absolute;
+}
+
+.checked\:bg-stone-500:checked {
+  --tw-bg-opacity: 1;
+  background-color: rgb(120 113 108 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-stone-200:hover {

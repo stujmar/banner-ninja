@@ -37,14 +37,38 @@
         "type": "bokehLayers",
         "layers": [
           {
-            "count": 5, 
-            "color": "rgba(255,0,0,1.0)",
+            "count": {
+              "min": 1,
+              "max": 10,
+              "value": 3
+            },
+            "color": "rgba(222,222,154,0.75)",
             "blur": 10,
             "movementRate": 1,
             "movementAmount": 1
           },
-          {"count": 10, "color": "rgba(0,255,0,1.0)", "blur": 5},
-          {"count": 15, "color": "rgba(50,10,155,0.5)", "blur": 0}
+          {
+            "count": {
+              "min": 1,
+              "max": 10,
+              "value": 3
+            },
+            "color": "rgba(222,222,154,0.75)",
+            "blur": 10,
+            "movementRate": 1,
+            "movementAmount": 1
+          },
+          {
+            "count": {
+              "min": 1,
+              "max": 10,
+              "value": 3
+            },
+            "color": "rgba(222,222,154,0.75)",
+            "blur": 10,
+            "movementRate": 1,
+            "movementAmount": 1
+          }
         ]
       }
     ],

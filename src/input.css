@@ -102,3 +102,24 @@ input.cosmic::-webkit-slider-thumb {
   background-color: #f5f5f4;
   border: solid 1px #a5b4fc;
 }
+
+.react-var-ui-xy-control:before {
+  bottom: -100rem;
+  left: calc(50% - 1px);
+  top: -100rem;
+  width: 2px;
+}
+
+.react-var-ui-xy-control:after {
+  height: 2px;
+  left: -100rem;
+  right: -100rem;
+  top: calc(50% - 1px);
+}
+
+.react-var-ui-xy-control:after, .react-var-ui-xy-control:before {
+  background: #78716c;
+  content: "";
+  opacity: .25;
+  position: absolute;
+}

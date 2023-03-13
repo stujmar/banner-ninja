@@ -3,16 +3,16 @@ import FaderRange from './FaderRange';
 
 type FaderSimpleProps = {
   onChange: (e: any) => void;
+  setting: any;
   label: string;
   theme: string;
 };
 
-const FaderSimple = ({onChange, label, theme}: FaderSimpleProps) => {
+const FaderSimple = ({onChange, setting, label, theme}: FaderSimpleProps) => {
   const [aniActive, setAniActive] = useState(false);
   let isAnimated = false;
   let min = 0;
   let max = 10
-  let rate = 1;
   let step;
   let value = 5;
   let settings = {
