@@ -57,6 +57,7 @@ function App() {
     settingsRef.current = settings;
     setControls(
       settings.properties.map((property: any) => {
+        console.log(property.type)
         switch (property.type) {
           case "color":
             return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} theme={theme} onChange={handleChangeRouter} />
@@ -125,6 +126,8 @@ function App() {
 
   const handleChangeRouter = (e: any) => {
     let [type, name, value] = [e.target.type, e.target.name, e.target.value];
+    console.log(e)
+    console.log(type, name, value)
     switch (type) {
       case "base":
         handleBaseChange(name, value);
@@ -156,7 +159,6 @@ function App() {
               {/* General Settings Grid */}
               {toggleGeneralSettings ? <div className="flex flex-wrap items-start gap-3 mt-1 sm:mt-0 module-border sm:no-module-border">
                 <ModeSwitcher mode={mode} theme={theme} onClick={(e: any) => {handleModeChange(e)}} />
-                <ToggleButton label={"Toggle Title"} explainer={""} theme={theme} onClick={toggleTitle} />
                 <Fader
                   settings={{
                     attribute: "blur",
@@ -183,6 +185,7 @@ function App() {
                   onChange={handleChangeRouter}
                   base={true}
                 />
+                <ToggleButton label={"Toggle Title"} explainer={""} theme={theme} onClick={toggleTitle} />
 
               </div> : null}
             </div>

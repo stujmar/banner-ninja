@@ -93,7 +93,7 @@ export const VarXY: FC<IVarXYProps> = ({
     min,
     max
   ]);
-  console.log("from VarXY", value)
+//   console.log("from VarXY", value);
   const updatePosition = useCallback(
     (x: number, y: number) => {
       if (!sliderRef.current) {
@@ -115,7 +115,7 @@ export const VarXY: FC<IVarXYProps> = ({
         max,
         step
       );
-      console.log("from updatePosition", value)
+    //   console.log("from updatePosition", value);
       setCurrentValue(value);
     },
     [setCurrentValue, min, max, step]

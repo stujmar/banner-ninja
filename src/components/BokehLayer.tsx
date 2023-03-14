@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import BokehColor from './BokehColor';
 import { VarXY } from './dragXY/VarXY';
@@ -15,8 +15,16 @@ type BokehLayerProps = {
 
 const BokehLayer = ({settings, id, theme, onClick, onChange}: BokehLayerProps) => {
     const [dragValue, setDragValue] = useState<[number,number]>([0,0]);
+    const [localSettings, setLocalSettings] = useState<any>(settings);
     const ref = useRef(null);
-    const handleChange = (e: any) => {
+
+    useEffect(() => {
+        setLocalSettings(settings);
+        // console.log("updating local settings")
+    }, [settings]);
+
+    // console.log("bokehlayer", settings)
+    const handleColorChange = (e: any) => {
         let r = e.target.value.rgb.r,
             g = e.target.value.rgb.g,
             b = e.target.value.rgb.b,
@@ -24,15 +32,22 @@ const BokehLayer = ({settings, id, theme, onClick, onChange}: BokehLayerProps) =
         let newSettings = {...settings, [e.target.name]: `rgba(${r},${g},${b},${a})`};
         onChange(id, newSettings);
     };
+
+    const handleChange = (e: any) => {
+        // console.log(settings)
+        let newSettings = {...settings, [e.target.name]: e.target.value};
+        onChange(id, newSettings);
+    }
+
     const handleXY = (e: any) => {
-        console.log(e);
+        // console.log(e);
         setDragValue(e);
     }
     // console.log("boken layer", settings)
     return (
         <div className={`cursor-grab flex items-start gap-4 mt-2 sm:module-${theme}-border transition-all`}>
             <DragIcon classes={"my-auto content-fill fill-stone-300"} />
-            <BokehColor settings={settings} id={id} onClick={handleChange} theme={theme}/>
+            <BokehColor settings={settings} id={id} onClick={handleColorChange} theme={theme}/>
             <FaderSimple label={"Count"} setting={settings.count} theme={theme} onChange={handleChange} />
             <VarXY value={dragValue} onChange={handleXY} />
             <FaderSimple label={"Repel Strength"} setting={settings.count} theme={theme} onChange={handleChange} />

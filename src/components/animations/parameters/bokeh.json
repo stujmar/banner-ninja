@@ -1,7 +1,5 @@
 {
     "mode": "bokeh",
-    "x": 0,
-    "y": 100,
     "blur": 10,
     "height": 216,
     "persist" : {
@@ -23,15 +21,6 @@
         "isAnimated": false
       },
       {
-        "label": "Count",
-        "attribute": "Count",
-        "type": "range",
-        "min": 6, 
-        "max": 32,
-        "value": 16,
-        "step": 1
-      },
-      {
         "label": "Bokeh Layers",
         "attribute": "bokehLayers",
         "type": "bokehLayers",
@@ -39,7 +28,7 @@
           {
             "count": {
               "min": 1,
-              "max": 10,
+              "max": 50,
               "value": 3
             },
             "color": "rgba(222,222,154,0.75)",
@@ -50,10 +39,10 @@
           {
             "count": {
               "min": 1,
-              "max": 10,
-              "value": 3
+              "max": 50,
+              "value": 20
             },
-            "color": "rgba(222,222,154,0.75)",
+            "color": "rgba(22,222,154,0.75)",
             "blur": 10,
             "movementRate": 1,
             "movementAmount": 1
@@ -61,10 +50,10 @@
           {
             "count": {
               "min": 1,
-              "max": 10,
-              "value": 3
+              "max": 50,
+              "value": 8
             },
-            "color": "rgba(222,222,154,0.75)",
+            "color": "rgba(222,22,154,0.75)",
             "blur": 10,
             "movementRate": 1,
             "movementAmount": 1

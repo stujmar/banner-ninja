@@ -8,6 +8,7 @@ type BokehLayersProps = {
 };
 
 const BokehLayers = ({settings, onChange, theme}: BokehLayersProps) => {
+  // console.log("BokehLayers", settings)
   const [layers, setLayers] = useState<any>([]);
   
   const handleChange = (e: any) => {
@@ -15,8 +16,8 @@ const BokehLayers = ({settings, onChange, theme}: BokehLayersProps) => {
   }
 
   const changeLayer = (id: number, values: any) => {
-    console.log("changeLayer")
-    console.log(id, values);
+    // console.log("changeLayer")
+    // console.log(id, values);
     let newLayers = settings.layers;
     newLayers[id] = values;
     onChange({target: {type: "property", name: "bokehLayers", value: newLayers}});
@@ -24,7 +25,17 @@ const BokehLayers = ({settings, onChange, theme}: BokehLayersProps) => {
 
   const addLayer = () => {
     let newLayers = settings.layers;
-    newLayers.push({id: layers.length, count: 0, color: "rgba(50,50,100,0.75)"});
+    newLayers.push({
+      "count": {
+        "min": 1,
+        "max": 50,
+        "value": 20
+      },
+      "color": "rgba(82,122,154,0.85)",
+      "blur": 10,
+      "movementRate": 1,
+      "movementAmount": 1
+    });
     onChange({target: {type: "property", name: "bokehLayers", value: newLayers}});
   };
 
