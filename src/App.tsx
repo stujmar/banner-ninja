@@ -9,6 +9,7 @@ import ToggleButton from './components/ToggleButton';
 import Fader from './components/Fader';
 import Footer from './components/Footer';
 import BokehLayers from './components/BokehLayers';
+import Title from './components/Title';
 
 function App() {
 
@@ -185,7 +186,8 @@ function App() {
                   onChange={handleChangeRouter}
                   base={true}
                 />
-                <ToggleButton label={"Toggle Title"} explainer={""} theme={theme} onClick={toggleTitle} />
+                {/* <ToggleButton label={"Toggle Title"} explainer={""} theme={theme} onClick={toggleTitle} /> */}
+                <Title value={titleSettings.isActive} explainer={""} theme={theme} onClick={toggleTitle} />
 
               </div> : null}
             </div>

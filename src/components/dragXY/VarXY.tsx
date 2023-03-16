@@ -21,6 +21,7 @@ export interface IVarXYProps extends IVarBaseInputProps<IVarXYValue> {
    * Step.
    */
   step?: IVarXYValue;
+  theme?: string;
 }
 
 function roundValue(
@@ -75,6 +76,7 @@ export const VarXY: FC<IVarXYProps> = ({
   onChange,
   disabled,
   className,
+  theme,
   defaultValue = [0, 0],
   min = [-1.0, -1.0],
   max = [1.0, 1.0],
@@ -131,14 +133,10 @@ export const VarXY: FC<IVarXYProps> = ({
 
   return (
     <VarBase label={label} disabled={disabled} className={className}>
-        <div className="flex justify-between">
-            <div className="font-nunito font-bold text-left text-stone-800">Repel</div>
-            <input className="accent-stone-500 text-stone-600 checked:bg-stone-500" type="checkbox" />
-        </div>
       {/* <span className="react-var-ui-xy-value">
         {rounded[0]}, {rounded[1]}
       </span> */}
-      <div className="mt-1 react-var-ui-xy block border border-stone-300 shadow rounded-lg">
+      <div className={`mt-1 react-var-ui-xy block border border-${theme}-300 shadow rounded-lg`}>
         <div
           className="react-var-ui-xy-space w-32 h-16 relative overflow-hidden touch-none cursor-pointer"
           ref={sliderRef}
@@ -147,7 +145,7 @@ export const VarXY: FC<IVarXYProps> = ({
           {...events}
         >
           <div
-            className="react-var-ui-xy-control absolute rounded-full bg-stone-500 w-4 h-4"
+            className={`react-var-ui-xy-control absolute rounded-full bg-${theme}-500 ${theme}-lines w-4 h-4`}
             style={{ top: (percent[1] - 12) + '%', left: (percent[0] - 6) + '%' }}
           ></div>
         </div>

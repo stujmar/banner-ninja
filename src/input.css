@@ -117,8 +117,20 @@ input.cosmic::-webkit-slider-thumb {
   top: calc(50% - 1px);
 }
 
-.react-var-ui-xy-control:after, .react-var-ui-xy-control:before {
+.slate-lines:after, .slate-lines:before {
+  background: #64748b;
+  content: "";
+  opacity: .25;
+  position: absolute;
+}
+.stone-lines:after, .stone-lines:before {
   background: #78716c;
+  content: "";
+  opacity: .25;
+  position: absolute;
+}
+.cosmic-lines:after, .cosmic-lines:before {
+  background: #6366f1;
   content: "";
   opacity: .25;
   position: absolute;

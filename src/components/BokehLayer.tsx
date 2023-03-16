@@ -49,6 +49,10 @@ const BokehLayer = ({settings, id, theme, onClick, onChange}: BokehLayerProps) =
             <DragIcon classes={"my-auto content-fill fill-stone-300"} />
             <BokehColor settings={settings} id={id} onClick={handleColorChange} theme={theme}/>
             <FaderSimple label={"Count"} setting={settings.count} theme={theme} onChange={handleChange} />
+            <div className="flex justify-between gap-2">
+                <div className="font-nunito font-bold text-left text-stone-800">Repel</div>
+                <input className="accent-stone-500 text-stone-600 checked:bg-stone-500" type="checkbox" />
+            </div>
             <VarXY value={dragValue} onChange={handleXY} />
             <FaderSimple label={"Repel Strength"} setting={settings.count} theme={theme} onChange={handleChange} />
             <button onClick={() => onClick(id)} className={`w-min rounded-full hover:shadow-sm hover:bg-stone-200`}>

@@ -698,6 +698,10 @@ video {
   margin-left: 0.25rem;
 }
 
+.-mt-7 {
+  margin-top: -1.75rem;
+}
+
 .block {
   display: block;
 }
@@ -750,6 +754,10 @@ video {
   height: 1rem;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -798,6 +806,10 @@ video {
 
 .w-4 {
   width: 1rem;
+}
+
+.w-80 {
+  width: 20rem;
 }
 
 .max-w-\[1090px\] {
@@ -879,16 +891,20 @@ video {
   gap: 1rem;
 }
 
-.gap-1 {
-  gap: 0.25rem;
-}
-
 .gap-2 {
   gap: 0.5rem;
 }
 
+.gap-1 {
+  gap: 0.25rem;
+}
+
 .overflow-hidden {
   overflow: hidden;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 
 .rounded-lg {
@@ -980,6 +996,21 @@ video {
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
 }
 
+.bg-slate-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.bg-stone-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(120 113 108 / var(--tw-bg-opacity));
+}
+
+.bg-cosmic-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(143 139 229 / var(--tw-bg-opacity));
+}
+
 .bg-transparent {
   background-color: transparent;
 }
@@ -1011,11 +1042,6 @@ video {
 .bg-lime-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(132 204 22 / var(--tw-bg-opacity));
-}
-
-.bg-stone-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(120 113 108 / var(--tw-bg-opacity));
 }
 
 .fill-stone-300 {
@@ -1108,6 +1134,10 @@ video {
   padding-right: 0.5rem;
 }
 
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1176,6 +1206,11 @@ video {
 .text-slate-600 {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
+}
+
+.text-stone-600 {
+  --tw-text-opacity: 1;
+  color: rgb(87 83 78 / var(--tw-text-opacity));
 }
 
 .text-cosmic-600 {
@@ -1256,11 +1291,6 @@ video {
 .text-slate-700 {
   --tw-text-opacity: 1;
   color: rgb(51 65 85 / var(--tw-text-opacity));
-}
-
-.text-stone-600 {
-  --tw-text-opacity: 1;
-  color: rgb(87 83 78 / var(--tw-text-opacity));
 }
 
 .accent-slate-600 {
@@ -1431,8 +1461,22 @@ input.cosmic::-webkit-slider-thumb {
   top: calc(50% - 1px);
 }
 
-.react-var-ui-xy-control:after, .react-var-ui-xy-control:before {
+.slate-lines:after, .slate-lines:before {
+  background: #64748b;
+  content: "";
+  opacity: .25;
+  position: absolute;
+}
+
+.stone-lines:after, .stone-lines:before {
   background: #78716c;
+  content: "";
+  opacity: .25;
+  position: absolute;
+}
+
+.cosmic-lines:after, .cosmic-lines:before {
+  background: #6366f1;
   content: "";
   opacity: .25;
   position: absolute;
