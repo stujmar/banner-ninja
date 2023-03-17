@@ -19,8 +19,9 @@ function App() {
   const settingsRef = useRef(settings);
   const [toggleGeneralSettings, setToggleGeneralSettings] = useState(true);
   const [toggleModeSettings, setToggleModeSettings] = useState(true);
-  const [titleSettings, setTitleSettings] = useState({
+  const [titleSettings, setTitleSettings] = useState<any>({
     text: "Banner Ninja",
+    position: {x: 0, y: 0},
     isActive: true,
   });
   const [controls, setControls] = useState([]);
@@ -33,10 +34,12 @@ function App() {
     return Math.random().toString(36).substring(2, 6) + Math.random().toString(36).substring(2, 6)
   }, []);
 
-  const toggleTitle = () => {
+  const editTitle = (e: any) => {
+    let {name, value} = e;
+    console.log(e, name, value)
     setTitleSettings({
       ...titleSettings,
-      isActive: !titleSettings.isActive
+      [name]: value
     });
   }
 
@@ -187,7 +190,7 @@ function App() {
                   base={true}
                 />
                 {/* <ToggleButton label={"Toggle Title"} explainer={""} theme={theme} onClick={toggleTitle} /> */}
-                <Title value={titleSettings.isActive} explainer={""} theme={theme} onClick={toggleTitle} />
+                <Title settings={titleSettings} explainer={""} theme={theme} onClick={(e: any) => editTitle(e)} />
 
               </div> : null}
             </div>

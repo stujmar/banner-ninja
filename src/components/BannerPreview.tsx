@@ -18,10 +18,11 @@ type BannerPreviewProps = {
   mode: string,
   settings: Setting,
   blur: number,
-  titleSettings: {
-    text: string;
-    isActive: boolean;
-  }
+  // titleSettings: {
+  //   text: string;
+  //   isActive: boolean;
+  // }
+  titleSettings: any,
   updateSettings: (settings: any) => void;
 }
 
@@ -102,7 +103,7 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
 
   return (
     <div id="bannerParent" style={{height: height + "px"}} className="bg-transparent relative overflow-hidden">
-        <div className="flex justify-center items-center w-full h-full">
+        <div className="absolute" style={{top: `${42 + (titleSettings.position.y * 50)}%`, left: `${45 + (titleSettings.position.x * 50)}%`}}>
           { titleSettings.isActive && 
           <EditableTitle
           text={task}
