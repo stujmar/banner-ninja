@@ -141,7 +141,7 @@
         "label": "Y Offset",
         "attribute": "yOffest",
         "type": "range",
-        "min": 0, 
+        "min": -200, 
         "max": 200,
         "value": 0,
         "step": 5,
