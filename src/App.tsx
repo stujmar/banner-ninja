@@ -5,7 +5,6 @@ import CodePreview from './components/CodePreview';
 import Gradient from './components/Gradient';
 import ModeSwitcher from './components/ModeSwitcher';
 import getInitialState from './components/animations/getInitialState';
-import ToggleButton from './components/ToggleButton';
 import Fader from './components/Fader';
 import Footer from './components/Footer';
 import BokehLayers from './components/BokehLayers';
@@ -20,7 +19,7 @@ function App() {
   const [toggleGeneralSettings, setToggleGeneralSettings] = useState(true);
   const [toggleModeSettings, setToggleModeSettings] = useState(true);
   const [titleSettings, setTitleSettings] = useState<any>({
-    text: "Banner Ninja",
+    text: "banner.ninja",
     position: {x: 0, y: 0},
     isActive: true,
   });
@@ -36,7 +35,6 @@ function App() {
 
   const editTitle = (e: any) => {
     let {name, value} = e;
-    console.log(e, name, value)
     setTitleSettings({
       ...titleSettings,
       [name]: value
@@ -61,7 +59,6 @@ function App() {
     settingsRef.current = settings;
     setControls(
       settings.properties.map((property: any) => {
-        console.log(property.type)
         switch (property.type) {
           case "color":
             return <ColorPicker key={property.label} value={property.value} attribute={property.attribute} label={property.label} theme={theme} onChange={handleChangeRouter} />
@@ -130,8 +127,6 @@ function App() {
 
   const handleChangeRouter = (e: any) => {
     let [type, name, value] = [e.target.type, e.target.name, e.target.value];
-    console.log(e)
-    console.log(type, name, value)
     switch (type) {
       case "base":
         handleBaseChange(name, value);

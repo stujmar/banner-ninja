@@ -1,7 +1,7 @@
 function renderWave(size, wave, increment) {
   let [
     lineColor, backgroundColor, 
-    amplitude, count, countOffset, lineWidth, waveLength, frequency, jitter, trails, echo, echoOffset] = wave.properties;
+    amplitude, count, countOffset, lineWidth, waveLength, frequency, jitter, trails, echo, echoOffset, yOffset] = wave.properties;
     const drawBackground = () => {
       let alpha = (255 - trails.value).toString(16);
       alpha = trails.value >= 240 ? 0 + alpha : alpha;
@@ -67,7 +67,7 @@ function renderWave(size, wave, increment) {
           if (previous < i){
             this.lineTo(
               i + (_echo * echoOffset.value), 
-              jitterWave(centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2) + Math.sin(i * activeWaveLength + calcIncrement) * activeAmplitude))
+              yOffset.value + jitterWave(centerY - (waveCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2) + Math.sin(i * activeWaveLength + calcIncrement) * activeAmplitude))
           }
           previous = i;
         }

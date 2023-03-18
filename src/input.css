@@ -130,7 +130,7 @@ input.cosmic::-webkit-slider-thumb {
   position: absolute;
 }
 .cosmic-lines:after, .cosmic-lines:before {
-  background: #6366f1;
+  background: #8f8be5;
   content: "";
   opacity: .25;
   position: absolute;

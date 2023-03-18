@@ -20,10 +20,8 @@ const BokehLayer = ({settings, id, theme, onClick, onChange}: BokehLayerProps) =
 
     useEffect(() => {
         setLocalSettings(settings);
-        // console.log("updating local settings")
     }, [settings]);
 
-    // console.log("bokehlayer", settings)
     const handleColorChange = (e: any) => {
         let r = e.target.value.rgb.r,
             g = e.target.value.rgb.g,
@@ -34,13 +32,11 @@ const BokehLayer = ({settings, id, theme, onClick, onChange}: BokehLayerProps) =
     };
 
     const handleChange = (e: any) => {
-        // console.log(settings)
         let newSettings = {...settings, [e.target.name]: e.target.value};
         onChange(id, newSettings);
     }
 
     const handleXY = (e: any) => {
-        // console.log(e);
         setDragValue(e);
     }
     // console.log("boken layer", settings)
@@ -53,7 +49,7 @@ const BokehLayer = ({settings, id, theme, onClick, onChange}: BokehLayerProps) =
                 <div className="font-nunito font-bold text-left text-stone-800">Repel</div>
                 <input className="accent-stone-500 text-stone-600 checked:bg-stone-500" type="checkbox" />
             </div>
-            <VarXY value={dragValue} onChange={handleXY} />
+            <VarXY value={dragValue} theme={theme} onChange={handleXY} />
             <FaderSimple label={"Repel Strength"} setting={settings.count} theme={theme} onChange={handleChange} />
             <button onClick={() => onClick(id)} className={`w-min rounded-full hover:shadow-sm hover:bg-stone-200`}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">

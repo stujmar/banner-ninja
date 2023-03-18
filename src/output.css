@@ -754,10 +754,6 @@ video {
   height: 1rem;
 }
 
-.h-24 {
-  height: 6rem;
-}
-
 .w-full {
   width: 100%;
 }
@@ -806,10 +802,6 @@ video {
 
 .w-4 {
   width: 1rem;
-}
-
-.w-80 {
-  width: 20rem;
 }
 
 .w-72 {
@@ -1480,7 +1472,7 @@ input.cosmic::-webkit-slider-thumb {
 }
 
 .cosmic-lines:after, .cosmic-lines:before {
-  background: #6366f1;
+  background: #8f8be5;
   content: "";
   opacity: .25;
   position: absolute;

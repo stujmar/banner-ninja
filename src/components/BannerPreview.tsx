@@ -107,7 +107,7 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
           { titleSettings.isActive && 
           <EditableTitle
           text={task}
-          placeholder="Banner Ninja"
+          placeholder="banner.ninja"
           childRef={inputRef}
           type="input"
           >
@@ -116,7 +116,7 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
                 type="text"
                 name="task"
                 className="text-4xl font-nunito font-bold text-gray-900 bg-transparent focus:outline-none"
-                placeholder="Banner Ninja"
+                placeholder="banner.ninja"
                 value={task}
                 onChange={e => setTask(e.target.value)}
                 />
