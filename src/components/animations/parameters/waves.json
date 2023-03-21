@@ -146,6 +146,16 @@
         "value": 0,
         "step": 5,
         "isAnimated": false
+      },
+      {
+        "label": "Count",
+        "attribute": "count",
+        "type": "range",
+        "min": 1, 
+        "max": 8,
+        "value": 6,
+        "step": 1,
+        "isAnimated": false
       }
     ]
   }
