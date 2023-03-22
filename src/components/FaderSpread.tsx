@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import FaderRange from './FaderRange';
 
-type FaderProps = {
+type FaderSpreadProps = {
   settings: any;
   onChange: (e: any) => void;
   base?: boolean;
   theme: string;
 };
 
-const Fader = ({settings, onChange, base, theme}: FaderProps) => {
+const FaderSpread = ({settings, onChange, base, theme}: FaderSpreadProps) => {
   const [aniActive, setAniActive] = useState<boolean>(settings.isAnimated ? settings.animation.isActive : false);
   const { attribute, label, min, max, value, step } = settings;
   
@@ -35,8 +35,19 @@ const Fader = ({settings, onChange, base, theme}: FaderProps) => {
     setAniActive(!aniActive);
   }
 
+  const getHeight = () => {
+    let height = 16;
+    if (settings.isAnimated) {
+      height += 16;
+    }
+    if (value > 1) {
+      height += 16;
+    }
+    return `h-${height}`;
+  }
+
   return (
-    <div className={`flex flex-col gap-2 sm:module-${theme}-border w-40 transition-all overflow-hidden ${settings.isAnimated && aniActive ? "h-[136px]":"h-16"}`}>
+    <div className={`flex flex-col gap-2 sm:module-${theme}-border w-40 transition-all overflow-hidden ${getHeight()}`}>
       <div className="flex justify-between items-center">
         <span className={`font-nunito font-bold text-left text-${theme}-800`}>{label}</span>
         {settings.isAnimated && 
@@ -50,24 +61,20 @@ const Fader = ({settings, onChange, base, theme}: FaderProps) => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg></button>}
       </div>
-      {(settings.isAnimated && aniActive)
-        || <input
+      <input
           style={{background: `linear-gradient(to right, ${getThemeColor()} 0%, ${getThemeColor()} ${((value - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}
           type="range" name="timeSlider" className={`${theme}`}
-          onChange={(e) => handlePropertyChange(e)} value={value} min={min} max={max} step={step}></input>}
-      <div className={`${!aniActive ? "" : "transition ease-in duration-300"} ${settings.isAnimated && aniActive ? "opacity-100":"opacity-0"}`}>
-        <FaderRange settings={settings} theme={theme} onChange={handleAniChange} />
-        <div className={`flex flex-col gap-2`}>
-          <div className="flex flex-col mt-1 justify-between items-start">
-            <span className={`font-nunito font-bold text-left text-${theme}-800`}>Rate</span>
-            <input
-              style={{background: `linear-gradient(to right, rgb(148 163 184) 0%, rgb(148 163 184) ${(settings.animation?.rate/10) * 100}%, #fff 0%, #fff 100%)`}}
-              className={`${theme}`} type="range" name={`${attribute}-rate`} onChange={(e) => handleAniChange(e)} value={settings.animation?.rate} min={1} max={10} step={0.05}></input>
-          </div>
-        </div>
-      </div>
+          onChange={(e) => handlePropertyChange(e)} value={value} min={min} max={max} step={step}></input>
+      {value > 1 &&  
+        <div>
+          <span className={`font-nunito font-bold text-left text-${theme}-800`}>Spread</span>
+          <input
+          style={{background: `linear-gradient(to right, ${getThemeColor()} 0%, ${getThemeColor()} ${((value - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}
+          type="range" name="timeSlider" className={`${theme}`}
+          onChange={(e) => handlePropertyChange(e)} value={value} min={min} max={max} step={step}></input>
+        </div>}
     </div>
   );
 };
 
-export default Fader;
+export default FaderSpread;

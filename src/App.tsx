@@ -6,6 +6,7 @@ import Gradient from './components/Gradient';
 import ModeSwitcher from './components/ModeSwitcher';
 import getInitialState from './components/animations/getInitialState';
 import Fader from './components/Fader';
+import FaderSpread from './components/FaderSpread';
 import Footer from './components/Footer';
 import BokehLayers from './components/BokehLayers';
 import Title from './components/Title';
@@ -68,6 +69,12 @@ function App() {
             return <BokehLayers key={property.label}  settings={property} theme={theme} onChange={handleChangeRouter} />
           case "range":
             return <Fader 
+                      key={property.label} 
+                      settings={property}
+                      theme={theme}
+                      onChange={handleChangeRouter} />
+          case "faderSpread":
+            return <FaderSpread
                       key={property.label} 
                       settings={property}
                       theme={theme}
