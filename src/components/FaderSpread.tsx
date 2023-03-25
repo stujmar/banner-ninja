@@ -36,18 +36,18 @@ const FaderSpread = ({settings, onChange, base, theme}: FaderSpreadProps) => {
   }
 
   const getHeight = () => {
-    let height = 16;
+    let height = 64;
     if (settings.isAnimated) {
       height += 16;
     }
     if (value > 1) {
-      height += 16;
+      height += 64;
     }
-    return `h-${height}`;
+    return `${height}px`;
   }
 
   return (
-    <div className={`flex flex-col gap-2 sm:module-${theme}-border w-40 transition-all overflow-hidden ${getHeight()}`}>
+    <div style={{height: getHeight()}} className={`flex flex-col gap-2 sm:module-${theme}-border w-40 transition-all overflow-hidden ${getHeight()}`}>
       <div className="flex justify-between items-center">
           <span className={`font-nunito font-bold text-left text-${theme}-800`}>{label}</span>
           {settings.isAnimated && <button><svg 
