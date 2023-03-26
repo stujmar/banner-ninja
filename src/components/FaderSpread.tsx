@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import FaderRange from './FaderRange';
+import ClockIcon from './icons/ClockIcon';
 
 type FaderSpreadProps = {
   settings: any;
@@ -10,7 +11,7 @@ type FaderSpreadProps = {
 
 const FaderSpread = ({settings, onChange, base, theme}: FaderSpreadProps) => {
   const [aniActive, setAniActive] = useState<boolean>(settings.isAnimated ? settings.animation.isActive : false);
-  const { attribute, label, min, max, value, step } = settings;
+  const { attribute, label, min, max, value, step, spread } = settings;
   
   const getThemeColor = () => {
     switch (theme) {
@@ -77,14 +78,7 @@ const FaderSpread = ({settings, onChange, base, theme}: FaderSpreadProps) => {
         <div>
           <div className="flex justify-between mt-2">
             <span className={`font-nunito font-bold text-left text-${theme}-800`}>Spread</span>
-            {settings.spread.isAnimated && <button><svg 
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none" viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
-              className={`w-5 h-5 curson-pointer ${aniActive ? `text-${theme}-400` : `text-${theme}-600`}`}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg></button>}
+            {settings.spread.isAnimated && <button><ClockIcon isActivated={false} theme={theme}/></button>}
           </div>
           <input
           style={{background: `linear-gradient(to right, ${getThemeColor()} 0%, ${getThemeColor()} ${((value - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}
