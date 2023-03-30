@@ -20,3 +20,8 @@ Also trying out a React/TypeScript/Vite build.
 - [ ] Get app deployed on actual domain, update API gateway CORS address.
 - [ ] Way to save and load configs.
 - [ ] Be able to animate properties rate.
+
+## References
+
+drag location component
+https://github.com/mat-sz/react-var-ui
