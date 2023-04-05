@@ -56,7 +56,6 @@ const CodePreview = ({settings, theme, idHash}: CodePreviewProps) => {
         setIsLoading(false);
       })
       .catch(function (error) {
-        console.log(error);
         setIsLoading(false);
       });
     } else {

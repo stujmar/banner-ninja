@@ -38,12 +38,25 @@
       {
         "label": "Count",
         "attribute": "count",
-        "type": "range",
+        "type": "faderSpread",
         "min": 1, 
         "max": 8,
         "value": 6,
         "step": 1,
-        "isAnimated": false
+        "isAnimated": false,
+        "spread": {
+          "min": 10, 
+          "max": 150,
+          "value": 50,
+          "step": 5,
+          "isAnimated": true,
+          "animation": {
+            "isActive": false,
+            "min": -1,
+            "max": 100,
+            "rate": 0.5
+          }
+        }
       },
       {
         "label": "Count Offset",
@@ -146,29 +159,6 @@
         "value": 0,
         "step": 5,
         "isAnimated": false
-      },
-      {
-        "label": "Count",
-        "attribute": "count",
-        "type": "faderSpread",
-        "min": 1, 
-        "max": 8,
-        "value": 6,
-        "step": 1,
-        "isAnimated": false,
-        "spread": {
-          "min": 10, 
-          "max": 150,
-          "value": 50,
-          "step": 5,
-          "isAnimated": true,
-          "animation": {
-            "isActive": false,
-            "min": -1,
-            "max": 100,
-            "rate": 0.5
-          }
-        }
       }
     ]
   }

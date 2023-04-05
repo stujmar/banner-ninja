@@ -42,6 +42,8 @@ function renderWave(size, wave, increment) {
     pingPong(increment, count.animation.min, count.animation.max, count.step)
     :
     count.value;
+    // This is temporary until I can figure out how to make the countOffset animation work from spread property.
+    countOffset = count.spread;
     let activeCountOffset = countOffset.isAnimated && countOffset.animation.isActive ?
     pingPong(increment, countOffset.animation.min, countOffset.animation.max, countOffset.animation.rate)
     :

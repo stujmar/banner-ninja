@@ -98,6 +98,21 @@ function App() {
   };
 
   const handlePropertyChange = (name: string, value: number) => {
+    if (name === "spread") {
+      let newProperties = settings.properties.map((property: any) => {
+        if (property.attribute === "count") {
+          let newSpread = {...property.spread, value: value};
+          return {...property, spread : newSpread};
+        } else {
+          return property;
+        }
+      });
+      setSettings({
+        ...settings,
+        properties: newProperties,
+      });
+      return;
+    }
     let newProperties = settings.properties.map((property: any) => {
       if (property.attribute === name) {
         return {...property, value: value};

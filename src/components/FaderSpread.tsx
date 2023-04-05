@@ -12,7 +12,6 @@ type FaderSpreadProps = {
 const FaderSpread = ({settings, onChange, base, theme}: FaderSpreadProps) => {
   const [aniActive, setAniActive] = useState<boolean>(settings.isAnimated ? settings.animation.isActive : false);
   const { attribute, label, min, max, value, step, spread } = settings;
-  
   const getThemeColor = () => {
     switch (theme) {
       case "slate": // slate-400
@@ -25,7 +24,7 @@ const FaderSpread = ({settings, onChange, base, theme}: FaderSpreadProps) => {
   };
 
   const handlePropertyChange = (e: any) => {
-    onChange({target: {type: base ? "base" : "property", name: attribute, value: parseFloat(e.target.value)}});
+    onChange({target: {type: base ? "base" : "property", name: e.target.name, value: parseFloat(e.target.value)}});
   }
   const handleAniChange = (e: any) => {
     onChange({target: {type: "animation", name: e.target.name, value: e.target.value}});
@@ -72,7 +71,7 @@ const FaderSpread = ({settings, onChange, base, theme}: FaderSpreadProps) => {
       </div>
       <input
           style={{background: `linear-gradient(to right, ${getThemeColor()} 0%, ${getThemeColor()} ${((value - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}
-          type="range" name="timeSlider" className={`${theme}`}
+          type="range" name="count" className={`${theme}`}
           onChange={(e) => handlePropertyChange(e)} value={value} min={min} max={max} step={step}></input>
       {value > 1 &&  
         <div>
@@ -81,9 +80,9 @@ const FaderSpread = ({settings, onChange, base, theme}: FaderSpreadProps) => {
             {settings.spread.isAnimated && <button><ClockIcon isActivated={false} theme={theme}/></button>}
           </div>
           <input
-          style={{background: `linear-gradient(to right, ${getThemeColor()} 0%, ${getThemeColor()} ${((value - min)/(max - min)) * 100}%, #fff 0%, #fff 100%)`}}
-          type="range" name="timeSlider" className={`${theme}`}
-          onChange={(e) => handlePropertyChange(e)} value={value} min={min} max={max} step={step}></input>
+          style={{background: `linear-gradient(to right, ${getThemeColor()} 0%, ${getThemeColor()} ${((spread.value - spread.min)/(spread.max - spread.min)) * 100}%, #fff 0%, #fff 100%)`}}
+          type="range" name="spread" className={`${theme}`}
+          onChange={(e) => handlePropertyChange(e)} value={spread.value} min={spread.min} max={spread.max} step={step}></input>
         </div>}
     </div>
   );

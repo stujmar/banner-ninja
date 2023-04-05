@@ -39,7 +39,6 @@ const BokehLayer = ({settings, id, theme, onClick, onChange}: BokehLayerProps) =
     const handleXY = (e: any) => {
         setDragValue(e);
     }
-    // console.log("boken layer", settings)
     return (
         <div className={`cursor-grab flex items-start gap-4 mt-2 sm:module-${theme}-border transition-all`}>
             <DragIcon classes={"my-auto content-fill fill-stone-300"} />

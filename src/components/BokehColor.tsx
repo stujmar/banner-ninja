@@ -11,7 +11,6 @@ type BokehColorProps = {
 const BokehColor = ({settings, id, theme, onClick}: BokehColorProps) => {
     const [popup, setPopup] = useState(false);
     const handleChange = (e: any) => {
-        console.log(e);
         onClick({target: {type: "color", name: "color", value: e}});
     };
     return (
