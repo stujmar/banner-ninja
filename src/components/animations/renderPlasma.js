@@ -24,16 +24,6 @@ function renderPlasma(size, plasma, increment) {
       return min + progress;
     }
 
-    // give a number a random jitter above or below the value.
-    const jitterPlasma = (value) => {
-      const getRandomFloat = (min, max) => {
-        return Math.random() * (max - min) + min;
-      }
-      return value + getRandomFloat(-jitter.value, jitter.value);
-      // Wip a more interesting jitter.
-      return Math.sin((value * (increment + 5)) / 10) * jitter.value + value + (1 * jitter.value);
-    }
-    
     let activeAmplitude = (amplitude.isAnimated && amplitude.animation.isActive ? 
     pingPong(increment, amplitude.animation.min, amplitude.animation.max, amplitude.animation.rate) 
     : 
@@ -52,7 +42,7 @@ function renderPlasma(size, plasma, increment) {
     lineWidth.value;
     let activeplasmaLength = plasmaLength.max - (plasmaLength.value - plasmaLength.min)
 
-  const drawLine = (_echo) => {
+  const drawPlasma = () => {
     this.save();
       let centerY = plasma.height/2;
       this.strokeStyle = lineColor.value.slice(0);
@@ -66,8 +56,8 @@ function renderPlasma(size, plasma, increment) {
         for (let i = setBack; i < size.width + 25; i+=1) {
           if (previous < i){
             this.lineTo(
-              i + (_echo * echoOffset.value), 
-              yOffset.value + jitterPlasma(centerY - (plasmaCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2) + Math.sin(i * activeplasmaLength + calcIncrement) * activeAmplitude))
+              i, 
+              yOffset.value + centerY - (plasmaCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2) + Math.sin(i * activeplasmaLength + calcIncrement) * activeAmplitude);
           }
           previous = i;
         }
@@ -78,9 +68,7 @@ function renderPlasma(size, plasma, increment) {
   }
 
   drawBackground();
-  for (let _echo = 0; _echo < (parseInt(echo.value) + 1); _echo++) {
-  drawLine(_echo);
-  }
+  drawPlasma();
   plasma.increment = parseFloat((increment += .01).toFixed(2));
   // plasma.increment = increment += parseFloat(frequency.value);
   return plasma;
