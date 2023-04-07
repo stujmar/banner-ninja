@@ -74,4 +74,16 @@ function renderPlasma(size, plasma, increment) {
   return plasma;
 }
 
+function createImageData(size) {
+  let imageData = new ImageData(size.width, size.height);
+  let data = imageData.data;
+  for (let i = 0; i < data.length; i += 4) {
+    data[i] = 0; // red
+    data[i + 1] = 0; // green
+    data[i + 2] = 0; // blue
+    data[i + 3] = 255; // alpha
+  }
+  return imageData;
+}
+
 export default renderPlasma;
