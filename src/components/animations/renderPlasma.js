@@ -24,46 +24,43 @@ function renderPlasma(size, plasma, increment) {
       return min + progress;
     }
 
-    let activeAmplitude = (amplitude.isAnimated && amplitude.animation.isActive ? 
-    pingPong(increment, amplitude.animation.min, amplitude.animation.max, amplitude.animation.rate) 
-    : 
-    amplitude.value) - 200;
-    let activeCount = count.isAnimated && count.animation.isActive ?
-    pingPong(increment, count.animation.min, count.animation.max, count.step)
-    :
-    count.value;
-    let activeCountOffset = countOffset.isAnimated && countOffset.animation.isActive ?
-    pingPong(increment, countOffset.animation.min, countOffset.animation.max, countOffset.animation.rate)
-    :
-    countOffset.value;
-    let activeLineWidth = lineWidth.isAnimated && lineWidth.animation.isActive ?
-    pingPong(increment, lineWidth.animation.min, lineWidth.animation.max, lineWidth.animation.rate)
-    :
-    lineWidth.value;
-    let activeplasmaLength = plasmaLength.max - (plasmaLength.value - plasmaLength.min)
-
   const drawPlasma = () => {
     this.save();
-      let centerY = plasma.height/2;
-      this.strokeStyle = lineColor.value.slice(0);
-      this.lineWidth = activeLineWidth;
-      for (let plasmaCount = 0 ; plasmaCount < activeCount; plasmaCount++) {
-        this.beginPath()
-        this.moveTo(-25, centerY)
-        let previous = -200;
-        let calcIncrement = increment * parseFloat(frequency.value);
-        let setBack = -lineWidth.max - (echoOffset.value * echo.value);
-        for (let i = setBack; i < size.width + 25; i+=1) {
-          if (previous < i){
-            this.lineTo(
-              i, 
-              yOffset.value + centerY - (plasmaCount*activeCountOffset) + (count.value*(activeCountOffset/2) - activeCountOffset/2) + Math.sin(i * activeplasmaLength + calcIncrement) * activeAmplitude);
-          }
-          previous = i;
-        }
-        this.stroke()
+    // size of our height maps
+    const mapSize = 1024;
+
+    // returns the distance of point x,y from the origin 0,0
+    const distance = (x, y) => Math.sqrt(x * x + y * y);
+
+    // init height map 1
+    const heightMap1 = [];
+    for (let u = 0; u < mapSize; u++) {
+      for (let v = 0; v < mapSize; v++) {
+        // index of coordinate in height map array
+        const i = u * mapSize + v;
+
+        // u,v are coordinates with origin at upper left corner
+        // cx and cy are coordinates with origin at the
+        // center of the map
+        const cx = u - mapSize / 2;
+        const cy = v - mapSize / 2;
+
+        // distance from middle of map
+        const d = distance(cx, cy);
+
+        // stretching so we get the desired ripple density on our map
+        const stretch = (3 * Math.PI) / (mapSize / 2);
+
+        // wavy height value between -1 and 1
+        const ripple = Math.sin(d * stretch);
+
+        // wavy height value normalized to 0..1
+        const normalized = (ripple + 1) / 2;
+
+        // height map value 0..128, integer
+        heightMap1[i] = Math.floor(normalized * 128);
       }
-   
+    }
     this.restore();
   }
 
@@ -85,5 +82,11 @@ function createImageData(size) {
   }
   return imageData;
 }
+
+function moveHeightMaps(time) {
+  return time;
+}
+
+function updateImageData() {}
 
 export default renderPlasma;
