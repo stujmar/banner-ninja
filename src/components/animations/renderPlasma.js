@@ -11,18 +11,6 @@ function renderPlasma(size, plasma, increment) {
       this.fillRect(0, 0, size.width, plasma.height);
       this.restore();
     };
-    
-    const pingPong = (increment, min, max, rate) => {
-      // make sure min is less than max
-      if (min > max) {
-        let temp = min;
-        min = max;
-        max = temp;
-      }
-      let range = max - min;
-      let progress = Math.abs(Math.sin(increment * rate)) * range;
-      return min + progress;
-    }
 
   const drawPlasma = () => {
     this.save();
@@ -87,6 +75,29 @@ function moveHeightMaps(time) {
   return time;
 }
 
-function updateImageData() {}
+function updateImageData() {
+  for (let u = 0; u < imgSize; u++) {
+    for (let v = 0; v < imgSize; v++) {
+      // indexes into height maps for pixel
+      const i = (u + dy1) * mapSize + (v + dx1);
+      const k = (u + dy2) * mapSize + (v + dx2);
+
+      // index for pixel in image data
+      // remember it's 4 bytes per pixel
+      const j = u * imgSize * 4 + v * 4;
+
+      // height value of 0..255
+      let h = heightMap1[i] + heightMap2[k];
+
+      // greyscale color according to height
+      let c = { r: h, g: h, b: h };
+
+      // set pixel data
+      image.data[j] = c.r;
+      image.data[j + 1] = c.g;
+      image.data[j + 2] = c.b;
+    }
+  }
+}
 
 export default renderPlasma;
