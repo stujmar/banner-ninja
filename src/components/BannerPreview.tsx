@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import EditableTitle from './EditableTitle';
 import renderWave from './animations/renderWave';
 import getInitialState from './animations/getInitialState';
-import renderDefault from './animations/renderDefault';
+import renderPlasma from './animations/renderPlasma';
 import renderBokeh from './animations/renderBokeh';
 
 interface Setting {
@@ -88,8 +88,8 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
       increment = waveRef.current.increment
     } else if (waveRef.current?.mode === "bokeh") {
       waveRef.current = renderBokeh.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
-    } else if (waveRef.current?.mode === "default") {
-      renderDefault.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
+    } else if (waveRef.current?.mode === "plasma") {
+      renderPlasma.call(contextRef.current, {width: canvasRef.current.width, height: size.height}, waveRef.current);
     }
   };
 

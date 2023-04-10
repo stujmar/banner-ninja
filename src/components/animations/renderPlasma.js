@@ -3,8 +3,9 @@ function renderPlasma(size, plasma, increment) {
     lineColor, backgroundColor, 
     amplitude, count, countOffset, lineWidth, plasmaLength, frequency, jitter, trails, echo, echoOffset, yOffset] = plasma.properties;
     const drawBackground = () => {
-      let alpha = (255 - trails.value).toString(16);
-      alpha = trails.value >= 240 ? 0 + alpha : alpha;
+      let trailsValue = 0
+      let alpha = (255 - trailsValue).toString(16);
+      alpha = trailsValue >= 240 ? 0 + alpha : alpha;
       this.fillStyle = "none";
       this.save();
       this.fillStyle = backgroundColor.value + alpha;
@@ -74,6 +75,37 @@ function createImageData(size) {
 function moveHeightMaps(time) {
   return time;
 }
+
+// returns a random color
+function randomColor() {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+  
+  return { r, g, b };
+};
+// returns a random 5-color gradient palette
+function makeRandomPalette() {
+  const c1 = randomColor();
+  const c2 = randomColor();
+  const c3 = randomColor();
+  const c4 = randomColor();
+  const c5 = randomColor();
+  
+  return makeFiveColorGradient(c1, c2, c3, c4, c5);
+};
+
+function updatePalette(t) {
+  const timeScale = 0.0005;
+  const x = t * timeScale;
+  
+  // normalized value 0..1 used to interpolate palette colors
+  const inter = (Math.cos(x) + 1) / 2;
+  // create interpolated palette for current frame
+  for (let i = 0; i < 256; i++) {
+    palette[i] = interpolate(palettes[0][i], palettes[1][i], inter);
+  }
+};
 
 function updateImageData() {
   for (let u = 0; u < imgSize; u++) {
