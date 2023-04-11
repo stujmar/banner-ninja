@@ -6,7 +6,7 @@ function renderPlasma(size, plasma, increment) {
       let trailsValue = 0
       let alpha = (255 - trailsValue).toString(16);
       alpha = trailsValue >= 240 ? 0 + alpha : alpha;
-      this.fillStyle = "none";
+      this.fillStyle = "green";
       this.save();
       this.fillStyle = backgroundColor.value + alpha;
       this.fillRect(0, 0, size.width, plasma.height);
@@ -14,6 +14,8 @@ function renderPlasma(size, plasma, increment) {
     };
 
   const drawPlasma = () => {
+    const image = this.createImageData(size.width, plasma.height);
+    console.log(image);
     this.save();
     // size of our height maps
     const mapSize = 1024;
@@ -53,7 +55,7 @@ function renderPlasma(size, plasma, increment) {
     this.restore();
   }
 
-  drawBackground();
+  // drawBackground();
   drawPlasma();
   plasma.increment = parseFloat((increment += .01).toFixed(2));
   // plasma.increment = increment += parseFloat(frequency.value);
