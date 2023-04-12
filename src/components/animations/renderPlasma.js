@@ -1,29 +1,31 @@
 function renderPlasma(size, plasma, increment) {
-  let [
-    lineColor, backgroundColor, 
-    amplitude, count, countOffset, lineWidth, plasmaLength, frequency, jitter, trails, echo, echoOffset, yOffset] = plasma.properties;
+  let [plasmaColor, speed] = plasma.properties;
     const drawBackground = () => {
       let trailsValue = 0
       let alpha = (255 - trailsValue).toString(16);
       alpha = trailsValue >= 240 ? 0 + alpha : alpha;
       this.fillStyle = "green";
       this.save();
-      this.fillStyle = backgroundColor.value + alpha;
+      console.log(plasmaColor.value[0].value)
+      this.fillStyle = plasmaColor.value[0].value + alpha;
       this.fillRect(0, 0, size.width, plasma.height);
       this.restore();
     };
 
-  const drawPlasma = () => {
-    const image = this.createImageData(size.width, plasma.height);
-    console.log(image);
-    this.save();
-    // size of our height maps
-    const mapSize = 1024;
+  let palettes = [makeRandomPalette(), makeRandomPalette()];
+  let palette = {};
+  let imgSize = 1024;
+  let dx1 = 0;
+  let dy1 = 0;
 
+  let dx2 = 0;
+  let dy2 = 0;
+
+    const mapSize = 1024;
+    const image = this.createImageData(size.width, plasma.height);
     // returns the distance of point x,y from the origin 0,0
     const distance = (x, y) => Math.sqrt(x * x + y * y);
 
-    // init height map 1
     const heightMap1 = [];
     for (let u = 0; u < mapSize; u++) {
       for (let v = 0; v < mapSize; v++) {
@@ -52,15 +54,48 @@ function renderPlasma(size, plasma, increment) {
         heightMap1[i] = Math.floor(normalized * 128);
       }
     }
+
+    const heightMap2 = [];
+    for (let u = 0; u < mapSize; u++) {
+      for (let v = 0; v < mapSize; v++) {
+        const i = u * mapSize + v;
+        const cx = u - mapSize / 2;
+        const cy = v - mapSize / 2;
+
+        // skewed distance as input to chaos field calculation,
+        // scaled for smoothness over map distance
+        const d1 = distance(0.8 * cx, 1.3 * cy) * 0.022;
+        const d2 = distance(1.35 * cx, 0.45 * cy) * 0.022;
+
+        const s = Math.sin(d1);
+        const c = Math.cos(d2);
+        // height value between -2 and +2
+        const h = s + c;
+
+        // height value between 0..1
+        const normalized = (h + 2) / 4;
+        // height value between 0..127, integer
+        heightMap2[i] = Math.floor(normalized * 127);
+      }
+    }
+
+    
+
+  const drawPlasma = () => {
+    // console.log(image);
+    this.save();
+    moveHeightMaps(increment);
+    updatePalette(increment, palette);
+    updateImageData();
     this.restore();
   }
 
-  // drawBackground();
+  drawBackground();
   drawPlasma();
   plasma.increment = parseFloat((increment += .01).toFixed(2));
   // plasma.increment = increment += parseFloat(frequency.value);
   return plasma;
-}
+
 
 function createImageData(size) {
   let imageData = new ImageData(size.width, size.height);
@@ -109,6 +144,40 @@ function updatePalette(t) {
   }
 };
 
+function interpolate(c1, c2, f) {
+  return {
+    r: Math.floor(c1.r + (c2.r - c1.r) * f),
+    g: Math.floor(c1.g + (c2.g - c1.g) * f),
+    b: Math.floor(c1.b + (c2.b - c1.b) * f)
+  };
+};
+
+function makeFiveColorGradient(c1, c2, c3, c4, c5) {
+  const g = [];
+
+  for (let i = 0; i < 64; i++) {
+    const f = i / 64;
+    g[i] = interpolate(c1, c2, f);
+  }
+
+  for (let i = 64; i < 128; i++) {
+    const f = (i - 64) / 64;
+    g[i] = interpolate(c2, c3, f);
+  }
+
+  for (let i = 128; i < 192; i++) {
+    const f = (i - 128) / 64;
+    g[i] = interpolate(c3, c4, f);
+  }
+
+  for (let i = 192; i < 256; i++) {
+    const f = (i - 192) / 64;
+    g[i] = interpolate(c4, c5, f);
+  }
+
+  return g;
+};
+
 function updateImageData() {
   for (let u = 0; u < imgSize; u++) {
     for (let v = 0; v < imgSize; v++) {
@@ -132,6 +201,8 @@ function updateImageData() {
       image.data[j + 2] = c.b;
     }
   }
+}
+
 }
 
 export default renderPlasma;
