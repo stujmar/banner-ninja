@@ -6,7 +6,6 @@ function renderPlasma(size, plasma, increment) {
       alpha = trailsValue >= 240 ? 0 + alpha : alpha;
       this.fillStyle = "green";
       this.save();
-      console.log(plasmaColor.value[0].value)
       this.fillStyle = plasmaColor.value[0].value + alpha;
       this.fillRect(0, 0, size.width, plasma.height);
       this.restore();
