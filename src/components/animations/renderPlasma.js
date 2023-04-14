@@ -20,11 +20,18 @@ function renderPlasma(size, plasma, increment) {
   let dx2 = 0;
   let dy2 = 0;
 
-    const mapSize = 1024;
+  
     const image = this.createImageData(size.width, plasma.height);
+    // const image = this.createImageData(imgSize, imgSize);
+    for (let i = 0; i < image.data.length; i += 4) {
+      image.data[i] = 0; // R
+      image.data[i + 1] = 0; // G
+      image.data[i + 2] = 0; // B
+      image.data[i + 3] = 255; // A
+    }
     // returns the distance of point x,y from the origin 0,0
     const distance = (x, y) => Math.sqrt(x * x + y * y);
-
+    const mapSize = 1024;
     const heightMap1 = [];
     for (let u = 0; u < mapSize; u++) {
       for (let v = 0; v < mapSize; v++) {
@@ -83,6 +90,11 @@ function renderPlasma(size, plasma, increment) {
   const drawPlasma = () => {
     // console.log(image);
     this.save();
+    // draw circle on canvas
+    this.beginPath();
+    this.arc(size.width / 2, size.height / 2, 100, 0, 2 * Math.PI);
+    this.stroke();
+    this.restore();
     moveHeightMaps(increment);
     updatePalette(increment, palette);
     updateImageData();
