@@ -10,7 +10,7 @@ function renderPlasma(size, plasma, increment) {
       this.fillRect(0, 0, size.width, plasma.height);
       this.restore();
     };
-
+    // console.log(size, plasma);
   let palettes = [makeRandomPalette(), makeRandomPalette()];
   let palette = {};
   let imgSize = 1024;
@@ -92,7 +92,16 @@ function renderPlasma(size, plasma, increment) {
     this.save();
     // draw circle on canvas
     this.beginPath();
-    this.arc(size.width / 2, size.height / 2, 100, 0, 2 * Math.PI);
+    this.strokeStyle = "white";
+    this.arc(size.width / 2, plasma.height / 2, 100, 0, 2 * Math.PI);
+    // draw a rectangle on canvas
+    this.rect(0, 0, 10, 10);
+    // draw text on canvas
+    this.font = "30px Arial";
+    this.strokeText(size.width, 10, 50);
+    this.strokeText(size.height, 10, 100);
+    this.strokeText(plasma.width, 175, 50);
+    this.strokeText(plasma.height, 175, 100);
     this.stroke();
     this.restore();
     moveHeightMaps(increment);
