@@ -112,6 +112,7 @@ function renderPlasma(size, plasma, increment) {
 
   drawBackground();
   drawPlasma();
+  this.updateImageData(image, 0, 0);
   plasma.increment = parseFloat((increment += .01).toFixed(2));
   // plasma.increment = increment += parseFloat(frequency.value);
   return plasma;
