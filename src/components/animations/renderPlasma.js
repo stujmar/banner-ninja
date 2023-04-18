@@ -13,7 +13,7 @@ function renderPlasma(size, plasma, increment) {
     // console.log(size, plasma);
   let palettes = [makeRandomPalette(), makeRandomPalette()];
   let palette = {};
-  let imgSize = 1024;
+  let imgSize = 512;
   let dx1 = 0;
   let dy1 = 0;
 
@@ -22,6 +22,8 @@ function renderPlasma(size, plasma, increment) {
 
   
     const image = this.createImageData(size.width, plasma.height);
+    this.canvas.width = imgSize;
+    this.canvas.height = imgSize;
     // const image = this.createImageData(imgSize, imgSize);
     for (let i = 0; i < image.data.length; i += 4) {
       image.data[i] = 0; // R

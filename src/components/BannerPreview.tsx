@@ -11,6 +11,7 @@ interface Setting {
   y: number,
   increment: number,
   blur: number
+  height: number,
   properties: any[]
 }
 
@@ -71,9 +72,9 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
   const establishContext = () => {
     canvasRef.current = document.getElementById('previewCanvas');
     const canvas = canvasRef.current;
-    console.log(screen);
-    console.log(window);
-    canvas.width = window.innerWidth;
+    if (waveRef.current?.mode !== "plasma") {
+      canvas.width = window.innerWidth;
+    }
     canvas.height = waveRef.current.height;
     const context = canvas.getContext('2d');
     contextRef.current = context;
@@ -127,7 +128,13 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
         </div>
         <div style={{backdropFilter: `blur(${blur}px)`}} className="absolute -z-10 inset-0 h-screen bg-white/0"></div>
         <div style={{background: `${settings.properties[1].value}`}} className="absolute -z-20 inset-0 h-screen bg-white/0"></div>
-        <canvas id="previewCanvas" ref={canvasRef} className="absolute -z-20 inset-0"></canvas>
+        {/* <canvas id="previewCanvas" ref={canvasRef} className="absolute -z-20 w-full top-0 bottom-0"></canvas> */}
+        <canvas 
+          id="previewCanvas"
+          ref={canvasRef}
+          height={settings.height}
+          className={`absolute -z-20 ${waveRef.current?.mode !== 'plasma' ? 'inset-0' : 'w-full'}`}>
+          </canvas>
     </div>
   );
 };
