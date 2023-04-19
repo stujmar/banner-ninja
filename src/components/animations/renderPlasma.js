@@ -10,8 +10,9 @@ function renderPlasma(size, plasma, increment) {
       this.fillRect(0, 0, size.width, plasma.height);
       this.restore();
     };
-    // console.log(size, plasma);
-  let palettes = [makeRandomPalette(), makeRandomPalette()];
+  let palettes = [
+    makeFiveColorGradient(plasmaColor.value[0].value, plasmaColor.value[1].value, plasmaColor.value[2].value, plasmaColor.value[3].value, plasmaColor.value[4].value), 
+    makeFiveColorGradient(plasmaColor.value[0].value, plasmaColor.value[1].value, plasmaColor.value[2].value, plasmaColor.value[3].value, plasmaColor.value[4].value)];
   let palette = {};
   let imgSize = 512;
   let dx1 = 0;
@@ -106,6 +107,7 @@ function renderPlasma(size, plasma, increment) {
     this.strokeText(plasma.height, 175, 100);
     this.stroke();
     this.restore();
+    console.log(plasmaColor.value);
     moveHeightMaps(increment);
     updatePalette(increment, palette);
     updateImageData();
@@ -168,6 +170,11 @@ function updatePalette(t) {
 };
 
 function interpolate(c1, c2, f) {
+  console.log(c1, c2, f)
+  c1 = hexToRgb(c1);
+  c2 = hexToRgb(c2);
+  console.log(c1, c2, f)
+  console.log(c1, c1?.r)
   return {
     r: Math.floor(c1.r + (c2.r - c1.r) * f),
     g: Math.floor(c1.g + (c2.g - c1.g) * f),
@@ -224,6 +231,15 @@ function updateImageData() {
       image.data[j + 2] = c.b;
     }
   }
+}
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
 }
 
 }
