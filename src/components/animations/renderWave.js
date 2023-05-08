@@ -1,7 +1,8 @@
 function renderWave(size, wave, increment) {
   let [
     lineColor, backgroundColor, 
-    amplitude, count, countOffset, lineWidth, waveLength, frequency, jitter, trails, echo, echoOffset, yOffset] = wave.properties;
+    amplitude, count, lineWidth, waveLength, frequency, jitter, trails, echo, echoOffset, yOffset] = wave.properties;
+    let countOffset = count.spread;
     const drawBackground = () => {
       let alpha = (255 - trails.value).toString(16);
       alpha = trails.value >= 240 ? 0 + alpha : alpha;

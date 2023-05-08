@@ -1,10 +1,10 @@
 export const generateWaveCodePreview = (settings: any, hashId: string) => {
-    let [ lineColor, backgroundColor, amplitude, count, countOffset, lineWidth, waveLength, frequency, jitter, trails, echo, echoOffset, yOffset] = settings.properties;
+    let [ lineColor, backgroundColor, amplitude, count, lineWidth, waveLength, frequency, jitter, trails, echo, echoOffset, yOffset] = settings.properties;
     let activeFrequency = parseFloat((waveLength.max - (waveLength.value - waveLength.min)).toFixed(4));
     function getAnimatedValue(value: any) {
       return `pingPong(increment, ${value.min}, ${value.max}, ${value.rate})`;
     }
-    
+    let countOffset = count.spread;
     const prefix = `  <canvas id="bannerCanvas_${hashId}"></canvas>
   <script>`
     const javaScriptBody = `

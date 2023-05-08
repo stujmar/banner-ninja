@@ -77,7 +77,7 @@ const FaderSpread = ({settings, onChange, base, theme}: FaderSpreadProps) => {
         <div>
           <div className="flex justify-between mt-2">
             <span className={`font-nunito font-bold text-left text-${theme}-800`}>Spread</span>
-            {settings.spread.isAnimated && <button><ClockIcon isActivated={false} theme={theme}/></button>}
+            {/* {settings.spread.isAnimated && <button><ClockIcon isActivated={false} theme={theme}/></button>} */}
           </div>
           <input
           style={{background: `linear-gradient(to right, ${getThemeColor()} 0%, ${getThemeColor()} ${((spread.value - spread.min)/(spread.max - spread.min)) * 100}%, #fff 0%, #fff 100%)`}}
