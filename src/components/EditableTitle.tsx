@@ -4,11 +4,12 @@ type EditableTitleProps = {
   text: string,
   type: string,
   placeholder: string,
+  isVisible: boolean,
   children: any,
   childRef: any,
 }
 
-const EditableTitle = ({ text, type, placeholder, children, childRef}: EditableTitleProps) => {
+const EditableTitle = ({ text, type, placeholder, children, childRef, isVisible}: EditableTitleProps) => {
   const [isEditing, setEditing] = useState(false);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const EditableTitle = ({ text, type, placeholder, children, childRef}: EditableT
   };
 
   return (
-    <section>
+    <section className={`opacity-${isVisible ? "100" : "0"} transition-all`}> 
       {isEditing ? (
         <div
           onBlur={() => setEditing(false)}

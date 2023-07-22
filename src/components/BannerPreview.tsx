@@ -107,24 +107,23 @@ const BannerPreview = ({ mode, blur, settings, titleSettings}: BannerPreviewProp
   return (
     <div id="bannerParent" style={{height: height + "px"}} className="bg-transparent relative overflow-hidden">
         <div className="absolute" style={{top: `${42 + (titleSettings.position.y * 50)}%`, left: `${45 + (titleSettings.position.x * 50)}%`}}>
-          { titleSettings.isActive && 
           <EditableTitle
-          text={task}
-          placeholder="banner.ninja"
-          childRef={inputRef}
-          type="input"
-          >
+            text={task}
+            placeholder="banner.ninja"
+            childRef={inputRef}
+            isVisible={titleSettings.isActive}
+            type="input"
+            >
               <input
                 ref={inputRef}
                 type="text"
                 name="task"
-                className="text-4xl font-nunito font-bold text-gray-900 bg-transparent focus:outline-none"
+                className="text-4xl font-nunito font-bold text-gray-900 bg-transparent focus:outline-none transition-all"
                 placeholder="banner.ninja"
                 value={task}
                 onChange={e => setTask(e.target.value)}
                 />
             </EditableTitle>
-            }
         </div>
         <div style={{backdropFilter: `blur(${blur}px)`}} className="absolute -z-10 inset-0 h-screen bg-white/0"></div>
         <div style={{background: `${settings.properties[1].value}`}} className="absolute -z-20 inset-0 h-screen bg-white/0"></div>
