@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FaderRange from './FaderRange';
-import ClockIcon from './icons/ClockIcon';
+import ClockIcon from '../../icons/ClockIcon';
 
 type FaderProps = {
   settings: any;

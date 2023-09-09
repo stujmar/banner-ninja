@@ -19,11 +19,11 @@ const ModeSwitcher = ({onClick, mode, theme}: ModePickerProps) => {
                     <label htmlFor="default-radio-1" className={`font-nunito font-medium ml-2 text-sm text-${theme}-900`}>Waves</label>
                 </div>
                 <div className="flex items-center">
-                    <input disabled checked={ mode == "bokeh" } id="default-radio-2" type="radio" onChange={(e) => handleChange(e)} value="bokeh" name="mode-radio" className={`w-4 h-4 accent-${theme}-600 border border-red-400 fill-blue-500 stroke-lime-500 bg-gray-100 border-gray-300 focus:ring-none`}/>
+                    <input checked={ mode == "bokeh" } id="default-radio-2" type="radio" onChange={(e) => handleChange(e)} value="bokeh" name="mode-radio" className={`w-4 h-4 accent-${theme}-600 border border-red-400 fill-blue-500 stroke-lime-500 bg-gray-100 border-gray-300 focus:ring-none`}/>
                     <label htmlFor="default-radio-2" className={`font-nunito font-medium ml-2 text-sm text-${theme}-900`}>Bokeh</label>
                 </div>
                 <div className="flex items-center">
-                    <input disabled checked={ mode == "plasma" } id="default-radio-3" type="radio" onChange={(e) => handleChange(e)} value="plasma" name="mode-radio" className={`w-4 h-4 accent-${theme}-600 bg-gray-100 border-gray-300 focus:ring-none`}/>
+                    <input checked={ mode == "plasma" } id="default-radio-3" type="radio" onChange={(e) => handleChange(e)} value="plasma" name="mode-radio" className={`w-4 h-4 accent-${theme}-600 bg-gray-100 border-gray-300 focus:ring-none`}/>
                     <label htmlFor="default-radio-3" className={`font-nunito font-medium ml-2 text-sm text-${theme}-900`}>Plasma</label>
                 </div>
             </div>

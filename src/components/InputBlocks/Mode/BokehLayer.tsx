@@ -1,9 +1,9 @@
 import React, {useRef, useEffect, useState} from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import BokehColor from './BokehColor';
-import { VarXY } from './dragXY/VarXY';
-import FaderSimple from './FaderSimple';
-import DragIcon from './icons/DragIcon';
+import { VarXY } from '../../dragXY/VarXY';
+import FaderSimple from '../Shared/FaderSimple';
+import DragIcon from '../../icons/DragIcon';
 
 type BokehLayerProps = {
     settings: any;

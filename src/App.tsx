@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import BannerPreview from './components/BannerPreview';
-import ColorPicker from './components/ColorPicker';
+import ColorPicker from './components/InputBlocks/Shared/ColorPicker';
 import CodePreview from './components/CodePreview';
-import Gradient from './components/Gradient';
-import ModeSwitcher from './components/ModeSwitcher';
+import Gradient from './components/InputBlocks/Shared/Gradient';
+import ModeSwitcher from './components/InputBlocks/General/ModeSwitcher';
 import getInitialState from './components/animations/getInitialState';
-import Fader from './components/Fader';
-import FaderSpread from './components/FaderSpread';
+import Fader from './components/InputBlocks/Shared/Fader';
+import FaderSpread from './components/InputBlocks/Shared/FaderSpread';
 import Footer from './components/Footer';
-import BokehLayers from './components/BokehLayers';
-import Title from './components/Title';
+import BokehLayers from './components/InputBlocks/Mode/BokehLayers';
+import Title from './components/InputBlocks/General/TitleMover';
 
 function App() {
 

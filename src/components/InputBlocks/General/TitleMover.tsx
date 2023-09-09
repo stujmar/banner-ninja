@@ -1,5 +1,5 @@
 import React from 'react';
-import { VarXY } from './dragXY/VarXY';
+import { VarXY } from '../../dragXY/VarXY';
 
 type TitleProps = {
   settings: any;
