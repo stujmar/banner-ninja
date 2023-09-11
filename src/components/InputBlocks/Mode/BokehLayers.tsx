@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import {Key, useCallback, useEffect, useState} from 'react';
 import BokehLayer from './BokehLayer';
+import update from 'immutability-helper'
 
 type BokehLayersProps = {
   settings: any;
@@ -44,9 +45,22 @@ const BokehLayers = ({settings, onChange, theme}: BokehLayersProps) => {
 
   useEffect(() => {
     setLayers(settings.layers.map((property: any, index: number) => {
-      return <BokehLayer key={index} id={index} settings={property} onChange={changeLayer} onClick={(id) => removeLayer(id)} theme={theme} />
+      // return <BokehLayer key={index} id={index} settings={property} onChange={changeLayer} onClick={(id) => removeLayer(id)} theme={theme} />
+      return renderLayer(property, index);
       }))
   }, [settings]);
+
+  const renderLayer = useCallback((BokehLayer: JSX.IntrinsicAttributes, index: Key | null | undefined) => {
+    return (
+      <BokehLayer
+        key={index}
+        id={index}
+        settings={BokehLayer}
+        onChange={changeLayer}
+        onClick={(id: number) => removeLayer(id)}
+        theme={theme} />
+      )
+  }, [])
 
   return (
     <div className={`w-full bg-white sm:module-${theme}-border font-medium py-px px-2 rounded`}>

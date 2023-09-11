@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from 'react';
-import { useDrag, useDrop } from 'react-dnd';
+import { useDrag } from 'react-dnd';
 import BokehColor from './BokehColor';
 import { VarXY } from '../../dragXY/VarXY';
 import FaderSimple from '../Shared/FaderSimple';
@@ -9,11 +9,12 @@ type BokehLayerProps = {
     settings: any;
     id: number;
     theme: string;
+    isDragging?: boolean;
     onClick: ((e: any) => void);
     onChange: ((id: any, values: any) => void);
 }
 
-const BokehLayer = ({settings, id, theme, onClick, onChange}: BokehLayerProps) => {
+const BokehLayer = ({settings, id, theme, isDragging, onClick, onChange}: BokehLayerProps) => {
     const [dragValue, setDragValue] = useState<[number,number]>([0,0]);
     const [localSettings, setLocalSettings] = useState<any>(settings);
     const ref = useRef(null);
@@ -39,8 +40,20 @@ const BokehLayer = ({settings, id, theme, onClick, onChange}: BokehLayerProps) =
     const handleXY = (e: any) => {
         setDragValue(e);
     }
+
+    const [{ opacity }, dragRef] = useDrag(
+        () => ({
+            type: "bokehLayer",
+            item: { id },
+            collect: (monitor) => ({
+              opacity: monitor.isDragging() ? 0.5 : 1
+            })
+          }),
+          []
+        )
+
     return (
-        <div className={`cursor-grab flex items-start gap-4 mt-2 sm:module-${theme}-border transition-all`}>
+        <div ref={dragRef} style={{ opacity }} className={`cursor-grab flex items-start gap-4 mt-2 sm:module-${theme}-border transition-all`}>
             <DragIcon classes={"my-auto content-fill fill-stone-300"} />
             <BokehColor settings={settings} id={id} onClick={handleColorChange} theme={theme}/>
             <FaderSimple label={"Count"} setting={settings.count} theme={theme} onChange={handleChange} />
